@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode world_vertex_coords, unshaded, cull_disabled;
+render_mode world_vertex_coords, unshaded, cull_disabled, depth_test_disabled;
 
 group_uniforms fragment;
 uniform sampler2D albedo_texture: filter_linear_mipmap, source_color ,hint_default_white;

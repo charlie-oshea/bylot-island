@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://cqm32gfoheyvm"]
+
+[ext_resource type="PackedScene" uid="uid://ceoup1y5bf1b1" path="res://player/player_walk.tscn" id="1_abpct"]
+[ext_resource type="ArrayMesh" uid="uid://g846nhvi8hmb" path="res://assets/models/style_test/sm_iceberg.res" id="2_rbkj1"]
+[ext_resource type="Material" uid="uid://y0braarkad1d" path="res://shaders/world_bend/mats/s_bend_black.tres" id="3_xrsxj"]
+[ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend.gdshader" id="4_yh12p"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hpgh1"]
+size = Vector2(400, 400)
+subdivide_width = 50
+subdivide_depth = 50
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oaxg7"]
+render_priority = 0
+shader = ExtResource("4_yh12p")
+shader_parameter/use_texture = false
+shader_parameter/albedo_colour = Color(0.894118, 0.917647, 0.964706, 1)
+shader_parameter/triplanar = null
+shader_parameter/curvature_amount = 0.005
+shader_parameter/distance_fade = false
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 10.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2eqyy"]
+size = Vector3(400, 0.5, 400)
+
+[sub_resource type="Gradient" id="Gradient_nlqkr"]
+offsets = PackedFloat32Array(0.342432, 0.483871, 0.759305)
+colors = PackedColorArray(0.607843, 0.647059, 0.843137, 1, 0.368627, 0.745098, 0.929412, 1, 0, 0.505882, 0.8, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sqsai"]
+gradient = SubResource("Gradient_nlqkr")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7b4d8"]
+panorama = SubResource("GradientTexture2D_sqsai")
+
+[sub_resource type="Sky" id="Sky_o0et8"]
+sky_material = SubResource("PanoramaSkyMaterial_7b4d8")
+
+[sub_resource type="Environment" id="Environment_m8oha"]
+background_mode = 2
+background_color = Color(0.0431373, 0.65098, 0.854902, 1)
+sky = SubResource("Sky_o0et8")
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.56, 0.56, 0.56, 1)
+fog_density = 0.02
+
+[node name="dev_level" type="Node3D"]
+
+[node name="stage" type="Node3D" parent="."]
+
+[node name="player_walk" parent="stage" instance=ExtResource("1_abpct")]
+
+[node name="env" type="Node3D" parent="."]
+
+[node name="meshes" type="Node3D" parent="env"]
+
+[node name="iceberg2" type="MeshInstance3D" parent="env/meshes"]
+transform = Transform3D(-0.168176, 0, 0.565143, 0, 0.711473, 0, -0.565143, 0, -0.168176, 4.5977, -0.064007, -8.21106)
+mesh = ExtResource("2_rbkj1")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_xrsxj")
+
+[node name="iceberg3" type="MeshInstance3D" parent="env/meshes"]
+transform = Transform3D(0.557538, 0, -0.191889, 0, 0.711473, 0, 0.191889, 0, 0.557538, -11.6016, -0.064007, -2.56147)
+mesh = ExtResource("2_rbkj1")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_xrsxj")
+
+[node name="iceberg4" type="MeshInstance3D" parent="env/meshes"]
+transform = Transform3D(0.455141, 0, 0.374855, 0, 0.711473, 0, -0.374855, 0, 0.455141, -14.0719, -0.064007, -23.4269)
+mesh = ExtResource("2_rbkj1")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_xrsxj")
+
+[node name="iceberg5" type="MeshInstance3D" parent="env/meshes"]
+transform = Transform3D(0.344285, 0, 0.478683, 0, 0.711473, 0, -0.478683, 0, 0.344285, 18.6217, -0.064008, -20.3153)
+mesh = ExtResource("2_rbkj1")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_xrsxj")
+
+[node name="land" type="MeshInstance3D" parent="env/meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
+mesh = SubResource("PlaneMesh_hpgh1")
+surface_material_override/0 = SubResource("ShaderMaterial_oaxg7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="env/meshes"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="env/meshes/StaticBody3D"]
+shape = SubResource("BoxShape3D_2eqyy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_m8oha")

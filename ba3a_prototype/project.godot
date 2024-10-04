@@ -11,15 +11,22 @@ config_version=5
 [application]
 
 config/name="BA3a_Prototype"
-run/main_scene="res://levels/dev_level/dev_level.tscn"
+run/main_scene="res://levels/dev_levels/dev_level_ocean.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
 
 [file_customization]
 
 folder_colors={
 "res://assets/": "red",
 "res://levels/": "blue",
+"res://player/": "green",
 "res://shaders/": "orange"
 }
 
@@ -50,12 +57,13 @@ move_right={
 
 anti_aliasing/quality/msaa_2d=3
 anti_aliasing/quality/msaa_3d=3
+anti_aliasing/quality/use_taa=true
 
 [shader_globals]
 
 enable_world_bend={
 "type": "bool",
-"value": true
+"value": false
 }
 world_bend_curvature={
 "type": "float",

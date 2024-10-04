@@ -1,11 +1,19 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://y0braarkad1d"]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://y0braarkad1d"]
 
 [ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend.gdshader" id="1_snarq"]
 [ext_resource type="Texture2D" uid="uid://bcgkbjshhjw15" path="res://assets/textures/dev_textures/black_01.png" id="2_6dt45"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h5y6j"]
+
 [resource]
 render_priority = 0
+next_pass = SubResource("ShaderMaterial_h5y6j")
 shader = ExtResource("1_snarq")
+shader_parameter/use_texture = true
+shader_parameter/albedo_colour = Color(1, 1, 1, 1)
 shader_parameter/triplanar = false
-shader_parameter/curvature_amount = 0.003
 shader_parameter/albedo_texture = ExtResource("2_6dt45")
+shader_parameter/curvature_amount = 0.003
+shader_parameter/distance_fade = false
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 5.25

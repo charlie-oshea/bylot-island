@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b1pwqxn31wb5d"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_u8s4v"]
+[ext_resource type="Script" path="res://player/player_boat.gd" id="1_u8s4v"]
 [ext_resource type="ArrayMesh" uid="uid://bgiiherchbguk" path="res://assets/models/style_test/sm_ship.res" id="2_283o8"]
 [ext_resource type="Material" uid="uid://cefwnxfa4ey5e" path="res://shaders/pp/global_outline.material" id="4_0if4k"]
 [ext_resource type="Material" uid="uid://0j4g3ec0nmrj" path="res://shaders/world_bend/mats/s_bend_foam_blue.tres" id="5_81e13"]
@@ -35,7 +35,7 @@ material = ExtResource("4_0if4k")
 flip_faces = true
 size = Vector2(4, 4)
 
-[node name="player" type="CharacterBody3D"]
+[node name="player_boat" type="CharacterBody3D"]
 script = ExtResource("1_u8s4v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
