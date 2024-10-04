@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://0j4g3ec0nmrj"]
+
+[ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend.gdshader" id="1_gdtx1"]
+[ext_resource type="Texture2D" uid="uid://bcgkbjshhjw15" path="res://assets/textures/dev_textures/black_01.png" id="2_ppbmq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_gdtx1")
+shader_parameter/use_texture = false
+shader_parameter/albedo_colour = Color(0, 0.321569, 0.619608, 1)
+shader_parameter/triplanar = false
+shader_parameter/albedo_texture = ExtResource("2_ppbmq")
+shader_parameter/curvature_amount = 0.003

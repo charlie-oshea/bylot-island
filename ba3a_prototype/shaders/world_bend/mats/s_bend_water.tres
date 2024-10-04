@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://c4u21skc0g255"]
+
+[ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend_water.gdshader" id="1_hig4a"]
+
+[sub_resource type="Gradient" id="Gradient_80bsx"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.685504)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l4khi"]
+noise_type = 3
+seed = 100
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i4p3r"]
+width = 2048
+height = 2048
+seamless = true
+color_ramp = SubResource("Gradient_80bsx")
+noise = SubResource("FastNoiseLite_l4khi")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y3idl"]
+width = 2048
+height = 2048
+seamless = true
+color_ramp = SubResource("Gradient_80bsx")
+noise = SubResource("FastNoiseLite_l4khi")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_hig4a")
+shader_parameter/water_colour = Color(0.0588235, 0.156863, 0.4, 1)
+shader_parameter/foam_colour = Color(0, 0.321569, 0.619608, 1)
+shader_parameter/noise_uv_scale = Vector2(20, 20)
+shader_parameter/noise_uv_speed = Vector2(0.01, 0)
+shader_parameter/water_noise = SubResource("NoiseTexture2D_i4p3r")
+shader_parameter/water_noise_2 = SubResource("NoiseTexture2D_y3idl")

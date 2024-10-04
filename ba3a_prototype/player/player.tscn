@@ -1,11 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1pwqxn31wb5d"]
+[gd_scene load_steps=11 format=3 uid="uid://b1pwqxn31wb5d"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_u8s4v"]
 [ext_resource type="ArrayMesh" uid="uid://bgiiherchbguk" path="res://assets/models/style_test/sm_ship.res" id="2_283o8"]
-[ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="3_k1yu2"]
+[ext_resource type="Material" uid="uid://cefwnxfa4ey5e" path="res://shaders/pp/global_outline.material" id="4_0if4k"]
+[ext_resource type="Material" uid="uid://0j4g3ec0nmrj" path="res://shaders/world_bend/mats/s_bend_foam_blue.tres" id="5_81e13"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_doklx"]
 size = Vector3(0.749023, 1, 3.77246)
+
+[sub_resource type="Curve" id="Curve_irgcf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0638298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5csg7"]
+curve = SubResource("Curve_irgcf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wfwdg"]
+emission_shape = 3
+emission_box_extents = Vector3(0.3, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.7
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_5csg7")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3vra6"]
+material = ExtResource("5_81e13")
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.001
+radial_segments = 8
+
+[sub_resource type="QuadMesh" id="QuadMesh_k7437"]
+material = ExtResource("4_0if4k")
+flip_faces = true
+size = Vector2(4, 4)
 
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_u8s4v")
@@ -17,10 +45,22 @@ shape = SubResource("BoxShape3D_doklx")
 [node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.40403e-08, 0, -0.549977, 0, 0.549977, 0, 0.549977, 0, -2.40403e-08, 0, 0.481773, -0.266097)
 mesh = ExtResource("2_283o8")
-surface_material_override/0 = ExtResource("3_k1yu2")
+
+[node name="vfx_foam" type="GPUParticles3D" parent="mesh"]
+transform = Transform3D(-7.94786e-08, 0, 1.81826, 0, 1.81826, 0, -1.81826, 0, -7.94786e-08, 3.04676, -1.09786, -1.33178e-07)
+amount = 32
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_wfwdg")
+draw_pass_1 = SubResource("CylinderMesh_3vra6")
 
 [node name="camera_rig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.915515, 0.402283, 0, -0.402283, 0.915515, 0, 0.772143, 0)
 
 [node name="Camera3D" type="Camera3D" parent="camera_rig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.917)
+
+[node name="sobel" type="MeshInstance3D" parent="camera_rig/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09)
+visible = false
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_k7437")

@@ -55,5 +55,9 @@ anti_aliasing/quality/msaa_3d=3
 
 enable_world_bend={
 "type": "bool",
-"value": false
+"value": true
+}
+world_bend_curvature={
+"type": "float",
+"value": 0.005
 }

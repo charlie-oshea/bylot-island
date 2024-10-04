@@ -9,6 +9,7 @@ uniform bool triplanar;
 
 group_uniforms vertex;
 uniform float curvature_amount: hint_range(0.0, 1.0, 0.0015) = 0.005;
+global uniform float world_bend_curvature;
 
 global uniform bool enable_world_bend;
 
@@ -16,8 +17,8 @@ void vertex() {
 	if (enable_world_bend) {
 		vec3 world_pos = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
 		vec3 world_camera_pos = (INV_VIEW_MATRIX * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
-		float new_y_z = pow((VERTEX - world_camera_pos).z, 2.0) * (-curvature_amount);
-		float new_y_x = pow((VERTEX - world_camera_pos).x, 2.0) * (-curvature_amount);
+		float new_y_z = pow((VERTEX - world_camera_pos).z, 2.0) * (-world_bend_curvature);
+		float new_y_x = pow((VERTEX - world_camera_pos).x, 2.0) * (-world_bend_curvature);
 		VERTEX = VERTEX + vec3(0.0, new_y_z + new_y_x, 0.0);
 	}
 }

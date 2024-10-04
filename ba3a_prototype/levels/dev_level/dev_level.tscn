@@ -1,24 +1,37 @@
-[gd_scene load_steps=9 format=3 uid="uid://42lxiaowyie"]
+[gd_scene load_steps=12 format=3 uid="uid://42lxiaowyie"]
 
-[ext_resource type="Material" uid="uid://c4u21skc0g255" path="res://shaders/world_bend/mats/s_bend_blue.tres" id="1_fvei0"]
+[ext_resource type="Material" uid="uid://c4u21skc0g255" path="res://shaders/world_bend/mats/s_bend_water.tres" id="1_fvei0"]
 [ext_resource type="PackedScene" uid="uid://b1pwqxn31wb5d" path="res://player/player.tscn" id="1_icnqr"]
 [ext_resource type="ArrayMesh" uid="uid://g846nhvi8hmb" path="res://assets/models/style_test/sm_iceberg.res" id="3_6wchq"]
 [ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="5_745tq"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hpgh1"]
 size = Vector2(400, 400)
-subdivide_width = 40
-subdivide_depth = 40
+subdivide_width = 50
+subdivide_depth = 50
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2eqyy"]
 size = Vector3(400, 0.5, 400)
 
-[sub_resource type="Sky" id="Sky_l4v2c"]
+[sub_resource type="Gradient" id="Gradient_nlqkr"]
+offsets = PackedFloat32Array(0.342432, 0.483871, 0.759305)
+colors = PackedColorArray(0.607843, 0.647059, 0.843137, 1, 0.368627, 0.745098, 0.929412, 1, 0, 0.505882, 0.8, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sqsai"]
+gradient = SubResource("Gradient_nlqkr")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7b4d8"]
+panorama = SubResource("GradientTexture2D_sqsai")
+
+[sub_resource type="Sky" id="Sky_o0et8"]
+sky_material = SubResource("PanoramaSkyMaterial_7b4d8")
 
 [sub_resource type="Environment" id="Environment_m8oha"]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.0431373, 0.65098, 0.854902, 1)
-sky = SubResource("Sky_l4v2c")
+sky = SubResource("Sky_o0et8")
 tonemap_mode = 2
 glow_enabled = true
 fog_light_color = Color(0.56, 0.56, 0.56, 1)
@@ -35,13 +48,19 @@ fog_density = 0.02
 [node name="meshes" type="Node3D" parent="env"]
 
 [node name="iceberg" type="MeshInstance3D" parent="env/meshes"]
-transform = Transform3D(0.412572, 0, 0, 0, 0.412572, 0, 0, 0, 0.412572, 0, 0, -15.4513)
+transform = Transform3D(0.589635, 0, 0, 0, 0.589635, 0, 0, 0, 0.589635, 0, 0, -15.4513)
+mesh = ExtResource("3_6wchq")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_745tq")
+
+[node name="iceberg2" type="MeshInstance3D" parent="env/meshes"]
+transform = Transform3D(-2.57738e-08, 0, 0.589635, 0, 0.589635, 0, -0.589635, 0, -2.57738e-08, -26.2928, 0, -3.07257)
 mesh = ExtResource("3_6wchq")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_745tq")
 
 [node name="ocean" type="MeshInstance3D" parent="env/meshes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.224742, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
 mesh = SubResource("PlaneMesh_hpgh1")
 surface_material_override/0 = ExtResource("1_fvei0")
 
