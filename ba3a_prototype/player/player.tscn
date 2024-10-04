@@ -1,23 +1,23 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1pwqxn31wb5d"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_u8s4v"]
-[ext_resource type="Material" uid="uid://y0braarkad1d" path="res://shaders/world_bend/mats/s_bend_black.tres" id="2_f87n0"]
+[ext_resource type="ArrayMesh" uid="uid://bgiiherchbguk" path="res://assets/models/style_test/sm_ship.res" id="2_283o8"]
+[ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="3_k1yu2"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_47ud3"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_i6ung"]
-material = ExtResource("2_f87n0")
+[sub_resource type="BoxShape3D" id="BoxShape3D_doklx"]
+size = Vector3(0.749023, 1, 3.77246)
 
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_u8s4v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_47ud3")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.416201, 0)
+shape = SubResource("BoxShape3D_doklx")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_i6ung")
+transform = Transform3D(-2.40403e-08, 0, -0.549977, 0, 0.549977, 0, 0.549977, 0, -2.40403e-08, 0, 0.481773, -0.266097)
+mesh = ExtResource("2_283o8")
+surface_material_override/0 = ExtResource("3_k1yu2")
 
 [node name="camera_rig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.915515, 0.402283, 0, -0.402283, 0.915515, 0, 0.772143, 0)

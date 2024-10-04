@@ -1,9 +1,13 @@
 shader_type spatial;
-render_mode world_vertex_coords;
+render_mode world_vertex_coords, unshaded, cull_disabled;
 
-uniform sampler2D albedo_texture: filter_linear_mipmap;
+group_uniforms fragment;
+uniform sampler2D albedo_texture: filter_linear_mipmap, source_color ,hint_default_white;
+uniform bool use_texture = true;
+uniform vec3 albedo_colour: source_color = vec3(1.0);
 uniform bool triplanar;
 
+group_uniforms vertex;
 uniform float curvature_amount: hint_range(0.0, 1.0, 0.0015) = 0.005;
 
 global uniform bool enable_world_bend;
@@ -19,16 +23,24 @@ void vertex() {
 }
 
 void fragment() {
-	if (triplanar) {
-		vec4 projected_coords = INV_VIEW_MATRIX * vec4(VERTEX, 1.0);
-		vec3 albedoX = texture(albedo_texture, projected_coords.zy).rgb;
-		vec3 albedoY = texture(albedo_texture, projected_coords.xz).rgb;
-		vec3 albedoZ = texture(albedo_texture, projected_coords.xy).rgb;
-		vec3 world_normal = abs(INV_VIEW_MATRIX * vec4(NORMAL, 0.0)).xyz;
-		vec3 normal_weights = world_normal / (world_normal.x + world_normal.y + world_normal.z);
-		
-		ALBEDO = albedoX * normal_weights.x + albedoY * normal_weights.y + albedoZ * normal_weights.z;
-	} else {
+	// *** UNUSED TRIPLANAR ***
+	//if (triplanar) {
+		//vec4 projected_coords = INV_VIEW_MATRIX * vec4(VERTEX, 1.0);
+		//vec3 albedoX = texture(albedo_texture, projected_coords.zy).rgb;
+		//vec3 albedoY = texture(albedo_texture, projected_coords.xz).rgb;
+		//vec3 albedoZ = texture(albedo_texture, projected_coords.xy).rgb;
+		//vec3 world_normal = abs(INV_VIEW_MATRIX * vec4(NORMAL, 0.0)).xyz;
+		//vec3 normal_weights = world_normal / (world_normal.x + world_normal.y + world_normal.z);
+		//
+		//ALBEDO = albedoX * normal_weights.x + albedoY * normal_weights.y + albedoZ * normal_weights.z;
+	//} else {
+	if (use_texture) {
 		ALBEDO = texture(albedo_texture, UV).rgb;
+	} else {
+		ALBEDO = albedo_colour;
 	}
+	
+	ROUGHNESS = 1.0;
+	SPECULAR = 1.0;
+	METALLIC = 0.0;
 }

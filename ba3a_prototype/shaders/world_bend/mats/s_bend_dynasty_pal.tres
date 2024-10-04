@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cb3odqr6318wi"]
+
+[ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend.gdshader" id="1_7iqll"]
+[ext_resource type="Texture2D" uid="uid://byxite4d32ojc" path="res://assets/textures/palettes/dynasty38-8x.png" id="2_hdrq3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7iqll")
+shader_parameter/triplanar = false
+shader_parameter/curvature_amount = 0.003
+shader_parameter/albedo_texture = ExtResource("2_hdrq3")
