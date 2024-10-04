@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceoup1y5bf1b1"]
+[gd_scene load_steps=12 format=3 uid="uid://ceoup1y5bf1b1"]
 
 [ext_resource type="Script" path="res://player/player_walk.gd" id="1_6bidk"]
 [ext_resource type="Material" uid="uid://y0braarkad1d" path="res://shaders/world_bend/mats/s_bend_black.tres" id="2_v7ki7"]
 [ext_resource type="Material" uid="uid://cefwnxfa4ey5e" path="res://shaders/pp/global_outline.material" id="4_fnnud"]
+[ext_resource type="Texture2D" uid="uid://dr761k2fhiyj2" path="res://assets/textures/camera/camera_overlay.png" id="4_hturh"]
+[ext_resource type="Script" path="res://player/camera_overlay.gd" id="5_mresy"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kjajd"]
 
@@ -12,6 +14,44 @@
 material = ExtResource("4_fnnud")
 flip_faces = true
 size = Vector2(4, 4)
+
+[sub_resource type="Animation" id="Animation_034io"]
+resource_name = "flash"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_vf6is"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0kkfs"]
+_data = {
+"RESET": SubResource("Animation_vf6is"),
+"flash": SubResource("Animation_034io")
+}
 
 [node name="player_walk" type="CharacterBody3D"]
 script = ExtResource("1_6bidk")
@@ -28,11 +68,46 @@ surface_material_override/0 = ExtResource("2_v7ki7")
 [node name="camera_rig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.915515, 0.402283, 0, -0.402283, 0.915515, 0, 0.772143, 0)
 
-[node name="Camera3D" type="Camera3D" parent="camera_rig"]
+[node name="camera" type="Camera3D" parent="camera_rig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.917)
 
-[node name="sobel" type="MeshInstance3D" parent="camera_rig/Camera3D"]
+[node name="sobel" type="MeshInstance3D" parent="camera_rig/camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09)
 visible = false
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_k7437")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="player_ui" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="camera" type="Node2D" parent="CanvasLayer/player_ui"]
+visible = false
+
+[node name="camera_overlay" type="Sprite2D" parent="CanvasLayer/player_ui/camera"]
+position = Vector2(946, 539)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_hturh")
+script = ExtResource("5_mresy")
+
+[node name="cam_anim_player" type="AnimationPlayer" parent="CanvasLayer/player_ui/camera"]
+libraries = {
+"": SubResource("AnimationLibrary_0kkfs")
+}
+
+[node name="flash" type="ColorRect" parent="CanvasLayer/player_ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
