@@ -12,8 +12,9 @@ void vertex() {
 	if (enable_world_bend) {
 		vec3 world_pos = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
 		vec3 world_camera_pos = (INV_VIEW_MATRIX * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
-		float new_y = pow((VERTEX - world_camera_pos).z, 2.0) * (-curvature_amount);
-		VERTEX = VERTEX + vec3(0.0, new_y, 0.0);
+		float new_y_z = pow((VERTEX - world_camera_pos).z, 2.0) * (-curvature_amount);
+		float new_y_x = pow((VERTEX - world_camera_pos).x, 2.0) * (-curvature_amount);
+		VERTEX = VERTEX + vec3(0.0, new_y_z + new_y_x, 0.0);
 	}
 }
 

@@ -61,220 +61,260 @@ shape = SubResource("ConcavePolygonShape3D_flg1m")
 [node name="tree1" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8909, 0.305157, -8.94036)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree2" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05475, 0.305157, -16.3395)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree3" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5118, 0.305157, -7.10061)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree4" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.92584, 0.305157, -1.43729)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree5" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4137, 0.305157, -1.40668)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree6" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.6803, 0.305157, -13.2336)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree7" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4783, 0.305157, -21.4689)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree8" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41626, 0.305157, -16.1574)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree9" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2523, 0.305157, -28.1175)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree10" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2218, 0.305157, -19.0683)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree11" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5346, 0.305157, -15.603)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree12" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1186, 0.305157, -31.2257)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree13" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.91261, 0.305157, -39.5674)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree14" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.595478, 0.305157, -30.7802)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree15" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2623, 0.305157, -42.2902)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree16" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4255, 0.305161, -33.1857)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree17" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4351, 0.305161, -12.9292)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree18" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7232, 0.305161, -1.31116)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree19" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8187, 0.305161, -8.15026)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
 [node name="tree20" type="MeshInstance3D" parent="env/trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9645, 0.305161, -38.8751)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_khm78")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="env/trees/tree20"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30041, 0)
 cast_shadow = 0
+extra_cull_margin = 10.0
 mesh = SubResource("CylinderMesh_rxj5u")
 skeleton = NodePath("../..")
 
