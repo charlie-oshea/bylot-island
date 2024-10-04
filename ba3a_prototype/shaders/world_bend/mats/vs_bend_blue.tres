@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://hpi0f18umort"]
+
+[ext_resource type="Shader" uid="uid://cfac7p2h55xcd" path="res://shaders/world_bend/vs_world_bend.tres" id="1_upnnc"]
+[ext_resource type="Texture2D" uid="uid://bhky38ik7ck3a" path="res://assets/textures/dev_textures/blue_01.png" id="2_rslen"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_upnnc")
+shader_parameter/triplanar_scale = Vector3(1, 1, 1)
+shader_parameter/triplanar_offset = null
+shader_parameter/triplanar_sharpness = 0.5
+shader_parameter/Albedo_Tex = ExtResource("2_rslen")

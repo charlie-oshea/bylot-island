@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1pwqxn31wb5d"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_u8s4v"]
+[ext_resource type="Material" uid="uid://y0braarkad1d" path="res://shaders/world_bend/mats/s_bend_black.tres" id="2_f87n0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_47ud3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i6ung"]
+material = ExtResource("2_f87n0")
+
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1_u8s4v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_47ud3")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_i6ung")
+
+[node name="camera_rig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.915515, 0.402283, 0, -0.402283, 0.915515, 0, 0.772143, 0)
+
+[node name="Camera3D" type="Camera3D" parent="camera_rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.917)

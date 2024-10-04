@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://y0braarkad1d"]
+
+[ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend.gdshader" id="1_snarq"]
+[ext_resource type="Texture2D" uid="uid://bcgkbjshhjw15" path="res://assets/textures/dev_textures/black_01.png" id="2_6dt45"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_snarq")
+shader_parameter/triplanar = false
+shader_parameter/curvature_amount = 0.003
+shader_parameter/albedo_texture = ExtResource("2_6dt45")
