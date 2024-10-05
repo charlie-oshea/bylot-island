@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3d71fgi20flt"]
+
+[ext_resource type="Script" path="res://autoloads/settings.gd" id="1_mvbdv"]
+
+[node name="settings" type="Node"]
+script = ExtResource("1_mvbdv")

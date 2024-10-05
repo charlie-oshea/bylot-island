@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfg83fysblujx"]
+
+[ext_resource type="Script" path="res://levels/ocean_level/island_location/island_location.gd" id="1_m8h88"]
+[ext_resource type="ArrayMesh" uid="uid://g846nhvi8hmb" path="res://assets/models/style_test/sm_iceberg.res" id="1_wqfxj"]
+[ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="2_pdqql"]
+[ext_resource type="FontFile" uid="uid://baq3t2m6u5nyd" path="res://assets/fonts/Vividly-Regular.ttf" id="4_sav2j"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5yxw0"]
+radius = 11.0212
+
+[node name="island_location" type="Node3D"]
+script = ExtResource("1_m8h88")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.589635, 0, 0, 0, 0.589635, 0, 0, 0, 0.589635, 0, 0, 0)
+mesh = ExtResource("1_wqfxj")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_pdqql")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_5yxw0")
+
+[node name="island_label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8949, 0)
+billboard = 1
+font = ExtResource("4_sav2j")
+font_size = 256
+outline_size = 50
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_body_exited"]

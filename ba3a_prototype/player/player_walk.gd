@@ -4,12 +4,16 @@ const SPEED = 6.0
 
 # cam vars
 var in_camera: bool = false
+var cam_zoom_speed := 20.0
 
 # onready vars
 @onready var mesh: MeshInstance3D = $mesh
-@onready var camera_ui: Node2D = $CanvasLayer/player_ui/camera
-@onready var cam_anim_player: AnimationPlayer = $CanvasLayer/player_ui/camera/cam_anim_player
-@onready var camera: Camera3D = $camera_rig/camera
+@onready var camera_rig: Node3D = $camera_rig
+@onready var walk_camera: Camera3D = $camera_rig/camera
+@onready var photo_camera: Camera3D = $photo_camera_rig/photo_camera
+@onready var photo_camera_rig: Node3D = $photo_camera_rig
+@onready var photo_viewport_camera: Camera3D = $SubViewport/photo_viewport_camera
+@onready var photo_cam_control: Node3D = $photo_camera_rig/photo_camera/photo_cam_control
 
 
 func _ready() -> void:
@@ -17,19 +21,63 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if can_move():
-		var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		if direction:
-			velocity.x = direction.x * SPEED 
-			velocity.z = direction.z * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
-		
+		handle_movement(delta)
+		handle_camera_rotation(delta)
 		move_and_slide()
 	
 	if in_camera:
-		get_object_under_mouse()
+		handle_photo_camera_rotation(delta)
+		handle_photo_camera_zoom(delta)
+
+func handle_movement(delta: float) -> void:
+	var input_dir := Vector2.ZERO
+	
+	# keyboard
+	input_dir += Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	
+	# controller
+	var joy_vector := Vector2(Input.get_joy_axis(0, JOY_AXIS_LEFT_X), Input.get_joy_axis(0, JOY_AXIS_LEFT_Y))
+	
+	if joy_vector.length() > Settings.DEADZONE:
+		input_dir += joy_vector.normalized() * ((joy_vector.length() - Settings.DEADZONE) / (1 - Settings.DEADZONE))
+	
+	if input_dir.length() > 1:
+		input_dir = input_dir.normalized()
+	
+	var direction := (camera_rig.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED 
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+func handle_camera_rotation(delta: float) -> void:
+	# 3rd person camera rotate
+	var joy_rotate := Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
+	
+	if abs(joy_rotate) > Settings.DEADZONE:
+		camera_rig.rotation.y -= joy_rotate * Settings.CAM_ROTATE_SENS * delta
+
+func handle_photo_camera_rotation(delta: float) -> void:
+	var joy_vector := Vector2.ZERO
+	joy_vector.x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
+	joy_vector.y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+	
+	if joy_vector.length() > Settings.DEADZONE:
+		# left/right
+		photo_camera_rig.rotate_y(deg_to_rad(-joy_vector.x) * Settings.CAM_ROTATE_SENS)
+		
+		# up/down
+		photo_camera.rotate_x(deg_to_rad(-joy_vector.y) * Settings.CAM_ROTATE_SENS)
+		photo_camera.rotation.x = clamp(photo_camera.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+
+func handle_photo_camera_zoom(delta: float) -> void:
+	var cam_zoom := (Input.get_action_strength("camera_zoom_out") - Input.get_action_strength("camera_zoom_in")) * delta
+	photo_viewport_camera.fov += cam_zoom * cam_zoom_speed
+	
+	# clamp fov
+	photo_viewport_camera.fov = clamp(photo_viewport_camera.fov, 20.0, 75.0)
 
 func can_move() -> bool:
 	if in_camera:
@@ -47,21 +95,29 @@ func _input(event: InputEvent) -> void:
 
 ### camera functions ###
 func open_camera():
+	photo_camera.current = true
 	in_camera = true
-	camera_ui.visible = true
+	
+	# show cam
+	photo_cam_control.visible = true
+	
+	# hide mesh
+	mesh.visible = false
+
 
 func close_camera():
+	walk_camera.current = true
 	in_camera = false
-	camera_ui.visible = false
+	
+	# hide cam
+	photo_cam_control.visible = false
+	
+	# show mesh
+	mesh.visible = true
+	
+	# reset camera zoom
+	photo_viewport_camera.fov = 65.0
+
 
 func take_picture():
-	cam_anim_player.play("flash")
 	close_camera()
-
-func get_object_under_mouse():
-	var world_space = get_world_3d().direct_space_state
-	var mouse = get_viewport().get_mouse_position()
-	var start = camera.project_ray_origin(mouse)
-	var end = camera.project_position(mouse, 1000.0)
-	var result = world_space.intersect_ray(PhysicsRayQueryParameters3D.create(start, end))
-	print(result)

@@ -5,8 +5,8 @@
 [ext_resource type="Material" uid="uid://cefwnxfa4ey5e" path="res://shaders/pp/global_outline.material" id="4_0if4k"]
 [ext_resource type="Material" uid="uid://0j4g3ec0nmrj" path="res://shaders/world_bend/mats/s_bend_foam_blue.tres" id="5_81e13"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_doklx"]
-size = Vector3(1.579, 0.365, 0.592)
+[sub_resource type="SphereShape3D" id="SphereShape3D_8h1im"]
+radius = 1.60021
 
 [sub_resource type="Curve" id="Curve_irgcf"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0638298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -35,13 +35,13 @@ material = ExtResource("4_0if4k")
 flip_faces = true
 size = Vector2(4, 4)
 
-[node name="player_boat" type="CharacterBody3D"]
+[node name="player_boat" type="CharacterBody3D" groups=["boat"]]
+collision_layer = 2
 script = ExtResource("1_u8s4v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.416201, 0)
-shape = SubResource("BoxShape3D_doklx")
-disabled = true
+shape = SubResource("SphereShape3D_8h1im")
 
 [node name="mesh_parent" type="Node3D" parent="."]
 
@@ -61,7 +61,7 @@ mesh = ExtResource("2_283o8")
 skeleton = NodePath("../../..")
 
 [node name="camera_rig" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.915515, 0.402283, 0, -0.402283, 0.915515, 0, 0.772143, 0)
+transform = Transform3D(1, 0, 0, 0, 0.913446, 0.406959, 0, -0.406959, 0.913446, 0, 0.772143, 0)
 
 [node name="Camera3D" type="Camera3D" parent="camera_rig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.917)

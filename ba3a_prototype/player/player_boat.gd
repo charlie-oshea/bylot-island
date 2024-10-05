@@ -5,9 +5,6 @@ const MAX_SPEED = 3.0
 const ACCEL = 5.0
 const DECEL = 3.0
 
-# controller vars
-const DEADZONE = 0.2
-
 # misc vars
 const LEAN_AMOUNT = 0.05  # rads
 const TILT_SPEED = 5.0 
@@ -30,8 +27,8 @@ func _physics_process(delta: float) -> void:
 	# controller input
 	var joy_vector := Vector2(Input.get_joy_axis(0, JOY_AXIS_LEFT_X), Input.get_joy_axis(0, JOY_AXIS_LEFT_Y))
 	
-	if joy_vector.length() > DEADZONE:
-		input_dir += joy_vector.normalized() * ((joy_vector.length() - DEADZONE) / (1 - DEADZONE))
+	if joy_vector.length() > Settings.DEADZONE:
+		input_dir += joy_vector.normalized() * ((joy_vector.length() - Settings.DEADZONE) / (1 - Settings.DEADZONE))
 	
 	if input_dir.length() > 1.0:
 		input_dir = input_dir.normalized()
