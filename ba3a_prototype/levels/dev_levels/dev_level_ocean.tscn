@@ -7,8 +7,8 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hpgh1"]
 size = Vector2(400, 400)
-subdivide_width = 50
-subdivide_depth = 50
+subdivide_width = 200
+subdivide_depth = 200
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2eqyy"]
 size = Vector3(400, 0.5, 400)
@@ -42,6 +42,7 @@ fog_density = 0.02
 [node name="stage" type="Node3D" parent="."]
 
 [node name="player_boat" parent="stage" instance=ExtResource("1_icnqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0710663, 0)
 
 [node name="env" type="Node3D" parent="."]
 
@@ -61,6 +62,7 @@ surface_material_override/0 = ExtResource("5_745tq")
 
 [node name="ocean" type="MeshInstance3D" parent="env/meshes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)
+sorting_offset = -1.0
 mesh = SubResource("PlaneMesh_hpgh1")
 surface_material_override/0 = ExtResource("1_fvei0")
 
