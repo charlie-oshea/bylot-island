@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://fci3s72se6cm"]
+
+[ext_resource type="Script" path="res://ui/photography/photo_showcase.gd" id="1_cle88"]
+[ext_resource type="Theme" uid="uid://wn5lcqwa3knj" path="res://assets/default_theme.tres" id="2_qsjua"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_emkye"]
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_8gbjs"]
+events = [SubResource("InputEventJoypadButton_emkye")]
+
+[node name="photo_showcase" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_cle88")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.607843)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="texture_rect" type="TextureRect" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="photo_info" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
+offset_top = 94.0
+offset_right = 76.0
+offset_bottom = 161.0
+grow_horizontal = 2
+theme = ExtResource("2_qsjua")
+text = "photo"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="continue_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -54.0
+offset_right = 50.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_qsjua")
+shortcut = SubResource("Shortcut_8gbjs")
+text = "continue"
+
+[connection signal="pressed" from="continue_button" to="." method="close_showcase"]

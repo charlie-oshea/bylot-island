@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://da4hrrr7gs7dc"]
+
+[ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend.gdshader" id="1_ofrhr"]
+[ext_resource type="Texture2D" uid="uid://yogoeklu22mq" path="res://assets/textures/dev_textures/purple_01.png" id="2_44cb2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ofrhr")
+shader_parameter/use_texture = true
+shader_parameter/albedo_colour = Color(1, 1, 1, 1)
+shader_parameter/triplanar = true
+shader_parameter/albedo_texture = ExtResource("2_44cb2")
+shader_parameter/curvature_amount = 0.003
+shader_parameter/distance_fade = false
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 10.0

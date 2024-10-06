@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://du0c208rg0k1u"]
+
+[ext_resource type="Script" path="res://entities/notifier.gd" id="1_efilc"]
+
+[node name="notifier" type="VisibleOnScreenNotifier3D"]
+layers = 4
+script = ExtResource("1_efilc")
+
+[connection signal="screen_entered" from="." to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="." to="." method="_on_screen_exited"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

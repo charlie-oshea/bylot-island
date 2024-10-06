@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://wn5lcqwa3knj"]
+
+[ext_resource type="FontFile" uid="uid://baq3t2m6u5nyd" path="res://assets/fonts/Vividly-Regular.ttf" id="1_dnqfw"]
+
+[resource]
+default_font = ExtResource("1_dnqfw")
+default_font_size = 30

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ceoup1y5bf1b1"]
+[gd_scene load_steps=12 format=3 uid="uid://ceoup1y5bf1b1"]
 
 [ext_resource type="Script" path="res://player/player_walk.gd" id="1_6bidk"]
 [ext_resource type="Material" uid="uid://y0braarkad1d" path="res://shaders/world_bend/mats/s_bend_black.tres" id="2_v7ki7"]
@@ -13,11 +13,49 @@ material = ExtResource("4_fnnud")
 flip_faces = true
 size = Vector2(4, 4)
 
+[sub_resource type="Animation" id="Animation_38mqy"]
+resource_name = "flash"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cam_flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ao0m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cam_flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rd376"]
+_data = {
+"RESET": SubResource("Animation_7ao0m"),
+"flash": SubResource("Animation_38mqy")
+}
+
 [sub_resource type="BoxMesh" id="BoxMesh_k51xl"]
 size = Vector3(0.415, 0.245, 0.115)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_u5x1q"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("camera_viewport")
 
 [node name="player_walk" type="CharacterBody3D"]
 script = ExtResource("1_6bidk")
@@ -45,7 +83,7 @@ mesh = SubResource("QuadMesh_k7437")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="player_ui" type="Control" parent="CanvasLayer"]
+[node name="ui_parent" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,13 +92,37 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="ui_top" type="Control" parent="CanvasLayer"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="cam_flash" type="ColorRect" parent="CanvasLayer/ui_top"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ui_anims" type="AnimationPlayer" parent="CanvasLayer/ui_top"]
+libraries = {
+"": SubResource("AnimationLibrary_rd376")
+}
+
 [node name="photo_camera_rig" type="Node3D" parent="."]
 
 [node name="photo_camera" type="Camera3D" parent="photo_camera_rig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49417, 0)
 
 [node name="photo_cam_control" type="Node3D" parent="photo_camera_rig/photo_camera"]
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="photo_camera_rig/photo_camera/photo_cam_control"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.370617)
@@ -78,14 +140,14 @@ layers = 4
 texture = SubResource("ViewportTexture_u5x1q")
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="photo_camera_rig/photo_camera"]
-remote_path = NodePath("../../../SubViewport/photo_viewport_camera")
+remote_path = NodePath("../../../camera_viewport/photo_viewport_camera")
 update_scale = false
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="camera_viewport" type="SubViewport" parent="."]
 size = Vector2i(890, 512)
 render_target_update_mode = 4
 
-[node name="photo_viewport_camera" type="Camera3D" parent="SubViewport"]
+[node name="photo_viewport_camera" type="Camera3D" parent="camera_viewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49417, 0)
 cull_mask = 1048571
 fov = 65.0

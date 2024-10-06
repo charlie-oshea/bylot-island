@@ -4,7 +4,8 @@ const SPEED = 6.0
 
 # cam vars
 var in_camera: bool = false
-var cam_zoom_speed := 20.0
+var cam_zoom_speed := 50.0
+var photos_taken := 0
 
 # onready vars
 @onready var mesh: MeshInstance3D = $mesh
@@ -12,9 +13,15 @@ var cam_zoom_speed := 20.0
 @onready var walk_camera: Camera3D = $camera_rig/camera
 @onready var photo_camera: Camera3D = $photo_camera_rig/photo_camera
 @onready var photo_camera_rig: Node3D = $photo_camera_rig
-@onready var photo_viewport_camera: Camera3D = $SubViewport/photo_viewport_camera
+@onready var photo_viewport_camera: Camera3D = $camera_viewport/photo_viewport_camera
 @onready var photo_cam_control: Node3D = $photo_camera_rig/photo_camera/photo_cam_control
+@onready var camera_viewport: SubViewport = $camera_viewport
+@onready var ui_parent: Control = $CanvasLayer/ui_parent
+@onready var ui_anims: AnimationPlayer = $CanvasLayer/ui_top/ui_anims
 
+
+# preloads
+const PHOTO_SHOWCASE = preload("res://ui/photography/photo_showcase.tscn")
 
 func _ready() -> void:
 	RenderingServer.global_shader_parameter_set("enable_world_bend", true)
@@ -28,6 +35,8 @@ func _physics_process(delta: float) -> void:
 	if in_camera:
 		handle_photo_camera_rotation(delta)
 		handle_photo_camera_zoom(delta)
+	
+	handle_camera_rot_matching()
 
 func handle_movement(delta: float) -> void:
 	var input_dir := Vector2.ZERO
@@ -79,6 +88,14 @@ func handle_photo_camera_zoom(delta: float) -> void:
 	# clamp fov
 	photo_viewport_camera.fov = clamp(photo_viewport_camera.fov, 20.0, 75.0)
 
+func handle_camera_rot_matching():
+	if in_camera:
+		# make base camera face same direction
+		camera_rig.rotation.y = photo_camera_rig.rotation.y
+	else:
+		# make photo camera face same direction as base camera
+		photo_camera_rig.rotation.y = camera_rig.rotation.y
+
 func can_move() -> bool:
 	if in_camera:
 		return false
@@ -120,4 +137,19 @@ func close_camera():
 
 
 func take_picture():
+	ui_anims.play("flash")
+	var image = camera_viewport.get_texture().get_image()
+	
+	var photo := Photo.new()
+	photo.id = photos_taken
+	for entity_name in PhotoManager.onscreen_entities:
+		photo.contains.append(entity_name)
+	photo.image = image
+	
+	var ps = PHOTO_SHOWCASE.instantiate() as PhotoShowcase
+	ui_parent.add_child(ps)
+	ps.setup(photo)
+	
 	close_camera()
+	
+	PhotoManager.album.append(photo)

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="BA3a_Prototype"
-run/main_scene="res://levels/ocean_level/ocean_level.tscn"
+run/main_scene="res://levels/dev_levels/dev_level_island.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameProgress="*res://autoloads/game_progress.gd"
 Settings="*res://autoloads/settings.tscn"
+PhotoManager="*res://autoloads/photo_manager.tscn"
 
 [display]
 
@@ -32,7 +33,9 @@ folder_colors={
 "res://autoloads/": "pink",
 "res://levels/": "blue",
 "res://player/": "green",
-"res://shaders/": "orange"
+"res://resources/": "pink",
+"res://shaders/": "orange",
+"res://ui/": "purple"
 }
 
 [global_group]
