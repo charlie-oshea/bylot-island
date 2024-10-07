@@ -31,6 +31,7 @@ window/size/viewport_height=720
 folder_colors={
 "res://assets/": "red",
 "res://autoloads/": "pink",
+"res://entities/": "teal",
 "res://levels/": "blue",
 "res://player/": "green",
 "res://resources/": "pink",
@@ -92,10 +93,16 @@ camera_zoom_out={
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":9,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
+enter_notebook={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":14,"pressure":0.0,"pressed":true,"script":null)
+]
+}
 
 [layer_names]
 
-3d_render/layer_3="photo_camera"
+3d_render/layer_3="photo_notifiers"
+3d_render/layer_4="camera_arm"
 3d_physics/layer_1="world"
 3d_physics/layer_2="boat"
 3d_physics/layer_3="player"

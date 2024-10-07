@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://l1cfkndsjtq0"]
+
+[ext_resource type="Texture2D" uid="uid://dgt57fhx65ikd" path="res://assets/textures/ui/hotbar/dev/camera_emoji.png" id="1_c722n"]
+[ext_resource type="Script" path="res://ui/hotbar/hotbar_button.gd" id="2_mks6t"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_yxuk0"]
+button_index = 11
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_03md4"]
+events = [SubResource("InputEventJoypadButton_yxuk0")]
+
+[node name="hotbar_button" type="TextureButton"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+focus_mode = 0
+shortcut = SubResource("Shortcut_03md4")
+texture_normal = ExtResource("1_c722n")
+texture_pressed = ExtResource("1_c722n")
+texture_hover = ExtResource("1_c722n")
+texture_disabled = ExtResource("1_c722n")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_mks6t")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
