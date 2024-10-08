@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://mqfe26tp0yu4"]
+[gd_scene load_steps=6 format=3 uid="uid://mqfe26tp0yu4"]
 
 [ext_resource type="Script" path="res://ui/notebook/notebook.gd" id="1_ntu44"]
+[ext_resource type="PackedScene" uid="uid://dsntgppdtec0c" path="res://ui/notebook/pages/categories/dev/page_01.tscn" id="2_uy13d"]
+[ext_resource type="PackedScene" uid="uid://dt35mlnamhgbb" path="res://ui/notebook/pages/categories/dev/page_02.tscn" id="3_ngexy"]
+[ext_resource type="PackedScene" uid="uid://cqlkf5yg3l808" path="res://ui/notebook/pages/categories/dev/page_03.tscn" id="4_rtlob"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3vgl"]
 bg_color = Color(0.959273, 0.951064, 0.933906, 1)
@@ -10,6 +13,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="notebook" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ntu44")
+pages = Array[PackedScene]([ExtResource("2_uy13d"), ExtResource("3_ngexy"), ExtResource("4_rtlob")])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

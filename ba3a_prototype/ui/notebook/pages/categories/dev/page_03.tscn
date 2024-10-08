@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqlkf5yg3l808"]
+
+[ext_resource type="PackedScene" uid="uid://jqs2jiiidlrd" path="res://ui/notebook/notebook_page.tscn" id="1_36jwj"]
+[ext_resource type="Theme" uid="uid://wn5lcqwa3knj" path="res://assets/default_theme.tres" id="2_0t4q6"]
+
+[node name="page_01" instance=ExtResource("1_36jwj")]
+
+[node name="CenterContainer" type="CenterContainer" parent="." index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer" index="0"]
+layout_mode = 2
+theme = ExtResource("2_0t4q6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "page 3 4 lyfe !!!"

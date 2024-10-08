@@ -9,6 +9,7 @@ var photos_taken := 0
 
 # notebook vars
 var in_notebook: bool = false
+var notebook: Notebook
 
 # misc vars
 var last_input_dir := Vector2.ZERO
@@ -29,6 +30,7 @@ var last_move_direction := Vector3.ZERO
 
 # preloads
 const PHOTO_SHOWCASE = preload("res://ui/photography/photo_showcase.tscn")
+const NOTEBOOK = preload("res://ui/notebook/notebook.tscn")
 
 func _ready() -> void:
 	RenderingServer.global_shader_parameter_set("enable_world_bend", true)
@@ -82,8 +84,8 @@ func handle_camera_rotation(delta: float) -> void:
 		camera_rig.rotation.y -= joy_vector.x * Settings.CAM_ROTATE_SENS * delta
 		
 		## up/down
-		#camera_rig.rotate_x(deg_to_rad(-joy_vector.y) * Settings.CAM_ROTATE_SENS)
-		#camera_rig.rotation.x = clamp(camera_rig.rotation.x, deg_to_rad(-60), deg_to_rad(89))
+		camera_rig.rotation.x -= deg_to_rad(-joy_vector.y) * Settings.CAM_ROTATE_SENS
+		camera_rig.rotation.x = clamp(camera_rig.rotation.x, deg_to_rad(-60), deg_to_rad(0))
 		
 	elif last_move_direction.length() > 0.1 and velocity.length() > 0 and last_input_dir.y < 0:
 		# automatic camera following
@@ -135,9 +137,22 @@ func _input(event: InputEvent) -> void:
 		take_picture()
 	if event.is_action_pressed("enter_notebook"):
 		if in_notebook:
-			pass # leave notebook
+			close_notebook()
 		else:
-			pass # open notebook
+			var n = NOTEBOOK.instantiate() as Notebook # open notebook
+			n.notebook_closed.connect(close_notebook)
+			ui_parent.add_child(n)
+			notebook = n
+	if event.is_action_pressed("ui_cancel"):
+		if in_camera:
+			camera_transition(false)
+		elif in_notebook:
+			close_notebook()
+
+func close_notebook():
+	if notebook: # close notebook
+		notebook.queue_free()
+		notebook = null
 
 ### camera functions ###
 
