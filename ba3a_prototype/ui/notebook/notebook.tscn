@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://mqfe26tp0yu4"]
+[gd_scene load_steps=3 format=3 uid="uid://mqfe26tp0yu4"]
+
+[ext_resource type="Script" path="res://ui/notebook/notebook.gd" id="1_ntu44"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3vgl"]
 bg_color = Color(0.959273, 0.951064, 0.933906, 1)
@@ -14,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ntu44")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
