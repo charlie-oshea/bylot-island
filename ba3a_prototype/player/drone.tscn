@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5fst84c1re5u"]
+
+[ext_resource type="Script" path="res://player/drone.gd" id="1_745ec"]
+[ext_resource type="Material" uid="uid://b4fssg6ds6oak" path="res://shaders/world_bend/mats/s_bend_green.tres" id="2_xjg6d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xx7ol"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p4gn3"]
+size = Vector3(0.075, 0.105, 1)
+
+[node name="drone" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725672, -1)
+top_level = true
+collision_layer = 0
+script = ExtResource("1_745ec")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xx7ol")
+
+[node name="drone_camera_rig" type="Node3D" parent="."]
+
+[node name="drone_camera" type="Camera3D" parent="drone_camera_rig"]
+cull_mask = 1048567
+fov = 65.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.23, 0, 0, 0)
+layers = 8
+mesh = SubResource("BoxMesh_p4gn3")
+surface_material_override/0 = ExtResource("2_xjg6d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 0.269598, 0, -0.707107, 0, -0.707107, 0, 0, 0)
+layers = 8
+mesh = SubResource("BoxMesh_p4gn3")
+surface_material_override/0 = ExtResource("2_xjg6d")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 0.269598, 0, 0.707107, 0, -0.707107, 0, 0, 0)
+layers = 8
+mesh = SubResource("BoxMesh_p4gn3")
+surface_material_override/0 = ExtResource("2_xjg6d")

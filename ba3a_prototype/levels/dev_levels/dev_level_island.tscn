@@ -76,6 +76,7 @@ fog_density = 0.02
 
 [node name="prism1" type="MeshInstance3D" parent="stage/entities"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.85493, 0.522336, -11.587)
+extra_cull_margin = 500.0
 mesh = SubResource("PrismMesh_bjatx")
 surface_material_override/0 = ExtResource("2_hdhf1")
 
@@ -86,6 +87,7 @@ entity_name = "GREEN"
 
 [node name="prism2" type="MeshInstance3D" parent="stage/entities"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.41591, 0.522335, -12.9091)
+extra_cull_margin = 500.0
 mesh = SubResource("PrismMesh_bjatx")
 surface_material_override/0 = ExtResource("3_joumr")
 
@@ -96,6 +98,7 @@ entity_name = "BLUE"
 
 [node name="prism3" type="MeshInstance3D" parent="stage/entities"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5453, 0.522335, -11.3629)
+extra_cull_margin = 500.0
 mesh = SubResource("PrismMesh_bjatx")
 surface_material_override/0 = ExtResource("4_8qak7")
 
@@ -110,6 +113,7 @@ entity_name = "PURPLE"
 
 [node name="iceberg2" type="MeshInstance3D" parent="env/meshes"]
 transform = Transform3D(-0.168176, 0, 0.565143, 0, 0.711473, 0, -0.565143, 0, -0.168176, 4.5977, -0.064007, -8.21106)
+extra_cull_margin = 500.0
 mesh = ExtResource("2_rbkj1")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_xrsxj")

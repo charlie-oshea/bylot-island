@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://ceoup1y5bf1b1"]
+[gd_scene load_steps=15 format=3 uid="uid://ceoup1y5bf1b1"]
 
 [ext_resource type="Script" path="res://player/player_walk.gd" id="1_6bidk"]
 [ext_resource type="Material" uid="uid://y0braarkad1d" path="res://shaders/world_bend/mats/s_bend_black.tres" id="2_v7ki7"]
 [ext_resource type="Material" uid="uid://cefwnxfa4ey5e" path="res://shaders/pp/global_outline.material" id="4_fnnud"]
 [ext_resource type="Texture2D" uid="uid://b8nckii16u044" path="res://assets/textures/input_prompts/xbox_dpad_none.png" id="4_ntr14"]
-[ext_resource type="Texture2D" uid="uid://dgt57fhx65ikd" path="res://assets/textures/ui/hotbar/dev/camera_emoji.png" id="5_7288f"]
+[ext_resource type="Texture2D" uid="uid://c6x87mkfdo1bh" path="res://assets/textures/ui/hotbar/dev/drone.png" id="5_a1wea"]
+[ext_resource type="PackedScene" uid="uid://c5fst84c1re5u" path="res://player/drone.tscn" id="7_3u5uu"]
 [ext_resource type="Texture2D" uid="uid://cbjbrtyk2ksu5" path="res://assets/textures/ui/hotbar/dev/notebook_emoji.png" id="7_lu6fg"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kjajd"]
@@ -56,12 +57,6 @@ _data = {
 "flash": SubResource("Animation_38mqy")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_k51xl"]
-size = Vector3(0.415, 0.245, 0.115)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_u5x1q"]
-viewport_path = NodePath("camera_viewport")
-
 [node name="player_walk" type="CharacterBody3D"]
 script = ExtResource("1_6bidk")
 
@@ -83,6 +78,7 @@ spring_length = 6.0
 
 [node name="camera" type="Camera3D" parent="camera_rig/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.98023e-07, 5.917)
+current = true
 
 [node name="sobel" type="MeshInstance3D" parent="camera_rig/SpringArm3D/camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09)
@@ -135,7 +131,7 @@ offset_left = -28.0
 offset_right = 28.0
 offset_bottom = 61.0
 grow_horizontal = 2
-texture = ExtResource("5_7288f")
+texture = ExtResource("5_a1wea")
 expand_mode = 5
 stretch_mode = 5
 
@@ -180,40 +176,4 @@ libraries = {
 "": SubResource("AnimationLibrary_rd376")
 }
 
-[node name="photo_camera_rig" type="Node3D" parent="."]
-
-[node name="photo_camera" type="Camera3D" parent="photo_camera_rig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49417, 0)
-cull_mask = 1048571
-
-[node name="photo_cam_control" type="Node3D" parent="photo_camera_rig/photo_camera"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="photo_camera_rig/photo_camera/photo_cam_control"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.370617)
-layers = 8
-mesh = SubResource("BoxMesh_k51xl")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="photo_camera_rig/photo_camera/photo_cam_control"]
-transform = Transform3D(0.199106, 0, 0, 0, 2.09556, 0, 0, 0, 0.500571, 0.229642, -0.337269, -0.370617)
-layers = 8
-mesh = SubResource("BoxMesh_k51xl")
-
-[node name="Sprite3D" type="Sprite3D" parent="photo_camera_rig/photo_camera/photo_cam_control"]
-transform = Transform3D(0.0421044, 0, 0, 0, 0.0421044, 0, 0, 0, 0.0421044, 0, 0, -0.312972)
-layers = 8
-texture = SubResource("ViewportTexture_u5x1q")
-
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="photo_camera_rig/photo_camera"]
-remote_path = NodePath("../../../camera_viewport/photo_viewport_camera")
-update_scale = false
-
-[node name="camera_viewport" type="SubViewport" parent="."]
-msaa_3d = 3
-use_taa = true
-size = Vector2i(890, 512)
-render_target_update_mode = 4
-
-[node name="photo_viewport_camera" type="Camera3D" parent="camera_viewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49417, 0)
-cull_mask = 1048567
-fov = 65.0
+[node name="drone" parent="." instance=ExtResource("7_3u5uu")]
