@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://mqfe26tp0yu4"]
+[gd_scene load_steps=17 format=3 uid="uid://mqfe26tp0yu4"]
 
 [ext_resource type="Script" path="res://ui/notebook/notebook.gd" id="1_ntu44"]
-[ext_resource type="PackedScene" uid="uid://dsntgppdtec0c" path="res://ui/notebook/pages/categories/dev/page_01.tscn" id="2_uy13d"]
-[ext_resource type="PackedScene" uid="uid://dt35mlnamhgbb" path="res://ui/notebook/pages/categories/dev/page_02.tscn" id="3_ngexy"]
-[ext_resource type="PackedScene" uid="uid://cqlkf5yg3l808" path="res://ui/notebook/pages/categories/dev/page_03.tscn" id="4_rtlob"]
+[ext_resource type="Resource" uid="uid://b0l2it4cdwf4q" path="res://ui/notebook/pages/categories/dev/1_1contents_page.tres" id="3_bdc2h"]
+[ext_resource type="Resource" uid="uid://b7sc02f8td2pi" path="res://ui/notebook/pages/categories/dev/3_1fauna_contents.tres" id="4_08482"]
+[ext_resource type="Resource" uid="uid://ko2faa4mh48p" path="res://ui/notebook/pages/categories/dev/2_1wildlife_contents.tres" id="4_uylvi"]
+[ext_resource type="Resource" uid="uid://bi43l0fo87uk1" path="res://ui/notebook/pages/categories/dev/2_2wildlife_polar_bear.tres" id="5_1yp0q"]
+[ext_resource type="Theme" uid="uid://wn5lcqwa3knj" path="res://assets/default_theme.tres" id="5_vkmo3"]
+[ext_resource type="Resource" uid="uid://beskodrjfey80" path="res://ui/notebook/pages/categories/dev/4_1photo_album.tres" id="6_va311"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3vgl"]
 bg_color = Color(0.959273, 0.951064, 0.933906, 1)
@@ -12,8 +15,64 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsyd8"]
+bg_color = Color(0.53311, 0.0882518, 0.189897, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uk82g"]
+bg_color = Color(0.99, 0.3267, 0.41514, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sb024"]
+bg_color = Color(0.160252, 0.543652, 0.520336, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jvlp"]
+bg_color = Color(0.41198, 0.922792, 0.887622, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yr0q5"]
+bg_color = Color(0.235306, 0.32704, 0.101748, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6qlf"]
+bg_color = Color(0.560009, 0.751998, 0.282781, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56dkh"]
+bg_color = Color(0.404321, 0.255927, 0.0442988, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qv6fi"]
+bg_color = Color(0.929143, 0.634017, 0.248707, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="notebook" type="Control"]
-process_mode = 3
+process_mode = 4
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +80,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ntu44")
-pages = Array[PackedScene]([ExtResource("2_uy13d"), ExtResource("3_ngexy"), ExtResource("4_rtlob")])
+categories = Array[int]([0, 1, 2, 3])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -46,3 +105,91 @@ offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w3vgl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.0
+offset_top = -306.0
+offset_right = 362.0
+offset_bottom = -249.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="contents_button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 2
+theme = ExtResource("5_vkmo3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tsyd8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uk82g")
+text = "contents"
+
+[node name="wildlife_button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 2
+theme = ExtResource("5_vkmo3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_sb024")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6jvlp")
+disabled = true
+text = "wildlife
+"
+
+[node name="fauna_button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 2
+theme = ExtResource("5_vkmo3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_yr0q5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_u6qlf")
+disabled = true
+text = "fauna"
+
+[node name="album_button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 2
+theme = ExtResource("5_vkmo3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_56dkh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qv6fi")
+disabled = true
+text = "album"
+
+[node name="PagesPreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("1_1contents_page", "2_1wildlife_contents", "2_2wildlife_polar_bear", "3_1fauna_contents", "4_1photo_album"), [ExtResource("3_bdc2h"), ExtResource("4_uylvi"), ExtResource("5_1yp0q"), ExtResource("4_08482"), ExtResource("6_va311")]]
+
+[node name="page_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 315.0
+offset_top = 219.0
+offset_right = 355.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_vkmo3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1/5"
+horizontal_alignment = 2

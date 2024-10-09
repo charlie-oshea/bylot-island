@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="NotebookPage" load_steps=3 format=3 uid="uid://b0l2it4cdwf4q"]
+
+[ext_resource type="PackedScene" uid="uid://hkvfv8yqp0tu" path="res://ui/notebook/pages/categories/dev/1_1contents_page.tscn" id="1_bs118"]
+[ext_resource type="Script" path="res://ui/notebook/pages/notebook_page.gd" id="1_mivxm"]
+
+[resource]
+script = ExtResource("1_mivxm")
+category = 0
+page_id = 0
+scene = ExtResource("1_bs118")

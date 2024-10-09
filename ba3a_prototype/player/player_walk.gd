@@ -14,11 +14,12 @@ var notebook: Notebook
 # misc vars
 var last_input_dir := Vector2.ZERO
 var last_move_direction := Vector3.ZERO
+var stored_camera_rig_rotation: Vector3
 
 # onready vars
 @onready var mesh: MeshInstance3D = $mesh
 @onready var camera_rig: Node3D = $camera_rig
-@onready var walk_camera: Camera3D = $camera_rig/camera
+@onready var walk_camera: Camera3D = $camera_rig/SpringArm3D/camera
 @onready var photo_camera: Camera3D = $photo_camera_rig/photo_camera
 @onready var photo_camera_rig: Node3D = $photo_camera_rig
 @onready var photo_viewport_camera: Camera3D = $camera_viewport/photo_viewport_camera
@@ -76,9 +77,9 @@ func handle_movement(delta: float) -> void:
 func handle_camera_rotation(delta: float) -> void:
 	var joy_vector := Vector2.ZERO
 	joy_vector.x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
-	joy_vector.y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
+	joy_vector.y = -Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
 	
-	if joy_vector.length() > Settings.DEADZONE:
+	if joy_vector.length() > Settings.DEADZONE and can_move():
 		# manual camera rotation 
 		# left/right
 		camera_rig.rotation.y -= joy_vector.x * Settings.CAM_ROTATE_SENS * delta
@@ -87,17 +88,17 @@ func handle_camera_rotation(delta: float) -> void:
 		camera_rig.rotation.x -= deg_to_rad(-joy_vector.y) * Settings.CAM_ROTATE_SENS
 		camera_rig.rotation.x = clamp(camera_rig.rotation.x, deg_to_rad(-60), deg_to_rad(0))
 		
-	elif last_move_direction.length() > 0.1 and velocity.length() > 0 and last_input_dir.y < 0:
-		# automatic camera following
-		var target_angle = atan2(-last_move_direction.x, -last_move_direction.z)
-		camera_rig.rotation.y = lerp_angle(camera_rig.rotation.y, target_angle, 0.3 * delta)
+	#elif last_move_direction.length() > 0.1 and velocity.length() > 0 and last_input_dir.y < 0:
+		## automatic camera following
+		#var target_angle = atan2(-last_move_direction.x, -last_move_direction.z)
+		#camera_rig.rotation.y = lerp_angle(camera_rig.rotation.y, target_angle, 0.3 * delta)
 
 func handle_photo_camera_rotation(delta: float) -> void:
 	var joy_vector := Vector2.ZERO
 	joy_vector.x = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
 	joy_vector.y = Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y)
 	
-	if joy_vector.length() > Settings.DEADZONE:
+	if joy_vector.length() > Settings.DEADZONE and in_camera:
 		# left/right
 		photo_camera_rig.rotate_y(deg_to_rad(-joy_vector.x) * Settings.CAM_ROTATE_SENS)
 		
@@ -160,42 +161,49 @@ func camera_transition(to_photo: bool):
 	if to_photo:
 		in_camera = true
 		
-		var previous_pos = walk_camera.global_position
-		var previous_rot = walk_camera.global_rotation
+		stored_camera_rig_rotation = camera_rig.rotation
 		
-		var t = get_tree().create_tween()
-		t.tween_property(walk_camera, "global_position", photo_camera.global_position, 0.2).set_ease(Tween.EASE_IN_OUT)
-		t.tween_property(walk_camera, "global_rotation", photo_camera.global_rotation, 0.2).set_ease(Tween.EASE_IN_OUT)
-		await t.finished
+		var previous_pos = walk_camera.global_position
+		var previous_rot = walk_camera.rotation
+		
+		var t1 = get_tree().create_tween()
+		t1.tween_property(walk_camera, "global_position", photo_camera.global_position, 0.2).set_ease(Tween.EASE_IN_OUT)
+		var t2 = get_tree().create_tween()
+		t2.tween_property(walk_camera, "rotation", photo_camera.rotation, 0.2).set_ease(Tween.EASE_IN_OUT)
+		await t2.finished
 		
 		# set current cam
 		photo_camera.current = true
-		
-		# reset walk cam
-		walk_camera.global_position = previous_pos
-		walk_camera.global_rotation = previous_rot
 		
 		# show cam
 		photo_cam_control.visible = true
 		
 		# hide mesh
 		mesh.visible = false
+		
+		# reset walk cam
+		walk_camera.global_position = previous_pos
+		walk_camera.rotation = previous_rot
+		
 	else:
 		in_camera = false
 		
 		var previous_pos = photo_camera.global_position
-		var previous_rot = photo_camera.global_rotation
+		var previous_rot = photo_camera.rotation
 		
-		var t = get_tree().create_tween()
-		t.tween_property(photo_camera, "global_position", walk_camera.global_position, 0.2).set_ease(Tween.EASE_IN_OUT)
-		t.tween_property(photo_camera, "global_rotation", walk_camera.global_rotation, 0.2).set_ease(Tween.EASE_IN_OUT)
-		await t.finished
+		var t1 = get_tree().create_tween()
+		t1.tween_property(photo_camera, "global_position", walk_camera.position, 0.2).set_ease(Tween.EASE_IN_OUT)
+		var t2 = get_tree().create_tween()
+		t2.tween_property(photo_camera, "global_rotation", walk_camera.rotation, 0.2).set_ease(Tween.EASE_IN_OUT)
+		await t2.finished
 		
 		walk_camera.current = true
 		
+		camera_rig.rotation = stored_camera_rig_rotation
+		
 		# reset photo cam
 		photo_camera.global_position = previous_pos
-		photo_camera.global_rotation = previous_rot
+		photo_camera.rotation = previous_rot
 		
 		# hide cam
 		photo_cam_control.visible = false

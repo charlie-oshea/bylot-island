@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6btihvtfjap2"]
+
+[ext_resource type="Theme" uid="uid://wn5lcqwa3knj" path="res://assets/default_theme.tres" id="1_vfnmg"]
+
+[node name="wildlife_page" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme = ExtResource("1_vfnmg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "INFORMATION ABOUT POLAR BEARS "

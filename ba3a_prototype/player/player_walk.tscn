@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ceoup1y5bf1b1"]
+[gd_scene load_steps=16 format=3 uid="uid://ceoup1y5bf1b1"]
 
 [ext_resource type="Script" path="res://player/player_walk.gd" id="1_6bidk"]
 [ext_resource type="Material" uid="uid://y0braarkad1d" path="res://shaders/world_bend/mats/s_bend_black.tres" id="2_v7ki7"]
@@ -10,6 +10,8 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kjajd"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ixawu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8qvuq"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_k7437"]
 material = ExtResource("4_fnnud")
@@ -75,10 +77,14 @@ surface_material_override/0 = ExtResource("2_v7ki7")
 [node name="camera_rig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.915515, 0.402283, 0, -0.402283, 0.915515, 0, 0.772143, 0)
 
-[node name="camera" type="Camera3D" parent="camera_rig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.917)
+[node name="SpringArm3D" type="SpringArm3D" parent="camera_rig"]
+shape = SubResource("SphereShape3D_8qvuq")
+spring_length = 6.0
 
-[node name="sobel" type="MeshInstance3D" parent="camera_rig/camera"]
+[node name="camera" type="Camera3D" parent="camera_rig/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.98023e-07, 5.917)
+
+[node name="sobel" type="MeshInstance3D" parent="camera_rig/SpringArm3D/camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09)
 visible = false
 extra_cull_margin = 16384.0
@@ -202,6 +208,8 @@ remote_path = NodePath("../../../camera_viewport/photo_viewport_camera")
 update_scale = false
 
 [node name="camera_viewport" type="SubViewport" parent="."]
+msaa_3d = 3
+use_taa = true
 size = Vector2i(890, 512)
 render_target_update_mode = 4
 

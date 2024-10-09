@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1pwqxn31wb5d"]
+[gd_scene load_steps=12 format=3 uid="uid://b1pwqxn31wb5d"]
 
 [ext_resource type="Script" path="res://player/player_boat.gd" id="1_u8s4v"]
 [ext_resource type="ArrayMesh" uid="uid://bgiiherchbguk" path="res://assets/models/style_test/sm_ship.res" id="2_283o8"]
 [ext_resource type="Material" uid="uid://cefwnxfa4ey5e" path="res://shaders/pp/global_outline.material" id="4_0if4k"]
+[ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="4_5qtlk"]
 [ext_resource type="Material" uid="uid://0j4g3ec0nmrj" path="res://shaders/world_bend/mats/s_bend_foam_blue.tres" id="5_81e13"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8h1im"]
@@ -59,6 +60,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.918744, -0.202476, 0)
 transform = Transform3D(0.549977, 0, -4.44089e-14, 0, 0.549977, 0, 4.44089e-14, 0, 0.549977, -0.982358, 0.717263, 0)
 mesh = ExtResource("2_283o8")
 skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("4_5qtlk")
 
 [node name="camera_rig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.913446, 0.406959, 0, -0.406959, 0.913446, 0, 0.772143, 0)
