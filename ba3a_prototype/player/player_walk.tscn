@@ -221,7 +221,7 @@ bones/3/name = "head"
 bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 0.331672, 0)
 bones/3/enabled = true
-bones/3/position = Vector3(0, 0.327741, 0)
+bones/3/position = Vector3(0, 0.325873, 0)
 bones/3/rotation = Quaternion(0, 1.19209e-07, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 
