@@ -46,20 +46,20 @@ void fragment() {
 	} else {
 		ALBEDO = albedo_colour;
 	}
-	
+
 	ROUGHNESS = 1.0;
 	SPECULAR = 1.0;
 	METALLIC = 0.0;
-	
+
 	//if (alpha < 1.0) {
 		//ALPHA = alpha;
 	//}
-	
-	
+
+
 	if (distance_fade) {
 		// Distance Fade: Object Dither
 		float fade_distance = length((VIEW_MATRIX * MODEL_MATRIX[3]));
-		
+
 		// Use interleaved gradient noise, which is fast but still looks good.
 		const vec3 magic = vec3(0.06711056, 0.00583715, 52.9829189);
 		float fade = clamp(smoothstep(distance_fade_min, distance_fade_max, fade_distance), 0.0, 1.0);
@@ -67,7 +67,7 @@ void fragment() {
 		if (fade < 0.001 || fade < fract(magic.z * fract(dot(FRAGCOORD.xy, magic.xy)))) {
 			discard;
 		}
-		
+
 		//// Distance Fade: Pixel Dither
 		//float fade_distance = length(VERTEX);
 //
