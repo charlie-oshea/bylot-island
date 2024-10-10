@@ -34,6 +34,7 @@ shader = ExtResource("4_yh12p")
 shader_parameter/use_texture = false
 shader_parameter/albedo_colour = Color(0.894118, 0.917647, 0.964706, 1)
 shader_parameter/triplanar = null
+shader_parameter/alpha = 1.0
 shader_parameter/curvature_amount = 0.005
 shader_parameter/distance_fade = false
 shader_parameter/distance_fade_min = 0.0

@@ -51,9 +51,9 @@ void fragment() {
 	SPECULAR = 1.0;
 	METALLIC = 0.0;
 	
-	//if (alpha < 1.0) {
-		//ALPHA = alpha;
-	//}
+	if (alpha < 1.0) {
+		ALPHA = alpha;
+	}
 	
 	
 	if (distance_fade) {

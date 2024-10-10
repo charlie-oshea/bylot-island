@@ -27,6 +27,9 @@ var last_move_direction := Vector3.ZERO
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+@onready var shadow_mesh: MeshInstance3D = $shadow_mesh
+
+const WALK_FX = preload("res://vfx/walk_fx.tscn")
 
 # preloads
 const PHOTO_SHOWCASE = preload("res://ui/photography/photo_showcase.tscn")
@@ -47,6 +50,9 @@ func _physics_process(delta: float) -> void:
 	
 	if in_drone:
 		pass
+	
+	# shadow mesh
+	#shadow_mesh.global_transform.origin = shadow_ray.get_collision_point()
 
 func handle_movement(delta: float) -> void:
 	var input_dir := Vector2.ZERO
@@ -66,8 +72,6 @@ func handle_movement(delta: float) -> void:
 	
 	var direction := (camera_rig.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		print(direction)
-		
 		mesh.look_at(global_position - direction * 1000.0, Vector3.UP)
 		mesh.rotation.x = 0.0
 		mesh.rotation.z = 0.0
@@ -168,3 +172,9 @@ func take_picture():
 	drone_transition(false)
 	
 	PhotoManager.album.append(photo)
+
+
+### VFX
+func create_walk_fx():
+	var w = WALK_FX.instantiate()
+	mesh.add_child(w)
