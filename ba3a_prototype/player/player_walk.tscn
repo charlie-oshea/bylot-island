@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://ceoup1y5bf1b1"]
+[gd_scene load_steps=19 format=3 uid="uid://ceoup1y5bf1b1"]
 
 [ext_resource type="Script" path="res://player/player_walk.gd" id="1_6bidk"]
-[ext_resource type="Material" uid="uid://y0braarkad1d" path="res://shaders/world_bend/mats/s_bend_black.tres" id="2_v7ki7"]
+[ext_resource type="PackedScene" uid="uid://cqb8fvluefnu1" path="res://assets/models/characters/player/character_v1.glb" id="2_ip6lv"]
+[ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="3_k37cc"]
 [ext_resource type="Material" uid="uid://cefwnxfa4ey5e" path="res://shaders/pp/global_outline.material" id="4_fnnud"]
 [ext_resource type="Texture2D" uid="uid://b8nckii16u044" path="res://assets/textures/input_prompts/xbox_dpad_none.png" id="4_ntr14"]
 [ext_resource type="Texture2D" uid="uid://c6x87mkfdo1bh" path="res://assets/textures/ui/hotbar/dev/drone.png" id="5_a1wea"]
@@ -9,8 +10,26 @@
 [ext_resource type="Texture2D" uid="uid://cbjbrtyk2ksu5" path="res://assets/textures/ui/hotbar/dev/notebook_emoji.png" id="7_lu6fg"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kjajd"]
+height = 1.02664
+radius = 0.317935
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ixawu"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1myvq"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8i1x4"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_m0udi"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_po8n1"]
+graph_offset = Vector2(-873, -18)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_8i1x4")
+nodes/Animation/position = Vector2(-360, 60)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_1myvq")
+"nodes/Animation 2/position" = Vector2(-420, 200)
+nodes/idle_run/node = SubResource("AnimationNodeBlend2_m0udi")
+nodes/idle_run/position = Vector2(-21, 131)
+node_connections = [&"idle_run", 0, &"Animation", &"idle_run", 1, &"Animation 2", &"output", 0, &"idle_run"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8qvuq"]
 
@@ -61,13 +80,26 @@ _data = {
 script = ExtResource("1_6bidk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.521541, 0)
 shape = SubResource("CylinderShape3D_kjajd")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_ixawu")
-surface_material_override/0 = ExtResource("2_v7ki7")
+[node name="character_v1" parent="." instance=ExtResource("2_ip6lv")]
+
+[node name="Skeleton3D" parent="character_v1/sk_char" index="0"]
+bones/1/position = Vector3(0.0870414, 0.0116665, -2.84977e-08)
+bones/1/rotation = Quaternion(-0.707107, 5.0243e-15, 0.707107, 7.92509e-08)
+bones/2/position = Vector3(-0.0870414, 0.0116665, -2.84977e-08)
+bones/2/rotation = Quaternion(0.707107, 5.0243e-15, 0.707107, -7.92509e-08)
+bones/3/position = Vector3(0, 0.327022, 0)
+
+[node name="sm_char" parent="character_v1/sk_char/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_k37cc")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../character_v1")
+tree_root = SubResource("AnimationNodeBlendTree_po8n1")
+anim_player = NodePath("../character_v1/AnimationPlayer")
+parameters/idle_run/blend_amount = 0.0
 
 [node name="camera_rig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.915515, 0.402283, 0, -0.402283, 0.915515, 0, 0.772143, 0)
@@ -177,3 +209,7 @@ libraries = {
 }
 
 [node name="drone" parent="." instance=ExtResource("7_3u5uu")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[editable path="character_v1"]

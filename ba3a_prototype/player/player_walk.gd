@@ -16,14 +16,16 @@ var last_input_dir := Vector2.ZERO
 var last_move_direction := Vector3.ZERO
 
 # onready vars
-@onready var mesh: MeshInstance3D = $mesh
 @onready var camera_rig: Node3D = $camera_rig
 @onready var walk_camera: Camera3D = $camera_rig/SpringArm3D/camera
+@onready var mesh: Node3D = $character_v1
 
 @onready var ui_parent: Control = $CanvasLayer/ui_parent
 @onready var ui_anims: AnimationPlayer = $CanvasLayer/ui_top/ui_anims
 
 @onready var drone: CharacterBody3D = $drone
+
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 
 # preloads
@@ -33,8 +35,12 @@ const NOTEBOOK = preload("res://ui/notebook/notebook.tscn")
 func _ready() -> void:
 	RenderingServer.global_shader_parameter_set("enable_world_bend", true)
 
+
 func _physics_process(delta: float) -> void:
 	if can_move():
+		if !is_on_floor():
+			velocity.y -= 10.0 * delta
+		
 		handle_movement(delta)
 		handle_camera_rotation(delta)
 		move_and_slide()
@@ -60,12 +66,23 @@ func handle_movement(delta: float) -> void:
 	
 	var direction := (camera_rig.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		print(direction)
+		
+		mesh.look_at(global_position - direction * 1000.0, Vector3.UP)
+		mesh.rotation.x = 0.0
+		mesh.rotation.z = 0.0
+		
 		velocity.x = direction.x * SPEED 
 		velocity.z = direction.z * SPEED
 		last_move_direction = direction
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+	if velocity.length() > 0.0:
+		animation_tree.set("parameters/idle_run/blend_amount", 1.0)
+	else:
+		animation_tree.set("parameters/idle_run/blend_amount", 0.0)
 
 func handle_camera_rotation(delta: float) -> void:
 	var joy_vector := Vector2.ZERO
