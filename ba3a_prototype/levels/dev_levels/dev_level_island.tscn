@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cqm32gfoheyvm"]
+[gd_scene load_steps=23 format=3 uid="uid://cqm32gfoheyvm"]
 
 [ext_resource type="PackedScene" uid="uid://ceoup1y5bf1b1" path="res://player/player_walk.tscn" id="1_abpct"]
 [ext_resource type="Material" uid="uid://b4fssg6ds6oak" path="res://shaders/world_bend/mats/s_bend_green.tres" id="2_hdhf1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://y0braarkad1d" path="res://shaders/world_bend/mats/s_bend_black.tres" id="3_xrsxj"]
 [ext_resource type="Material" uid="uid://da4hrrr7gs7dc" path="res://shaders/world_bend/mats/s_bend_purple.tres" id="4_8qak7"]
 [ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend.gdshader" id="4_yh12p"]
+[ext_resource type="PackedScene" uid="uid://c2sj4do8llq2u" path="res://entities/characters/Villager_1.tscn" id="6_oqp6o"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_bjatx"]
 
@@ -107,6 +108,11 @@ surface_material_override/0 = ExtResource("4_8qak7")
 aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
 script = ExtResource("3_fcqst")
 entity_name = "PURPLE"
+
+[node name="characters" type="Node3D" parent="stage/entities"]
+
+[node name="Villager1" parent="stage/entities/characters" instance=ExtResource("6_oqp6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59682, 0, -11.3829)
 
 [node name="env" type="Node3D" parent="."]
 

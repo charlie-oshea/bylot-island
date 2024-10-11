@@ -22,11 +22,43 @@ Settings="*res://autoloads/settings.tscn"
 PhotoManager="*res://autoloads/photo_manager.tscn"
 Enums="*res://autoloads/Enums.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+Autoload="*res://autoloads/autoload.tscn"
 
 [dialogic]
 
-directories/dch_directory={}
-directories/dtl_directory={}
+directories/dch_directory={
+"player": "res://dialogue/characters/player.dch",
+"villager_1": "res://dialogue/characters/villager_1.dch"
+}
+directories/dtl_directory={
+"preload_timeline": "res://dialogue/timelines/preload_timeline.dtl",
+"villager_1": "res://dialogue/timelines/villager_1.dtl"
+}
+layout/style_list=["res://dialogue/dialogue_style.tres"]
+layout/default_style="res://dialogue/dialogue_style.tres"
+glossary/default_case_sensitive=true
+variables={
+"in_dialogue": false
+}
+extensions_folder="res://addons/dialogic_additions"
+text/letter_speed=0.01
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/advance_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+animations/join_default_length=0.5
+animations/join_default_wait=true
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/cross_fade_default_length=0.5
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/autopauses={}
 
 [display]
 
@@ -46,6 +78,7 @@ folder_colors={
 "res://addons/": "gray",
 "res://assets/": "red",
 "res://autoloads/": "pink",
+"res://dialogue/": "yellow",
 "res://entities/": "teal",
 "res://levels/": "blue",
 "res://player/": "green",
@@ -57,6 +90,7 @@ folder_colors={
 [global_group]
 
 boat=""
+interact=""
 
 [input]
 
@@ -175,6 +209,8 @@ dialogic_default_action={
 3d_physics/layer_1="world"
 3d_physics/layer_2="boat"
 3d_physics/layer_3="player"
+3d_physics/layer_4="interaction"
+3d_physics/layer_5="entity"
 
 [rendering]
 

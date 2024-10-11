@@ -1,0 +1,12 @@
+join player center
+join villager_1 center
+set {in_dialogue} = true
+villager_1: welcome to our village
+- how do you do
+	villager_1: i doing well thank you
+	jump villager_1/end
+- i hate you
+	villager_1: thats not very nice at all \:(
+label end
+set {in_dialogue} = false
+[end_timeline]

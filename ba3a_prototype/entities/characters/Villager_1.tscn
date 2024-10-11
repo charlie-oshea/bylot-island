@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2sj4do8llq2u"]
+
+[ext_resource type="Script" path="res://entities/characters/NPC_base.gd" id="1_o60wi"]
+[ext_resource type="PackedScene" uid="uid://b3bsnqr6pfuc3" path="res://assets/models/characters/villager/villager_1.glb" id="2_3kd6r"]
+[ext_resource type="Resource" path="res://dialogue/timelines/villager_1.dtl" id="2_jb48u"]
+[ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="3_hp08n"]
+[ext_resource type="PackedScene" uid="uid://dapgbf2tgk87p" path="res://entities/interaction/interact_body.tscn" id="4_cdhju"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0pr0l"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_n1ia6"]
+graph_offset = Vector2(-351, 24)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_0pr0l")
+nodes/Animation/position = Vector2(120, 120)
+node_connections = [&"output", 0, &"Animation"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0npbw"]
+
+[node name="Villager1" type="Node3D" node_paths=PackedStringArray("interact_body")]
+script = ExtResource("1_o60wi")
+dialogue_timeline = ExtResource("2_jb48u")
+interact_body = NodePath("interact_body")
+
+[node name="villager_1" parent="." instance=ExtResource("2_3kd6r")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+
+[node name="Skeleton3D" parent="villager_1/sk_char" index="0"]
+bones/0/position = Vector3(5.29396e-23, 0.256748, -1.02009e-15)
+bones/1/position = Vector3(0.0870415, 0.0116665, -2.14742e-08)
+bones/1/rotation = Quaternion(-0.707107, 5.99905e-08, 0.707107, 5.96047e-08)
+bones/2/position = Vector3(-0.0870415, 0.0116665, -3.62679e-08)
+bones/2/rotation = Quaternion(0.707107, 5.99905e-08, 0.707107, -5.96046e-08)
+bones/3/position = Vector3(-5.93146e-22, 0.331269, -4.29319e-18)
+
+[node name="sm_char" parent="villager_1/sk_char/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_hp08n")
+
+[node name="AnimationPlayer" parent="villager_1" index="1"]
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="villager_1"]
+tree_root = SubResource("AnimationNodeBlendTree_n1ia6")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="interact_body" parent="." instance=ExtResource("4_cdhju")]
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interact_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_0npbw")
+
+[node name="text_marker" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62407, 0)
+
+[editable path="villager_1"]

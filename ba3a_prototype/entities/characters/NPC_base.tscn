@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duqqqr7imgypw"]
+
+[ext_resource type="Script" path="res://entities/characters/NPC_base.gd" id="1_4a23w"]
+
+[node name="character_base" type="Node3D"]
+script = ExtResource("1_4a23w")

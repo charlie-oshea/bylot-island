@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dapgbf2tgk87p"]
+
+[ext_resource type="Script" path="res://entities/interaction/interact_body.gd" id="1_8kd3p"]
+
+[node name="interact_body" type="StaticBody3D" groups=["interact"]]
+collision_layer = 24
+collision_mask = 0
+script = ExtResource("1_8kd3p")

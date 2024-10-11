@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name PlayerWalk
 
 const SPEED = 6.0
 
@@ -28,6 +29,8 @@ var last_move_direction := Vector3.ZERO
 @onready var animation_tree: AnimationTree = $AnimationTree
 
 @onready var shadow_mesh: MeshInstance3D = $shadow_mesh
+@onready var interact_label: Label = $CanvasLayer/ui_parent/interact_label
+@onready var text_marker: Node3D = $text_marker
 
 const WALK_FX = preload("res://vfx/walk_fx.tscn")
 
@@ -37,6 +40,8 @@ const NOTEBOOK = preload("res://ui/notebook/notebook.tscn")
 
 func _ready() -> void:
 	RenderingServer.global_shader_parameter_set("enable_world_bend", true)
+	
+	Autoload.player_ref = self
 
 
 func _physics_process(delta: float) -> void:
@@ -112,6 +117,8 @@ func can_move() -> bool:
 		return false
 	if in_notebook:
 		return false
+	if Dialogic.VAR.in_dialogue:
+		return false
 	return true
 
 func _input(event: InputEvent) -> void:
@@ -178,3 +185,26 @@ func take_picture():
 func create_walk_fx():
 	var w = WALK_FX.instantiate()
 	mesh.add_child(w)
+
+
+### interaction
+var interact_body: InteractBody
+
+func _on_interact_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("interact"):
+		interact_body = body
+
+func _on_interact_area_body_exited(body: Node3D) -> void:
+	if body.is_in_group("interact"):
+		interact_body = null
+
+func _process(delta: float) -> void:
+	if interact_body and can_move():
+		if Input.is_action_just_pressed("interact"):
+			interact_body.interact()
+		
+		interact_label.show()
+	else:
+		interact_label.hide()
+	
+	
