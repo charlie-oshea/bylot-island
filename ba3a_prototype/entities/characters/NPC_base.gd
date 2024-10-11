@@ -10,4 +10,3 @@ func _ready() -> void:
 func interact() -> void:
 	var layout := Dialogic.start(dialogue_timeline)
 	layout.register_character("res://dialogue/characters/villager_1.dch", $text_marker)
-	layout.register_character("res://dialogue/characters/player.dch", Autoload.player_ref.text_marker)
