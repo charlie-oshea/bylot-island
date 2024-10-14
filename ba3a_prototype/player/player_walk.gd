@@ -28,6 +28,9 @@ var last_move_direction := Vector3.ZERO
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+@onready var drone_rect: TextureRect = $CanvasLayer/ui_parent/hotbar_shortcuts/drone_rect
+@onready var notebook_rect: TextureRect = $CanvasLayer/ui_parent/hotbar_shortcuts/notebook_rect
+
 @onready var shadow_mesh: MeshInstance3D = $shadow_mesh
 @onready var interact_label: Label = $CanvasLayer/ui_parent/interact_label
 @onready var text_marker: Node3D = $text_marker
@@ -46,6 +49,18 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	Dialogic.timeline_ended.connect(debug_dialogue_end)
+	
+	# unlocks setup
+	drone_rect.hide()
+	notebook_rect.hide()
+	Autoload.drone_unlock.connect(drone_unlock)
+	Autoload.notebook_unlock.connect(notebook_unlock)
+
+func notebook_unlock():
+	notebook_rect.show()
+
+func drone_unlock():
+	drone_rect.show()
 
 func debug_dialogue_end():
 	print("dialogue ended")
@@ -128,14 +143,14 @@ func can_move() -> bool:
 	return true
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("enter_camera") and can_move():
+	if event.is_action_pressed("enter_camera") and can_move() and Autoload.drone_unlocked:
 		if in_drone:
 			drone_transition(false)
 		else:
 			drone_transition(true)
 	if event.is_action_pressed("take_picture") and in_drone:
 		take_picture()
-	if event.is_action_pressed("enter_notebook") and can_move():
+	if event.is_action_pressed("enter_notebook") and can_move() and Autoload.notebook_unlocked:
 		if in_notebook:
 			close_notebook()
 		else:

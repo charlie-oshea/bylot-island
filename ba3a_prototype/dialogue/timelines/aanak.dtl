@@ -1,0 +1,29 @@
+join aanak center
+set {in_dialogue} = true
+if {character_visit.aanak_visited} == true:
+	aanak: go and explore you silly goose
+	- ok
+	set {in_dialogue} = false
+	[end_timeline]
+else:
+	set {character_visit.aanak_visited} = true
+	aanak: welcome, young one. its not often we see new faces here.
+	aanak: what brings you to our shrinking home?
+	- document the wildlife
+	- document the plants
+	aanak: ah, a noble pursuit!
+	aanak: our world is changing faster than we can adapt.
+	aanak: perhaps you can help us preserve what remains
+- absolutely!
+- i'd love to!
+aanak: here, take this.
+do PhotoManager.book_collect()
+do Autoload.unlock_notebook()
+- 
+aanak: its a collection book. use it to document any wildlife and plants that may still be around.
+aanak: now, why dont you explore our island?
+aanak: there's much to see, though not as much as there once was.
+aanak: and if you have something to take pictures with, you might want to capture some images for your book!
+- see you later!
+set {in_dialogue} = false
+[end_timeline]

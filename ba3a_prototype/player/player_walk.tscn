@@ -258,7 +258,7 @@ bones/3/name = "head"
 bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 0.331672, 0)
 bones/3/enabled = true
-bones/3/position = Vector3(0, 0.330423, 0)
+bones/3/position = Vector3(0, 0.331518, 0)
 bones/3/rotation = Quaternion(0, 1.19209e-07, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 
@@ -333,7 +333,7 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture = ExtResource("4_ntr14")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ui_parent/hotbar_shortcuts"]
+[node name="drone_rect" type="TextureRect" parent="CanvasLayer/ui_parent/hotbar_shortcuts"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -346,7 +346,7 @@ texture = ExtResource("5_a1wea")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ui_parent/hotbar_shortcuts"]
+[node name="notebook_rect" type="TextureRect" parent="CanvasLayer/ui_parent/hotbar_shortcuts"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
