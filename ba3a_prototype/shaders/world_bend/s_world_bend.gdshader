@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode world_vertex_coords, unshaded, cull_disabled;
+render_mode world_vertex_coords, cull_disabled, unshaded;
 
 group_uniforms fragment;
 uniform sampler2D albedo_texture: filter_linear_mipmap, source_color ,hint_default_white;
@@ -42,7 +42,8 @@ void fragment() {
 		//ALBEDO = albedoX * normal_weights.x + albedoY * normal_weights.y + albedoZ * normal_weights.z;
 	//} else {
 	if (use_texture) {
-		ALBEDO = texture(albedo_texture, UV).rgb;
+		vec3 col = texture(albedo_texture, UV).rgb;
+		ALBEDO = col;
 	} else {
 		ALBEDO = albedo_colour;
 	}

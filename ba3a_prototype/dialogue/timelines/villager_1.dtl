@@ -8,5 +8,6 @@ villager_1: welcome to our village
 	villager_1: thats not very nice at all \:(
 	jump villager_1/end
 label end
+- see you later!
 set {in_dialogue} = false
 [end_timeline]

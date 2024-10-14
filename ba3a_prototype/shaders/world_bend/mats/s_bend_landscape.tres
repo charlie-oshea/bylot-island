@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ct3hyhfud3hbp"]
+
+[ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend_landscape.gdshader" id="1_4gvy6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4gvy6")
+shader_parameter/use_texture = true
+shader_parameter/up_facing_color = Color(0.568627, 0.819608, 0.458824, 1)
+shader_parameter/side_facing_color = Color(0.607843, 0.647059, 0.843137, 1)
+shader_parameter/triplanar = null
+shader_parameter/alpha = 1.0
+shader_parameter/curvature_amount = 0.005
+shader_parameter/distance_fade = false
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 10.0

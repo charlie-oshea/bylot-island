@@ -42,7 +42,13 @@ func _ready() -> void:
 	RenderingServer.global_shader_parameter_set("enable_world_bend", true)
 	
 	Autoload.player_ref = self
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	Dialogic.timeline_ended.connect(debug_dialogue_end)
 
+func debug_dialogue_end():
+	print("dialogue ended")
 
 func _physics_process(delta: float) -> void:
 	if can_move():
@@ -122,14 +128,14 @@ func can_move() -> bool:
 	return true
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("enter_camera"):
+	if event.is_action_pressed("enter_camera") and can_move():
 		if in_drone:
 			drone_transition(false)
 		else:
 			drone_transition(true)
 	if event.is_action_pressed("take_picture") and in_drone:
 		take_picture()
-	if event.is_action_pressed("enter_notebook"):
+	if event.is_action_pressed("enter_notebook") and can_move():
 		if in_notebook:
 			close_notebook()
 		else:
@@ -204,7 +210,6 @@ func _process(delta: float) -> void:
 			interact_body.interact()
 		
 		interact_label.show()
+		interact_label.position = (interact_body.get_parent() as NPC_Base).get_canvas_pos()
 	else:
 		interact_label.hide()
-	
-	

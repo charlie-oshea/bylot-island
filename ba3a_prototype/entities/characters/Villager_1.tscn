@@ -17,10 +17,11 @@ node_connections = [&"output", 0, &"Animation"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0npbw"]
 
-[node name="Villager1" type="Node3D" node_paths=PackedStringArray("interact_body")]
+[node name="Villager1" type="Node3D" node_paths=PackedStringArray("interact_body", "ui_marker")]
 script = ExtResource("1_o60wi")
 dialogue_timeline = ExtResource("2_jb48u")
 interact_body = NodePath("interact_body")
+ui_marker = NodePath("text_marker")
 
 [node name="villager_1" parent="." instance=ExtResource("2_3kd6r")]
 transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
