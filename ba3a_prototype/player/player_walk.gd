@@ -42,7 +42,7 @@ const PHOTO_SHOWCASE = preload("res://ui/photography/photo_showcase.tscn")
 const NOTEBOOK = preload("res://ui/notebook/notebook.tscn")
 
 func _ready() -> void:
-	RenderingServer.global_shader_parameter_set("enable_world_bend", true)
+	#RenderingServer.global_shader_parameter_set("enable_world_bend", true)
 	
 	Autoload.player_ref = self
 	
@@ -219,6 +219,8 @@ func _on_interact_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("interact"):
 		interact_body = null
 
+var debug_shader: bool = true
+
 func _process(delta: float) -> void:
 	if interact_body and can_move():
 		if Input.is_action_just_pressed("interact"):
@@ -228,3 +230,11 @@ func _process(delta: float) -> void:
 		interact_label.position = (interact_body.get_parent() as NPC_Base).get_canvas_pos()
 	else:
 		interact_label.hide()
+	
+	if Input.is_action_just_pressed("debug_curve"):
+		if debug_shader:
+			RenderingServer.global_shader_parameter_set("enable_world_bend", false)
+			debug_shader = false
+		else:
+			RenderingServer.global_shader_parameter_set("enable_world_bend", true)
+			debug_shader = true

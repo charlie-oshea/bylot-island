@@ -3,6 +3,12 @@ extends Node
 signal drone_unlock
 signal notebook_unlock
 
+# player info
+var player_name: String
+var player_material: ShaderMaterial
+enum Hats{NONE, HOOD, TOPHAT, GLASSES}
+var player_hat: Hats
+
 var player_ref: PlayerWalk
 
 var drone_unlocked: bool = false

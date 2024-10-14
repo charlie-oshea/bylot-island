@@ -1,0 +1,163 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgsil522bxy7a"]
+
+[ext_resource type="Script" path="res://ui/character_customizer/character_customizer.gd" id="1_0q71n"]
+[ext_resource type="ArrayMesh" uid="uid://b4msmcyhe8aby" path="res://assets/models/characters/player/sm_character.res" id="2_moyht"]
+[ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="3_r6rgo"]
+[ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend.gdshader" id="4_gp1p4"]
+[ext_resource type="Theme" uid="uid://wn5lcqwa3knj" path="res://assets/default_theme.tres" id="5_apgtx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ot0qs"]
+render_priority = 0
+shader = ExtResource("4_gp1p4")
+shader_parameter/use_texture = false
+shader_parameter/albedo_colour = Color(0.223529, 0.145098, 0.196078, 1)
+shader_parameter/triplanar = null
+shader_parameter/alpha = 1.0
+shader_parameter/curvature_amount = 0.005
+shader_parameter/distance_fade = false
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 10.0
+
+[sub_resource type="Environment" id="Environment_hioy3"]
+background_mode = 1
+
+[node name="character_customizer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0q71n")
+
+[node name="root" type="Node3D" parent="."]
+
+[node name="player_mesh" type="MeshInstance3D" parent="root"]
+mesh = ExtResource("2_moyht")
+blend_shapes/blink = 0.0
+blend_shapes/wink = 0.0
+surface_material_override/0 = ExtResource("3_r6rgo")
+surface_material_override/1 = SubResource("ShaderMaterial_ot0qs")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="root"]
+environment = SubResource("Environment_hioy3")
+
+[node name="Camera3D" type="Camera3D" parent="root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02758, 0.759993, 2.3641)
+fov = 50.9
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 694.0
+offset_top = 134.0
+offset_right = -118.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 9
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_apgtx")
+text = "create your character"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_apgtx")
+text = "name"
+
+[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_apgtx")
+placeholder_text = "write your name here"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("5_apgtx")
+text = "clothes colour"
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Button6" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Button7" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Button8" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Button9" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Button10" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("5_apgtx")
+text = "hat"
+
+[node name="Button" type="OptionButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme = ExtResource("5_apgtx")
+selected = 0
+item_count = 4
+popup/item_0/text = "none"
+popup/item_1/text = "hood"
+popup/item_1/id = 1
+popup/item_2/text = "top hat"
+popup/item_2/id = 2
+popup/item_3/text = "glasses"
+popup/item_3/id = 3
