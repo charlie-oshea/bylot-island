@@ -244,5 +244,5 @@ enable_world_bend={
 }
 world_bend_curvature={
 "type": "float",
-"value": 0.003
+"value": 0.001
 }

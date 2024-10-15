@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgsil522bxy7a"]
+[gd_scene load_steps=18 format=3 uid="uid://cgsil522bxy7a"]
 
 [ext_resource type="Script" path="res://ui/character_customizer/character_customizer.gd" id="1_0q71n"]
 [ext_resource type="ArrayMesh" uid="uid://b4msmcyhe8aby" path="res://assets/models/characters/player/sm_character.res" id="2_moyht"]
 [ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="3_r6rgo"]
 [ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend.gdshader" id="4_gp1p4"]
 [ext_resource type="Theme" uid="uid://wn5lcqwa3knj" path="res://assets/default_theme.tres" id="5_apgtx"]
+[ext_resource type="ArrayMesh" uid="uid://qgjxum7c0tt" path="res://assets/models/characters/player/hats/sm_hood.res" id="5_oilsi"]
+[ext_resource type="PackedScene" uid="uid://cqay4te1ixgnt" path="res://ui/character_customizer/name_button.tscn" id="6_2evji"]
+[ext_resource type="PackedScene" uid="uid://dudfqfl4d070r" path="res://ui/character_customizer/hat_button.tscn" id="6_4jhmm"]
+[ext_resource type="Script" path="res://ui/character_customizer/customize_vbox.gd" id="6_8il8x"]
+[ext_resource type="PackedScene" uid="uid://dh461d58jkvfh" path="res://ui/character_customizer/colour_button.tscn" id="7_bj27c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ot0qs"]
 render_priority = 0
@@ -18,8 +23,26 @@ shader_parameter/distance_fade = false
 shader_parameter/distance_fade_min = 0.0
 shader_parameter/distance_fade_max = 10.0
 
+[sub_resource type="Gradient" id="Gradient_jg3lq"]
+colors = PackedColorArray(0.0431373, 0.65098, 0.854902, 1, 0, 0.321569, 0.619608, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4arny"]
+gradient = SubResource("Gradient_jg3lq")
+fill_from = Vector2(0, 0.461538)
+fill_to = Vector2(0, 0.623932)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_cgtcp"]
+panorama = SubResource("GradientTexture2D_4arny")
+
+[sub_resource type="Sky" id="Sky_rky13"]
+sky_material = SubResource("PanoramaSkyMaterial_cgtcp")
+
 [sub_resource type="Environment" id="Environment_hioy3"]
-background_mode = 1
+background_mode = 2
+background_color = Color(0.607843, 0.647059, 0.843137, 1)
+sky = SubResource("Sky_rky13")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfq0g"]
 
 [node name="character_customizer" type="Control"]
 layout_mode = 3
@@ -39,11 +62,17 @@ blend_shapes/wink = 0.0
 surface_material_override/0 = ExtResource("3_r6rgo")
 surface_material_override/1 = SubResource("ShaderMaterial_ot0qs")
 
+[node name="hat_mesh" type="MeshInstance3D" parent="root/player_mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.853233, 0)
+mesh = ExtResource("5_oilsi")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_r6rgo")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="root"]
 environment = SubResource("Environment_hioy3")
 
 [node name="Camera3D" type="Camera3D" parent="root"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02758, 0.759993, 2.3641)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.805, 0.6, 2.364)
 fov = 50.9
 
 [node name="Panel" type="Panel" parent="."]
@@ -57,12 +86,12 @@ offset_right = -118.0
 offset_bottom = -134.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gfq0g")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+offset_right = 468.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 9
@@ -78,86 +107,52 @@ layout_mode = 2
 theme = ExtResource("5_apgtx")
 text = "create your character"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="MarginContainer2" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 9
 
-[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="customize_vbox" type="VBoxContainer" parent="Panel/MarginContainer2"]
 layout_mode = 2
-theme = ExtResource("5_apgtx")
-text = "name"
+theme_override_constants/separation = 12
+script = ExtResource("6_8il8x")
 
-[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="name_button" parent="Panel/MarginContainer2/customize_vbox" instance=ExtResource("6_2evji")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("5_apgtx")
-placeholder_text = "write your name here"
+focus_neighbor_bottom = NodePath("../hat_button")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="hat_button" parent="Panel/MarginContainer2/customize_vbox" instance=ExtResource("6_4jhmm")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../name_button")
+focus_neighbor_bottom = NodePath("../colour_button")
 
-[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="colour_button" parent="Panel/MarginContainer2/customize_vbox" instance=ExtResource("7_bj27c")]
 layout_mode = 2
-theme = ExtResource("5_apgtx")
-text = "clothes colour"
+focus_neighbor_top = NodePath("../hat_button")
 
-[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
+[node name="focus_button_control" type="Control" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="Button3" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="Button4" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="Button5" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="Button6" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="Button7" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="Button8" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="Button9" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="Button10" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-theme = ExtResource("5_apgtx")
-text = "hat"
-
-[node name="Button" type="OptionButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-theme = ExtResource("5_apgtx")
-selected = 0
-item_count = 4
-popup/item_0/text = "none"
-popup/item_1/text = "hood"
-popup/item_1/id = 1
-popup/item_2/text = "top hat"
-popup/item_2/id = 2
-popup/item_3/text = "glasses"
-popup/item_3/id = 3
+[connection signal="focus_entered" from="Panel/MarginContainer2/customize_vbox/hat_button" to="Panel/MarginContainer2/customize_vbox/hat_button" method="enter_focus"]
+[connection signal="focus_exited" from="Panel/MarginContainer2/customize_vbox/hat_button" to="Panel/MarginContainer2/customize_vbox/hat_button" method="leave_focus"]
+[connection signal="focus_entered" from="Panel/MarginContainer2/customize_vbox/colour_button" to="Panel/MarginContainer2/customize_vbox/colour_button" method="enter_focus"]
+[connection signal="focus_exited" from="Panel/MarginContainer2/customize_vbox/colour_button" to="Panel/MarginContainer2/customize_vbox/colour_button" method="leave_focus"]

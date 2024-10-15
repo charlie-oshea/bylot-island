@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckcg68e8pjry7"]
+
+[ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend.gdshader" id="1_pp6lk"]
+[ext_resource type="Texture2D" uid="uid://yogoeklu22mq" path="res://assets/textures/dev_textures/purple_01.png" id="2_pt5ca"]
+[ext_resource type="FontFile" uid="uid://baq3t2m6u5nyd" path="res://assets/fonts/Vividly-Regular.ttf" id="3_8pd82"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5gyo"]
+render_priority = 0
+shader = ExtResource("1_pp6lk")
+shader_parameter/use_texture = false
+shader_parameter/albedo_colour = Color(0.474212, 0.253816, 0.0275954, 1)
+shader_parameter/triplanar = false
+shader_parameter/alpha = 1.0
+shader_parameter/albedo_texture = ExtResource("2_pt5ca")
+shader_parameter/curvature_amount = 0.003
+shader_parameter/distance_fade = false
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 10.0
+
+[node name="CSGBox3D" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0445, 0)
+size = Vector3(0.182617, 2.34375, 0.22876)
+material = SubResource("ShaderMaterial_d5gyo")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.530452, 0)
+size = Vector3(0.182617, 2.34375, 0.92395)
+material = SubResource("ShaderMaterial_d5gyo")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0983482, 0.537852, 0.208197)
+text = "town"
+font = ExtResource("3_8pd82")
+font_size = 117
+outline_size = 24
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, 0.0983482, 0.537852, -0.546347)
+text = "v"
+font = ExtResource("3_8pd82")
+font_size = 117
+outline_size = 24

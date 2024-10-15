@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cqm32gfoheyvm"]
+[gd_scene load_steps=43 format=3 uid="uid://cqm32gfoheyvm"]
 
 [ext_resource type="PackedScene" uid="uid://ceoup1y5bf1b1" path="res://player/player_walk.tscn" id="1_abpct"]
 [ext_resource type="Material" uid="uid://b4fssg6ds6oak" path="res://shaders/world_bend/mats/s_bend_green.tres" id="2_hdhf1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://da4hrrr7gs7dc" path="res://shaders/world_bend/mats/s_bend_purple.tres" id="4_8qak7"]
 [ext_resource type="PackedScene" uid="uid://c2sj4do8llq2u" path="res://entities/characters/Villager_1.tscn" id="6_oqp6o"]
 [ext_resource type="Resource" path="res://dialogue/timelines/aanak.dtl" id="7_ecjgt"]
+[ext_resource type="FontFile" uid="uid://baq3t2m6u5nyd" path="res://assets/fonts/Vividly-Regular.ttf" id="7_khn75"]
 [ext_resource type="ArrayMesh" uid="uid://bb3ikpylemhrx" path="res://assets/models/level/sm_dock.res" id="8_lxjnv"]
 [ext_resource type="Material" uid="uid://c4u21skc0g255" path="res://shaders/world_bend/mats/s_bend_water.tres" id="9_f62to"]
 [ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="9_k66de"]
@@ -17,6 +18,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bbv6sxle65qtw" path="res://assets/models/level/sm_house_red.res" id="13_lgyc4"]
 [ext_resource type="ArrayMesh" uid="uid://b3qwkfs2isrdx" path="res://assets/models/level/sm_house_pink.res" id="14_5tg6s"]
 [ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend_landscape.gdshader" id="16_gqgov"]
+[ext_resource type="PackedScene" uid="uid://ckcg68e8pjry7" path="res://levels/level_assets/sign_01.tscn" id="17_iguj3"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_bjatx"]
 
@@ -251,11 +253,19 @@ entity_name = "PURPLE"
 
 [node name="characters" type="Node3D" parent="stage/entities"]
 
-[node name="Villager1" parent="stage/entities/characters" instance=ExtResource("6_oqp6o")]
-transform = Transform3D(0.922403, 0, -0.386228, 0, 1, 0, 0.386228, 0, 0.922403, 1.32611, 1.30744, -0.337635)
+[node name="nini" parent="stage/entities/characters" instance=ExtResource("6_oqp6o")]
+transform = Transform3D(0.803327, 0, 0.595538, 0, 1, 0, -0.595538, 0, 0.803327, 23.8587, 1.48682, -61.5278)
 character_filepath = "res://dialogue/characters/villager_1.dch"
 
-[node name="Villager2" parent="stage/entities/characters" instance=ExtResource("6_oqp6o")]
+[node name="Label3D" type="Label3D" parent="stage/entities/characters/nini"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64709, 0)
+billboard = 1
+text = "pretend im fishing"
+font = ExtResource("7_khn75")
+font_size = 60
+outline_size = 20
+
+[node name="aanaka" parent="stage/entities/characters" instance=ExtResource("6_oqp6o")]
 transform = Transform3D(0.774116, 0, 0.633043, 0, 1, 0, -0.633043, 0, 0.774116, -19.4004, 2.56674, -79.8597)
 dialogue_timeline = ExtResource("7_ecjgt")
 character_filepath = "res://dialogue/characters/aanak.dch"
@@ -279,6 +289,17 @@ surface_material_override/0 = ExtResource("9_k66de")
 [node name="StaticBody3D" type="StaticBody3D" parent="env/meshes/dock"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="env/meshes/dock/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jbri8")
+
+[node name="dock2" type="MeshInstance3D" parent="env/meshes"]
+transform = Transform3D(-0.601489, 0, 0.965957, 0, 1.13792, 0, -0.965957, 0, -0.601489, 31.6157, 0.584318, -68.0542)
+sorting_offset = -1.0
+mesh = ExtResource("8_lxjnv")
+surface_material_override/0 = ExtResource("9_k66de")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="env/meshes/dock2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="env/meshes/dock2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jbri8")
 
 [node name="boat" type="MeshInstance3D" parent="env/meshes"]
@@ -349,6 +370,9 @@ surface_material_override/0 = ExtResource("9_k66de")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="env/meshes/houses/dock4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ofkyt")
 
+[node name="CSGBox3D" parent="env/meshes" instance=ExtResource("17_iguj3")]
+transform = Transform3D(0.924699, 0, -0.380699, 0, 1, 0, 0.380699, 0, 0.924699, -19.4678, 2.51094, -17.8889)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
@@ -379,6 +403,20 @@ radius = 10.5624
 height = 4.77911
 material = SubResource("ShaderMaterial_aamfa")
 
+[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3731, -0.863844, -70.3434)
+use_collision = true
+radius = 10.5624
+height = 4.77911
+material = SubResource("ShaderMaterial_aamfa")
+
+[node name="CSGCylinder3D44" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.70718, -0.863842, -81.0299)
+use_collision = true
+radius = 10.2334
+height = 4.77911
+material = SubResource("ShaderMaterial_aamfa")
+
 [node name="CSGCylinder3D16" type="CSGCylinder3D" parent="env/island_shapes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00313, -0.863846, -29.5125)
 use_collision = true
@@ -393,8 +431,22 @@ radius = 10.5624
 height = 4.77911
 material = ExtResource("11_qahdo")
 
+[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.24921, -0.863846, -54.948)
+use_collision = true
+radius = 10.5624
+height = 4.77911
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D51" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86726, -0.863846, -58.0878)
+use_collision = true
+radius = 12.0133
+height = 4.77911
+material = ExtResource("11_qahdo")
+
 [node name="CSGCylinder3D20" type="CSGCylinder3D" parent="env/island_shapes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34881, -0.863846, -54.8188)
+transform = Transform3D(0.520756, 0, 0.853705, 0, 1, 0, -0.853705, 0, 0.520756, 11.3827, -0.863846, -93.3052)
 use_collision = true
 radius = 10.5624
 height = 4.77911
@@ -404,7 +456,7 @@ material = ExtResource("11_qahdo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.76496, -0.863848, -18.2751)
 use_collision = true
 radius = 6.35738
-height = 6.90844
+height = 9.03692
 material = SubResource("ShaderMaterial_aamfa")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="env/island_shapes"]
@@ -463,10 +515,80 @@ radius = 3.49156
 height = 16.5083
 material = SubResource("ShaderMaterial_d4na3")
 
+[node name="CSGCylinder3D52" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 0.999133, 0.0416315, 0, -0.0416315, 0.999133, 2.47683, -0.610272, -45.3785)
+use_collision = true
+radius = 3.49156
+height = 10.0212
+material = SubResource("ShaderMaterial_d4na3")
+
+[node name="CSGCylinder3D54" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 0.999133, 0.0416315, 0, -0.0416315, 0.999133, -7.91381, -0.610272, -56.1239)
+use_collision = true
+radius = 6.61962
+height = 13.1456
+material = SubResource("ShaderMaterial_d4na3")
+
+[node name="CSGCylinder3D45" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.40633, 0.982035, -66.8462)
+use_collision = true
+radius = 3.54278
+height = 14.6975
+material = SubResource("ShaderMaterial_d4na3")
+
+[node name="CSGCylinder3D50" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2144, 0.982033, -88.1222)
+use_collision = true
+radius = 2.90252
+height = 9.25502
+material = SubResource("ShaderMaterial_d4na3")
+
+[node name="CSGCylinder3D46" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25108, 0.982035, -71.486)
+use_collision = true
+radius = 3.54278
+height = 13.5504
+material = SubResource("ShaderMaterial_d4na3")
+
 [node name="CSGCylinder3D25" type="CSGCylinder3D" parent="env/island_shapes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5604, 0.982035, -53.1323)
 use_collision = true
 radius = 3.49156
+height = 13.6838
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D29" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25018, 0.982035, -62.8345)
+use_collision = true
+radius = 3.41435
+height = 13.6838
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D53" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0181, 1.5532, -63.4424)
+use_collision = true
+radius = 7.92031
+height = 10.5277
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D47" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92351, -0.303764, -76.594)
+use_collision = true
+radius = 3.41435
+height = 13.6838
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D48" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.54859, -0.303765, -80.7535)
+use_collision = true
+radius = 3.41435
+height = 13.6838
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D49" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53847, -0.303766, -84.2055)
+use_collision = true
+radius = 3.41435
 height = 13.6838
 material = ExtResource("11_qahdo")
 
@@ -579,13 +701,13 @@ size = Vector3(15.2485, 8.51703, 10.9727)
 material = ExtResource("11_qahdo")
 
 [node name="CSGCylinder3D42" type="CSGBox3D" parent="env/island_shapes"]
-transform = Transform3D(-0.707181, 0, -0.707033, 0, 1, 0, 0.707033, 0, -0.707181, -8.82648, -1.61421, -64.1257)
+transform = Transform3D(0.235329, 0, -0.971916, 0, 1, 0, 0.971916, 0, 0.235329, 1.10554, -1.61421, -94.3292)
 use_collision = true
 size = Vector3(10.1172, 8.5549, 5.73499)
 material = ExtResource("11_qahdo")
 
 [node name="CSGCylinder3D43" type="CSGBox3D" parent="env/island_shapes"]
-transform = Transform3D(-0.707181, 0.181324, -0.683386, 0, 0.966555, 0.256458, 0.707033, 0.181362, -0.683529, -3.84341, -2.87169, -59.0928)
+transform = Transform3D(0.235329, 0.249255, -0.93941, 2.20446e-12, 0.966555, 0.256458, 0.971916, -0.0603519, 0.227458, 7.99712, -2.87169, -95.9623)
 use_collision = true
 size = Vector3(10.0482, 8.51703, 10.9727)
 material = ExtResource("11_qahdo")
@@ -622,7 +744,7 @@ material = ExtResource("11_qahdo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5266, -1.0254, -10.9977)
 use_collision = true
 radius = 4.93889
-height = 5.85621
+height = 10.7263
 material = ExtResource("11_qahdo")
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="env/island_shapes"]

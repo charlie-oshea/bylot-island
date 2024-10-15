@@ -20,6 +20,7 @@ var last_move_direction := Vector3.ZERO
 @onready var camera_rig: Node3D = $camera_rig
 @onready var walk_camera: Camera3D = $camera_rig/SpringArm3D/camera
 @onready var mesh: Node3D = $character_v1
+@onready var sm_char: MeshInstance3D = $character_v1/sk_char/Skeleton3D/sm_char
 
 @onready var ui_parent: Control = $CanvasLayer/ui_parent
 @onready var ui_anims: AnimationPlayer = $CanvasLayer/ui_top/ui_anims
@@ -32,7 +33,7 @@ var last_move_direction := Vector3.ZERO
 @onready var notebook_rect: TextureRect = $CanvasLayer/ui_parent/hotbar_shortcuts/notebook_rect
 
 @onready var shadow_mesh: MeshInstance3D = $shadow_mesh
-@onready var interact_label: Label = $CanvasLayer/ui_parent/interact_label
+@onready var interact_label: Control = $CanvasLayer/ui_parent/interact_label
 @onready var text_marker: Node3D = $text_marker
 
 const WALK_FX = preload("res://vfx/walk_fx.tscn")
@@ -55,6 +56,9 @@ func _ready() -> void:
 	notebook_rect.hide()
 	Autoload.drone_unlock.connect(drone_unlock)
 	Autoload.notebook_unlock.connect(notebook_unlock)
+	
+	# setup player custom info
+	custom_player_setup()
 
 func notebook_unlock():
 	notebook_rect.show()
@@ -79,6 +83,9 @@ func _physics_process(delta: float) -> void:
 	
 	# shadow mesh
 	#shadow_mesh.global_transform.origin = shadow_ray.get_collision_point()
+
+func custom_player_setup():
+	pass
 
 func handle_movement(delta: float) -> void:
 	var input_dir := Vector2.ZERO

@@ -236,7 +236,7 @@ bones/3/name = "head"
 bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 0.331672, 0)
 bones/3/enabled = true
-bones/3/position = Vector3(0, 0.326906, 0)
+bones/3/position = Vector3(0, 0.310337, 0)
 bones/3/rotation = Quaternion(0, 1.19209e-07, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 
@@ -247,6 +247,11 @@ blend_shapes/blink = 0.0
 blend_shapes/wink = 0.0
 surface_material_override/0 = ExtResource("3_k37cc")
 surface_material_override/1 = ExtResource("3_k37cc")
+
+[node name="hat_attachment" type="BoneAttachment3D" parent="character_v1/sk_char/Skeleton3D"]
+transform = Transform3D(1, 0, 2.38418e-07, 0, 1, 0, -2.38418e-07, 0, 1, 0, 0.567085, 0)
+bone_name = "head"
+bone_idx = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="character_v1"]
 libraries = {
@@ -260,7 +265,7 @@ anim_player = NodePath("../character_v1/AnimationPlayer")
 parameters/idle_run/blend_amount = 0.0
 
 [node name="camera_rig" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.915515, 0.402283, 0, -0.402283, 0.915515, 0, 0.772143, 0)
+transform = Transform3D(1, 0, 0, 0, 0.915515, 0.402283, 0, -0.402283, 0.915515, 0, 1.34487, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="camera_rig"]
 shape = SubResource("SphereShape3D_8qvuq")
@@ -341,7 +346,21 @@ texture = ExtResource("7_lu6fg")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="interact_label" type="Label" parent="CanvasLayer/ui_parent"]
+[node name="interact_label" type="Control" parent="CanvasLayer/ui_parent"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="interact_label" type="Label" parent="CanvasLayer/ui_parent/interact_label"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -349,9 +368,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -6.0
-offset_top = -20.0
+offset_top = -82.0
 offset_right = 5.0
-offset_bottom = 21.0
+offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_t1uum")
