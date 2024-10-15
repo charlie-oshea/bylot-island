@@ -1,0 +1,19 @@
+join nini center
+set {in_dialogue} = true
+nini: hi there! im nini
+nini: welcome to our village
+nini: well... whats left of it at least
+nini: i was just doing a spot of fishing
+label choice1
+- any luck with the fish? | [else="hide"]
+	nini: yes and no
+	nini: a lot of fish are migrating here to find cooler waters
+	nini: which is putting the cold water fish in trouble
+	jump choice1
+- where should i go?
+	nini: you could go into town and say hello to aanak
+	nini: im sure she would love to meet you
+	jump choice1
+- see you later!
+set {in_dialogue} = false
+[end_timeline]

@@ -28,11 +28,15 @@ Autoload="*res://autoloads/autoload.tscn"
 
 directories/dch_directory={
 "aanak": "res://dialogue/characters/aanak.dch",
+"ava": "res://dialogue/characters/ava.dch",
+"nini": "res://dialogue/characters/nini.dch",
 "player": "res://dialogue/characters/player.dch",
 "villager_1": "res://dialogue/characters/villager_1.dch"
 }
 directories/dtl_directory={
 "aanak": "res://dialogue/timelines/aanak.dtl",
+"ava": "res://dialogue/timelines/ava.dtl",
+"nini": "res://dialogue/timelines/nini.dtl",
 "preload_timeline": "res://dialogue/timelines/preload_timeline.dtl",
 "villager_1": "res://dialogue/timelines/villager_1.dtl"
 }
@@ -41,7 +45,9 @@ layout/default_style="res://dialogue/dialogue_style.tres"
 glossary/default_case_sensitive=true
 variables={
 "character_visit": {
-"aanak_visited": false
+"aanak_visited": false,
+"ava_visited": false,
+"nini_visited": false
 },
 "in_dialogue": false
 }
@@ -67,8 +73,8 @@ text/autopauses={}
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"

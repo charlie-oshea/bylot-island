@@ -8,3 +8,6 @@ var onscreen_entities: Array[String]
 
 func book_collect():
 	animation_player.play("collect_book")
+
+func drone_collect():
+	animation_player.play("collect_drone")

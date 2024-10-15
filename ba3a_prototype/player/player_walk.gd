@@ -21,6 +21,7 @@ var last_move_direction := Vector3.ZERO
 @onready var walk_camera: Camera3D = $camera_rig/SpringArm3D/camera
 @onready var mesh: Node3D = $character_v1
 @onready var sm_char: MeshInstance3D = $character_v1/sk_char/Skeleton3D/sm_char
+@onready var hat_mesh: MeshInstance3D = $character_v1/sk_char/Skeleton3D/hat_attachment/hat_mesh
 
 @onready var ui_parent: Control = $CanvasLayer/ui_parent
 @onready var ui_anims: AnimationPlayer = $CanvasLayer/ui_top/ui_anims
@@ -42,6 +43,9 @@ const WALK_FX = preload("res://vfx/walk_fx.tscn")
 const PHOTO_SHOWCASE = preload("res://ui/photography/photo_showcase.tscn")
 const NOTEBOOK = preload("res://ui/notebook/notebook.tscn")
 
+const player_mat = preload("res://shaders/world_bend/mats/s_bend_player.tres")
+const glasses_mesh = preload("res://assets/models/characters/player/hats/sm_glasses.res")
+const hood_mesh = preload("res://assets/models/characters/player/hats/sm_hood.res")
 func _ready() -> void:
 	#RenderingServer.global_shader_parameter_set("enable_world_bend", true)
 	
@@ -85,7 +89,18 @@ func _physics_process(delta: float) -> void:
 	#shadow_mesh.global_transform.origin = shadow_ray.get_collision_point()
 
 func custom_player_setup():
-	pass
+	player_mat.set_shader_parameter("albedo_colour", Autoload.current_colour)
+	sm_char.set_surface_override_material(1, player_mat)
+	
+	match Autoload.player_hat:
+		Autoload.Hats.NONE:
+			hat_mesh.hide()
+		Autoload.Hats.HOOD:
+			hat_mesh.show()
+			hat_mesh.mesh = hood_mesh
+		Autoload.Hats.GLASSES:
+			hat_mesh.show()
+			hat_mesh.mesh = glasses_mesh
 
 func handle_movement(delta: float) -> void:
 	var input_dir := Vector2.ZERO

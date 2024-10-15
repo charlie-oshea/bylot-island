@@ -1,0 +1,18 @@
+join ava center
+set {in_dialogue} = true
+if {character_visit.ava_visited} == true:
+	ava: go and take photos you silly goose
+	- ok
+	set {in_dialogue} = false
+	[end_timeline]
+else:
+	set {character_visit.ava_visited} = true
+	ava: taek this drone
+	- 
+	do PhotoManager.book_collect()
+	do Autoload.unlock_drone()
+	- 
+	aanak: go out and take some pictures!
+	- see you later!
+	set {in_dialogue} = false
+	[end_timeline]

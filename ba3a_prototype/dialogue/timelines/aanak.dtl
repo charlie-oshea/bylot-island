@@ -1,7 +1,7 @@
 join aanak center
 set {in_dialogue} = true
 if {character_visit.aanak_visited} == true:
-	aanak: go and explore you silly goose
+	aanak: go and find ava you silly goose
 	- ok
 	set {in_dialogue} = false
 	[end_timeline]

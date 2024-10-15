@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ceoup1y5bf1b1"]
+[gd_scene load_steps=29 format=3 uid="uid://ceoup1y5bf1b1"]
 
 [ext_resource type="Script" path="res://player/player_walk.gd" id="1_6bidk"]
 [ext_resource type="Animation" uid="uid://bnx6dpa2tdxnu" path="res://assets/models/characters/player/walk_anim.res" id="3_chkto"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://cefwnxfa4ey5e" path="res://shaders/pp/global_outline.material" id="4_fnnud"]
 [ext_resource type="Texture2D" uid="uid://b8nckii16u044" path="res://assets/textures/input_prompts/xbox_dpad_none.png" id="4_ntr14"]
 [ext_resource type="Texture2D" uid="uid://c6x87mkfdo1bh" path="res://assets/textures/ui/hotbar/dev/drone.png" id="5_a1wea"]
+[ext_resource type="ArrayMesh" uid="uid://qgjxum7c0tt" path="res://assets/models/characters/player/hats/sm_hood.res" id="5_tgqym"]
 [ext_resource type="PackedScene" uid="uid://c5fst84c1re5u" path="res://player/drone.tscn" id="7_3u5uu"]
 [ext_resource type="Texture2D" uid="uid://cbjbrtyk2ksu5" path="res://assets/textures/ui/hotbar/dev/notebook_emoji.png" id="7_lu6fg"]
 [ext_resource type="Material" uid="uid://cib1yosbdsh5m" path="res://shaders/world_bend/mats/s_bend_shadow.tres" id="9_mmsow"]
@@ -137,7 +138,7 @@ animation = &"idle"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_m0udi"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_po8n1"]
-graph_offset = Vector2(-561.727, 41.0992)
+graph_offset = Vector2(-415, 77)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_8i1x4")
 nodes/Animation/position = Vector2(-360, 60)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_1myvq")
@@ -215,29 +216,29 @@ bones/0/name = "body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256748, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 0.256748, 0)
+bones/0/position = Vector3(0, 0.321071, 0)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "leg.L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0, -1.12078e-07, -1, 1.12078e-07, -1, 1.12078e-07, -1, -1.12078e-07, 0, 0.0870414, 0.0116665, -2.84977e-08)
 bones/1/enabled = true
-bones/1/position = Vector3(0.0870414, 0.0116665, -2.84977e-08)
-bones/1/rotation = Quaternion(-0.707107, 5.02429e-15, 0.707107, 7.92509e-08)
+bones/1/position = Vector3(0.0870415, 0.0189158, -0.0462329)
+bones/1/rotation = Quaternion(-0.65153, -0.27479, 0.651529, 0.27479)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "leg.R"
 bones/2/parent = 0
 bones/2/rest = Transform3D(0, 1.12078e-07, 1, -1.12078e-07, -1, 1.12078e-07, 1, -1.12078e-07, 0, -0.0870414, 0.0116665, -2.84977e-08)
 bones/2/enabled = true
-bones/2/position = Vector3(-0.0870414, 0.0116665, -2.84977e-08)
-bones/2/rotation = Quaternion(0.707107, 5.02429e-15, 0.707107, -7.92509e-08)
+bones/2/position = Vector3(-0.0870414, 0.0148915, 0.0279959)
+bones/2/rotation = Quaternion(0.653066, 0.271118, 0.653066, 0.271117)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "head"
 bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 0.331672, 0)
 bones/3/enabled = true
-bones/3/position = Vector3(0, 0.310337, 0)
-bones/3/rotation = Quaternion(0, 1.19209e-07, 0, 1)
+bones/3/position = Vector3(0, 0.374136, 0)
+bones/3/rotation = Quaternion(0, 1.1921e-07, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 
 [node name="sm_char" type="MeshInstance3D" parent="character_v1/sk_char/Skeleton3D"]
@@ -249,9 +250,15 @@ surface_material_override/0 = ExtResource("3_k37cc")
 surface_material_override/1 = ExtResource("3_k37cc")
 
 [node name="hat_attachment" type="BoneAttachment3D" parent="character_v1/sk_char/Skeleton3D"]
-transform = Transform3D(1, 0, 2.38418e-07, 0, 1, 0, -2.38418e-07, 0, 1, 0, 0.567085, 0)
+transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 0.695207, 0)
 bone_name = "head"
 bone_idx = 3
+
+[node name="hat_mesh" type="MeshInstance3D" parent="character_v1/sk_char/Skeleton3D/hat_attachment"]
+transform = Transform3D(1, 0, 7.10543e-14, 0, 1, 0, -7.10543e-14, 0, 1, 0, 0.259783, 0)
+visible = false
+mesh = ExtResource("5_tgqym")
+surface_material_override/0 = ExtResource("3_k37cc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="character_v1"]
 libraries = {
@@ -262,7 +269,7 @@ libraries = {
 root_node = NodePath("../character_v1")
 tree_root = SubResource("AnimationNodeBlendTree_po8n1")
 anim_player = NodePath("../character_v1/AnimationPlayer")
-parameters/idle_run/blend_amount = 0.0
+parameters/idle_run/blend_amount = 1.0
 
 [node name="camera_rig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.915515, 0.402283, 0, -0.402283, 0.915515, 0, 1.34487, 0)
