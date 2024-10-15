@@ -1,7 +1,53 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://wn5lcqwa3knj"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://wn5lcqwa3knj"]
 
 [ext_resource type="FontFile" uid="uid://baq3t2m6u5nyd" path="res://assets/fonts/Vividly-Regular.ttf" id="1_dnqfw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4iq7r"]
+bg_color = Color(0.808998, 0.808998, 0.808998, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksymp"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxb0o"]
+bg_color = Color(0.564962, 0.564962, 0.564962, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [resource]
 default_font = ExtResource("1_dnqfw")
 default_font_size = 30
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0.10748, 0.10748, 0.10748, 1)
+Button/colors/font_pressed_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_4iq7r")
+Button/styles/normal = SubResource("StyleBoxFlat_ksymp")
+Button/styles/pressed = SubResource("StyleBoxFlat_xxb0o")

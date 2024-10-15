@@ -1,7 +1,17 @@
 extends CustomizeButton
 
+func _ready() -> void:
+	update_colour()
+
 func right() -> void:
-	print("hat right")
+	Autoload.next_colour()
+	
+	update_colour()
 
 func left() -> void:
-	print("hat left")
+	Autoload.previous_colour()
+	
+	update_colour()
+
+func update_colour():
+	self_modulate = Autoload.current_colour

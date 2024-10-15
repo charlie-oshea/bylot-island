@@ -22,6 +22,14 @@ func leave_focus():
 	var t = get_tree().create_tween()
 	t.tween_property(self, "scale", Vector2(1.0, 1.0), 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 
+func _pressed() -> void:
+	var t = get_tree().create_tween()
+	t.tween_property(self, "scale", Vector2(1.3, 1.3), 0.05).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	await t.finished
+	var t2 = get_tree().create_tween()
+	t2.tween_property(self, "scale", Vector2(1.2, 1.2), 0.05).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	
+
 func right() -> void:
 	pass
 

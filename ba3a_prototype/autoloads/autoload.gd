@@ -4,13 +4,15 @@ signal drone_unlock
 signal notebook_unlock
 
 signal hat_changed
+signal colour_changed
 
 # player info
 var player_name: String
-var player_material: ShaderMaterial
+var player_material: ShaderMaterial = preload("res://shaders/world_bend/mats/s_bend_snow.tres")
 
 # colour
 var colours := [Color("392532"), Color("80234D"), Color("4A1C39"), Color("432F50"), Color("0F4562"), Color("1BBB9B")]
+var colour_id := 0
 var current_colour := Color("392532")
 
 # hats
@@ -26,6 +28,8 @@ var notebook_unlocked: bool = false
 
 func _ready() -> void:
 	Dialogic.start("res://dialogue/timelines/preload_timeline.dtl")
+	
+	player_material.duplicate()
 
 func unlock_drone():
 	drone_unlock.emit()
@@ -34,6 +38,23 @@ func unlock_drone():
 func unlock_notebook():
 	notebook_unlock.emit()
 	notebook_unlocked = true
+
+func next_colour():
+	colour_id = (colour_id + 1) % colours.size()
+	
+	update_material()
+
+func previous_colour():
+	colour_id = (colour_id - 1) % colours.size()
+	
+	update_material()
+
+func update_material():
+	current_colour = colours[colour_id]
+	
+	player_material.set_shader_parameter("shader_parameter/albedo_colour", current_colour)
+	
+	colour_changed.emit()
 
 func next_hat():
 	hat_index = (hat_index + 1) % hat_list.size()

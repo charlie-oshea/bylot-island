@@ -6,8 +6,8 @@
 render_priority = 0
 shader = ExtResource("1_4gvy6")
 shader_parameter/use_texture = true
-shader_parameter/up_facing_color = Color(0.568627, 0.819608, 0.458824, 1)
-shader_parameter/side_facing_color = Color(0.607843, 0.647059, 0.843137, 1)
+shader_parameter/up_facing_color = Color(0.379362, 0.684524, 0.463046, 1)
+shader_parameter/side_facing_color = Color(0.5358, 0.710953, 0.94, 1)
 shader_parameter/triplanar = null
 shader_parameter/alpha = 1.0
 shader_parameter/curvature_amount = 0.005

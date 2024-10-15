@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cgsil522bxy7a"]
+[gd_scene load_steps=19 format=3 uid="uid://cgsil522bxy7a"]
 
 [ext_resource type="Script" path="res://ui/character_customizer/character_customizer.gd" id="1_0q71n"]
 [ext_resource type="ArrayMesh" uid="uid://b4msmcyhe8aby" path="res://assets/models/characters/player/sm_character.res" id="2_moyht"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dudfqfl4d070r" path="res://ui/character_customizer/hat_button.tscn" id="6_4jhmm"]
 [ext_resource type="Script" path="res://ui/character_customizer/customize_vbox.gd" id="6_8il8x"]
 [ext_resource type="PackedScene" uid="uid://dh461d58jkvfh" path="res://ui/character_customizer/colour_button.tscn" id="7_bj27c"]
+[ext_resource type="Script" path="res://ui/character_customizer/customize_button.gd" id="11_i1mrt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ot0qs"]
 render_priority = 0
@@ -128,6 +129,7 @@ script = ExtResource("6_8il8x")
 [node name="name_button" parent="Panel/MarginContainer2/customize_vbox" instance=ExtResource("6_2evji")]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../hat_button")
+text = "randomize name"
 
 [node name="hat_button" parent="Panel/MarginContainer2/customize_vbox" instance=ExtResource("6_4jhmm")]
 layout_mode = 2
@@ -135,8 +137,17 @@ focus_neighbor_top = NodePath("../name_button")
 focus_neighbor_bottom = NodePath("../colour_button")
 
 [node name="colour_button" parent="Panel/MarginContainer2/customize_vbox" instance=ExtResource("7_bj27c")]
+self_modulate = Color(0.233925, 0.233925, 0.233925, 1)
 layout_mode = 2
 focus_neighbor_top = NodePath("../hat_button")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+
+[node name="continue_button" type="Button" parent="Panel/MarginContainer2/customize_vbox"]
+layout_mode = 2
+theme = ExtResource("5_apgtx")
+text = "continue"
+script = ExtResource("11_i1mrt")
 
 [node name="focus_button_control" type="Control" parent="Panel"]
 layout_mode = 1
@@ -154,5 +165,10 @@ grow_vertical = 2
 
 [connection signal="focus_entered" from="Panel/MarginContainer2/customize_vbox/hat_button" to="Panel/MarginContainer2/customize_vbox/hat_button" method="enter_focus"]
 [connection signal="focus_exited" from="Panel/MarginContainer2/customize_vbox/hat_button" to="Panel/MarginContainer2/customize_vbox/hat_button" method="leave_focus"]
+[connection signal="pressed" from="Panel/MarginContainer2/customize_vbox/hat_button" to="Panel/MarginContainer2/customize_vbox/hat_button" method="right"]
 [connection signal="focus_entered" from="Panel/MarginContainer2/customize_vbox/colour_button" to="Panel/MarginContainer2/customize_vbox/colour_button" method="enter_focus"]
 [connection signal="focus_exited" from="Panel/MarginContainer2/customize_vbox/colour_button" to="Panel/MarginContainer2/customize_vbox/colour_button" method="leave_focus"]
+[connection signal="pressed" from="Panel/MarginContainer2/customize_vbox/colour_button" to="Panel/MarginContainer2/customize_vbox/colour_button" method="right"]
+[connection signal="focus_entered" from="Panel/MarginContainer2/customize_vbox/continue_button" to="Panel/MarginContainer2/customize_vbox/continue_button" method="enter_focus"]
+[connection signal="focus_exited" from="Panel/MarginContainer2/customize_vbox/continue_button" to="Panel/MarginContainer2/customize_vbox/continue_button" method="leave_focus"]
+[connection signal="pressed" from="Panel/MarginContainer2/customize_vbox/continue_button" to="." method="_on_continue_button_pressed"]
