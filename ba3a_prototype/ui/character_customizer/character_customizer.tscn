@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cgsil522bxy7a"]
+[gd_scene load_steps=28 format=3 uid="uid://cgsil522bxy7a"]
 
 [ext_resource type="Script" path="res://ui/character_customizer/character_customizer.gd" id="1_0q71n"]
 [ext_resource type="ArrayMesh" uid="uid://b4msmcyhe8aby" path="res://assets/models/characters/player/sm_character.res" id="2_moyht"]
@@ -11,12 +11,17 @@
 [ext_resource type="Script" path="res://ui/character_customizer/customize_vbox.gd" id="6_8il8x"]
 [ext_resource type="PackedScene" uid="uid://dh461d58jkvfh" path="res://ui/character_customizer/colour_button.tscn" id="7_bj27c"]
 [ext_resource type="Script" path="res://ui/character_customizer/customize_button.gd" id="11_i1mrt"]
+[ext_resource type="Texture2D" uid="uid://rcjujpgk10e6" path="res://assets/textures/input_prompts/Xbox Series/Default/xbox_lt_outline.png" id="12_fa6v5"]
+[ext_resource type="Texture2D" uid="uid://catxsb3skixfd" path="res://assets/textures/input_prompts/Xbox Series/Default/xbox_lt.png" id="13_otsm7"]
+[ext_resource type="Texture2D" uid="uid://deckns0kbg4os" path="res://assets/textures/input_prompts/Flairs/Default/flair_arrow_backforth.png" id="14_lg3cu"]
+[ext_resource type="Texture2D" uid="uid://b1nv61ynprg6i" path="res://assets/textures/input_prompts/Xbox Series/Default/xbox_rt_outline.png" id="15_g14jy"]
+[ext_resource type="Texture2D" uid="uid://b5nrp56e04smt" path="res://assets/textures/input_prompts/Xbox Series/Default/xbox_rt.png" id="16_yyr2k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ot0qs"]
 render_priority = 0
 shader = ExtResource("4_gp1p4")
 shader_parameter/use_texture = false
-shader_parameter/albedo_colour = Color(0.223529, 0.145098, 0.196078, 1)
+shader_parameter/albedo_colour = Color(0.15965, 0.0709822, 0.255168, 1)
 shader_parameter/triplanar = null
 shader_parameter/alpha = 1.0
 shader_parameter/curvature_amount = 0.005
@@ -45,6 +50,20 @@ sky = SubResource("Sky_rky13")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfq0g"]
 
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_sx10p"]
+button_index = 9
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_q7jfb"]
+events = [SubResource("InputEventJoypadButton_sx10p")]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_f14mx"]
+button_index = 10
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_g65em"]
+events = [SubResource("InputEventJoypadButton_f14mx")]
+
 [node name="character_customizer" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -54,25 +73,38 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0q71n")
 
-[node name="root" type="Node3D" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="player_mesh" type="MeshInstance3D" parent="root"]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="root" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="player_mesh" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/root"]
 mesh = ExtResource("2_moyht")
 blend_shapes/blink = 0.0
 blend_shapes/wink = 0.0
 surface_material_override/0 = ExtResource("3_r6rgo")
 surface_material_override/1 = SubResource("ShaderMaterial_ot0qs")
 
-[node name="hat_mesh" type="MeshInstance3D" parent="root/player_mesh"]
+[node name="hat_mesh" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/root/player_mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.853233, 0)
 mesh = ExtResource("5_oilsi")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_r6rgo")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="root"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/root"]
 environment = SubResource("Environment_hioy3")
 
-[node name="Camera3D" type="Camera3D" parent="root"]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/root"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.805, 0.6, 2.364)
 fov = 50.9
 
@@ -83,8 +115,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 694.0
 offset_top = 134.0
-offset_right = -118.0
-offset_bottom = -134.0
+offset_right = -277.0
+offset_bottom = -167.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_gfq0g")
@@ -137,7 +169,6 @@ focus_neighbor_top = NodePath("../name_button")
 focus_neighbor_bottom = NodePath("../colour_button")
 
 [node name="colour_button" parent="Panel/MarginContainer2/customize_vbox" instance=ExtResource("7_bj27c")]
-self_modulate = Color(0.233925, 0.233925, 0.233925, 1)
 layout_mode = 2
 focus_neighbor_top = NodePath("../hat_button")
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -162,6 +193,56 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="rotate_prompts" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="hbox" type="HBoxContainer" parent="rotate_prompts"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -418.0
+offset_top = 242.0
+offset_right = -129.0
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 55
+alignment = 1
+
+[node name="left" type="TextureButton" parent="rotate_prompts/hbox"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_q7jfb")
+texture_normal = ExtResource("12_fa6v5")
+texture_pressed = ExtResource("13_otsm7")
+texture_hover = ExtResource("13_otsm7")
+texture_disabled = ExtResource("13_otsm7")
+texture_focused = ExtResource("13_otsm7")
+
+[node name="TextureRect" type="TextureRect" parent="rotate_prompts/hbox"]
+custom_minimum_size = Vector2(42.83, 19.56)
+layout_mode = 2
+texture = ExtResource("14_lg3cu")
+expand_mode = 1
+stretch_mode = 5
+flip_v = true
+
+[node name="right" type="TextureButton" parent="rotate_prompts/hbox"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_g65em")
+texture_normal = ExtResource("15_g14jy")
+texture_pressed = ExtResource("16_yyr2k")
+texture_hover = ExtResource("16_yyr2k")
+texture_disabled = ExtResource("16_yyr2k")
+texture_focused = ExtResource("16_yyr2k")
 
 [connection signal="focus_entered" from="Panel/MarginContainer2/customize_vbox/hat_button" to="Panel/MarginContainer2/customize_vbox/hat_button" method="enter_focus"]
 [connection signal="focus_exited" from="Panel/MarginContainer2/customize_vbox/hat_button" to="Panel/MarginContainer2/customize_vbox/hat_button" method="leave_focus"]

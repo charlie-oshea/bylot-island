@@ -12,7 +12,7 @@ else:
 	do PhotoManager.book_collect()
 	do Autoload.unlock_drone()
 	- 
-	aanak: go out and take some pictures!
+	ava: go out and take some pictures!
 	- see you later!
 	set {in_dialogue} = false
 	[end_timeline]

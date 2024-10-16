@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ceoup1y5bf1b1"]
+[gd_scene load_steps=31 format=3 uid="uid://ceoup1y5bf1b1"]
 
 [ext_resource type="Script" path="res://player/player_walk.gd" id="1_6bidk"]
 [ext_resource type="Animation" uid="uid://bnx6dpa2tdxnu" path="res://assets/models/characters/player/walk_anim.res" id="3_chkto"]
@@ -154,6 +154,14 @@ material = ExtResource("4_fnnud")
 flip_faces = true
 size = Vector2(4, 4)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_obha1"]
+noise_type = 5
+seed = 1200
+frequency = 0.451
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lmkxn"]
+noise = SubResource("FastNoiseLite_obha1")
+
 [sub_resource type="Animation" id="Animation_7ao0m"]
 length = 0.001
 tracks/0/type = "value"
@@ -216,28 +224,28 @@ bones/0/name = "body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256748, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 0.321071, 0)
+bones/0/position = Vector3(0, 0.295291, 0)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "leg.L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0, -1.12078e-07, -1, 1.12078e-07, -1, 1.12078e-07, -1, -1.12078e-07, 0, 0.0870414, 0.0116665, -2.84977e-08)
 bones/1/enabled = true
-bones/1/position = Vector3(0.0870415, 0.0189158, -0.0462329)
-bones/1/rotation = Quaternion(-0.65153, -0.27479, 0.651529, 0.27479)
+bones/1/position = Vector3(0.0870414, 0.0162474, 0.0344866)
+bones/1/rotation = Quaternion(-0.645727, 0.288161, 0.645727, -0.288161)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "leg.R"
 bones/2/parent = 0
 bones/2/rest = Transform3D(0, 1.12078e-07, 1, -1.12078e-07, -1, 1.12078e-07, 1, -1.12078e-07, 0, -0.0870414, 0.0116665, -2.84977e-08)
 bones/2/enabled = true
-bones/2/position = Vector3(-0.0870414, 0.0148915, 0.0279959)
-bones/2/rotation = Quaternion(0.653066, 0.271118, 0.653066, 0.271117)
+bones/2/position = Vector3(-0.0870414, 0.0108888, -0.0340446)
+bones/2/rotation = Quaternion(0.635714, -0.309625, 0.635714, -0.309625)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "head"
 bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 0.331672, 0)
 bones/3/enabled = true
-bones/3/position = Vector3(0, 0.374136, 0)
+bones/3/position = Vector3(0, 0.344514, 0)
 bones/3/rotation = Quaternion(0, 1.1921e-07, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 
@@ -250,7 +258,7 @@ surface_material_override/0 = ExtResource("3_k37cc")
 surface_material_override/1 = ExtResource("3_k37cc")
 
 [node name="hat_attachment" type="BoneAttachment3D" parent="character_v1/sk_char/Skeleton3D"]
-transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 0.695207, 0)
+transform = Transform3D(1, 0, 2.3842e-07, 0, 1, 0, -2.3842e-07, 0, 1, 0, 0.639805, 0)
 bone_name = "head"
 bone_idx = 3
 
@@ -291,6 +299,7 @@ mesh = SubResource("QuadMesh_k7437")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ui_parent" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -409,12 +418,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="drone_noise" type="TextureRect" parent="CanvasLayer/ui_top"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("NoiseTexture2D_lmkxn")
+
 [node name="ui_anims" type="AnimationPlayer" parent="CanvasLayer/ui_top"]
 libraries = {
 "": SubResource("AnimationLibrary_rd376")
 }
 
 [node name="drone" parent="." instance=ExtResource("7_3u5uu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.356, 1.0079)
+top_level = false
 
 [node name="interact_area" type="Area3D" parent="."]
 collision_layer = 0

@@ -11,7 +11,7 @@ var player_name: String
 var player_material: ShaderMaterial = preload("res://shaders/world_bend/mats/s_bend_snow.tres")
 
 # colour
-var colours := [Color("392532"), Color("80234D"), Color("4A1C39"), Color("432F50"), Color("0F4562"), Color("1BBB9B")]
+var colours := [Color("392532"), Color("0c3332"), Color("112c4f"), Color("24311b"), Color("3e2611"), Color("511219"), Color("291241")]
 var colour_id := 0
 var current_colour := Color("392532")
 

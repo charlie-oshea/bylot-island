@@ -1,7 +1,7 @@
 extends Control
 
-@onready var player_mesh: MeshInstance3D = $root/player_mesh
-@onready var hat_mesh: MeshInstance3D = $root/player_mesh/hat_mesh 
+@onready var player_mesh: MeshInstance3D = $SubViewportContainer/SubViewport/root/player_mesh
+@onready var hat_mesh: MeshInstance3D = $SubViewportContainer/SubViewport/root/player_mesh/hat_mesh
 
 const hood_mesh = preload("res://assets/models/characters/player/hats/sm_hood.res")
 const glasses_mesh = preload("res://assets/models/characters/player/hats/sm_glasses.res")
@@ -32,7 +32,7 @@ func update_colour():
 	player_mat.set_shader_parameter("albedo_colour", Autoload.current_colour)
 
 func _physics_process(delta: float) -> void:
-	var rotate_input = Input.get_action_strength("category_forward") - Input.get_action_strength("category_back")
+	var rotate_input = Input.get_action_strength("spin_right") - Input.get_action_strength("spin_left")
 	if rotate_input:
 		rotate = rotate_input * 5.0 * delta
 	else:

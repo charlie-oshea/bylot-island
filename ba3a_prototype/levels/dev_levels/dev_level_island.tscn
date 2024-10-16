@@ -375,6 +375,7 @@ surface_material_override/0 = ExtResource("9_k66de")
 [node name="StaticBody3D" type="StaticBody3D" parent="env/meshes/houses/dock7"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="env/meshes/houses/dock7/StaticBody3D"]
+transform = Transform3D(1, 0.000188701, 0.000121117, -0.000188731, 1, 0.000166411, -0.000121087, -0.000166446, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_rh6y5")
 
 [node name="dock4" type="MeshInstance3D" parent="env/meshes/houses"]
@@ -677,6 +678,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.0657, 0.646996, -80.5463)
 use_collision = true
 radius = 9.74263
 height = 4.0618
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D69" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.2906, 0.646996, -88.8308)
+use_collision = true
+radius = 12.4914
+height = 4.1074
 material = ExtResource("11_qahdo")
 
 [node name="CSGCylinder3D62" type="CSGCylinder3D" parent="env/island_shapes"]

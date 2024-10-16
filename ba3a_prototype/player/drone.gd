@@ -6,6 +6,11 @@ var cam_zoom_speed := 50.0
 
 @onready var camera_rig: Node3D = $drone_camera_rig
 @onready var camera: Camera3D = $drone_camera_rig/drone_camera
+@onready var player: PlayerWalk = $".."
+@onready var drone_noise: TextureRect = $"../CanvasLayer/ui_top/drone_noise"
+
+func _ready() -> void:
+	visible = false
 
 func _physics_process(delta: float) -> void:
 	if enabled:
@@ -54,6 +59,13 @@ func _physics_process(delta: float) -> void:
 		clamp_position()
 
 func clamp_position():
+	var dist_to_player = global_position.distance_to(player.global_position)
+	if dist_to_player > 15.0:
+		var t = get_tree().create_tween()
+		t.tween_property(drone_noise, "modulate", Color(1,1,1,1), 1.0)
+	else:
+		var t = get_tree().create_tween()
+		t.tween_property(drone_noise, "modulate", Color(1,1,1,0), 1.0)
 	global_position.y = clamp(global_position.y, 0.0, 30.0)
 
 func enable():
@@ -63,6 +75,8 @@ func enable():
 
 func disable():
 	enabled = false
+	
+	rotation = Vector3(0.0, 180.0, 0.0)
 	
 	camera.fov = 65.0
 

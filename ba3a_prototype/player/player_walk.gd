@@ -204,11 +204,14 @@ func drone_transition(to_photo: bool):
 		
 		drone.disable()
 		walk_camera.current = true
+		
+		drone.position = Vector3(0.0, 1.008, 0.0)
 
 func take_picture():
 	ui_anims.play("flash")
+	%ui_parent.hide()
 	var image = get_viewport().get_texture().get_image()
-	
+	%ui_parent.show()
 	var photo := Photo.new()
 	photo.id = photos_taken
 	for entity_name in PhotoManager.onscreen_entities:
