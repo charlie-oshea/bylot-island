@@ -199,25 +199,25 @@ func drone_transition(to_photo: bool):
 		
 		# set current cam
 		drone.enable()
+		
+		%ui_parent.hide()
 	else:
 		in_drone = false
 		
 		drone.disable()
 		walk_camera.current = true
 		
+		%ui_parent.show()
+		
 		drone.position = Vector3(0.0, 1.008, 0.0)
 
 func take_picture():
 	ui_anims.play("flash")
-	%ui_parent.hide()
 	var image = get_viewport().get_texture().get_image()
-	%ui_parent.show()
 	var photo := Photo.new()
 	photo.id = photos_taken
-	for entity_name in PhotoManager.onscreen_entities:
-		photo.contains.append(entity_name)
+	photo.entity = PhotoManager.find_closest_entity()
 	photo.image = image
-	
 	var ps = PHOTO_SHOWCASE.instantiate() as PhotoShowcase
 	ui_parent.add_child(ps)
 	ps.setup(photo)

@@ -14,15 +14,15 @@ func _ready() -> void:
 	set_layer_mask_value(3, true)
 
 func _on_screen_entered() -> void:
-	PhotoManager.onscreen_entities.append(entity_name)
+	PhotoManager.onscreen_entities.append(self)
 	
 	on_screen = true
 
 func _on_screen_exited() -> void:
-	PhotoManager.onscreen_entities.erase(entity_name)
+	PhotoManager.onscreen_entities.erase(self)
 	
 	on_screen = false
 
 func _on_tree_exited() -> void:
 	if on_screen:
-		PhotoManager.onscreen_entities.erase(entity_name)
+		PhotoManager.onscreen_entities.erase(self)

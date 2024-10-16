@@ -12,7 +12,7 @@ func _ready() -> void:
 func setup(photo: Photo):
 	var texture = ImageTexture.create_from_image(photo.image)
 	texture_rect.texture = texture
-	photo_info.text = str(photo.id," - contains ", photo.contains)
+	photo_info.text = str(photo.id," - ", photo.entity)
 
 func close_showcase():
 	showcased_closed.emit()

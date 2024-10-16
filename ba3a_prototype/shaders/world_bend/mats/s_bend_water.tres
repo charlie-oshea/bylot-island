@@ -1,35 +1,29 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://c4u21skc0g255"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c4u21skc0g255"]
 
-[ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend_water.gdshader" id="1_hig4a"]
-
-[sub_resource type="Gradient" id="Gradient_80bsx"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.685504)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_l4khi"]
-noise_type = 3
-seed = 100
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i4p3r"]
-width = 2048
-height = 2048
-seamless = true
-color_ramp = SubResource("Gradient_80bsx")
-noise = SubResource("FastNoiseLite_l4khi")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y3idl"]
-width = 2048
-height = 2048
-seamless = true
-color_ramp = SubResource("Gradient_80bsx")
-noise = SubResource("FastNoiseLite_l4khi")
+[ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend_ocean.gdshader" id="1_if7kg"]
+[ext_resource type="Texture2D" uid="uid://d0oxgm632ma55" path="res://assets/textures/ocean/ocean.png" id="2_6yf7w"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_hig4a")
-shader_parameter/water_colour = Color(0.111435, 0.299402, 0.48939, 1)
-shader_parameter/foam_colour = Color(0, 0.470401, 0.664899, 1)
-shader_parameter/noise_uv_scale = Vector2(20, 20)
-shader_parameter/noise_uv_speed = Vector2(0.01, 0)
-shader_parameter/water_noise = SubResource("NoiseTexture2D_i4p3r")
-shader_parameter/water_noise_2 = SubResource("NoiseTexture2D_y3idl")
+shader = ExtResource("1_if7kg")
+shader_parameter/alpha = 1.0
+shader_parameter/top_detail_colour = Color(0.280606, 0.529758, 0.82385, 1)
+shader_parameter/bottom_detail_colour = Color(0.292634, 0.432871, 0.677824, 1)
+shader_parameter/base_colour = Color(0.131574, 0.490342, 0.887756, 1)
+shader_parameter/water_scale = 300.0
+shader_parameter/water_offset = Vector3(0, 1, 0)
+shader_parameter/water_speed = 0.0
+shader_parameter/second_layer_offset = Vector3(0, 0, 0)
+shader_parameter/second_layer_speed = 1.0
+shader_parameter/edge_distance = 5.945
+shader_parameter/edge_toggle = 1.0
+shader_parameter/wave_size = 16.95
+shader_parameter/wave_speed = 0.1
+shader_parameter/displacement_amount = 0.0
+shader_parameter/distortion_amount = 0.44
+shader_parameter/distortion_scale = 4.09
+shader_parameter/distortion_offset = Vector3(0, 0.1, 0)
+shader_parameter/distortion_speed = 0.01
+shader_parameter/offset = 0.5
+shader_parameter/fade = 0.1
+shader_parameter/water_tex = ExtResource("2_6yf7w")

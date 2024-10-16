@@ -1,6 +1,6 @@
 // image texture download - https://imgur.com/a/aa6Vz0P
 shader_type spatial;
-render_mode cull_back;
+render_mode cull_back, unshaded;
  
 group_uniforms textures;
 uniform sampler2D DEPTH_TEXTURE: hint_depth_texture;
@@ -13,7 +13,7 @@ uniform vec3 bottom_detail_colour : source_color = vec3(0.0);
 uniform vec3 base_colour : source_color = vec3(0.0);
  
 group_uniforms water;
-uniform float water_scale : hint_range(-10.0, 50.0, 0.01) = 1.0;
+uniform float water_scale : hint_range(-10.0, 500.0, 0.01) = 1.0;
 uniform vec3 water_offset = vec3(0.0);
 uniform float water_speed : hint_range(0.0, 10.0, 0.01);
 uniform vec3 second_layer_offset = vec3(0.0);
@@ -57,7 +57,7 @@ void fragment() {
     float distortion_tex = texture(water_tex,
     UV * vec2(distortion_scale) + distortion_offset.xy * distortion_speed * TIME).z;
     vec2 base_uv = UV;
-    base_uv.y += distortion_tex * distortion_amount;
+    base_uv.y += distortion_tex * (distortion_amount * 0.01);
     
     // Apply movement to textures
     vec2 texture_water = texture(water_tex,

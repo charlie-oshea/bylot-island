@@ -3,4 +3,4 @@ class_name Photo
 
 @export var id: int
 @export var image: Image
-@export var contains: Array[String] 
+@export var entity: String

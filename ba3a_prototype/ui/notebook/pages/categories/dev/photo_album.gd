@@ -10,3 +10,6 @@ func _ready() -> void:
 		rect.custom_minimum_size = Vector2(200,120)
 		rect.texture = ImageTexture.create_from_image(photo.image)
 		photo_grid.add_child(rect)
+		var label = Label.new()
+		label.text = photo.entity
+		rect.add_child(label)

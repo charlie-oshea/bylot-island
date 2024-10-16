@@ -9,7 +9,7 @@ else:
 	set {character_visit.ava_visited} = true
 	ava: taek this drone
 	- 
-	do PhotoManager.book_collect()
+	do PhotoManager.drone_collect()
 	do Autoload.unlock_drone()
 	- 
 	ava: go out and take some pictures!
