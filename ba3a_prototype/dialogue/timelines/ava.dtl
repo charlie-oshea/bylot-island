@@ -7,12 +7,16 @@ if {character_visit.ava_visited} == true:
 	[end_timeline]
 else:
 	set {character_visit.ava_visited} = true
-	ava: taek this drone
+	ava: hi there! you must be the conservationist everyone has been telling me about
+	ava: i see aanak has already lent you that old book, i doubt many of those animals are still around
+	ava: here you should take this
 	- 
 	do PhotoManager.drone_collect()
 	do Autoload.unlock_drone()
 	- 
-	ava: go out and take some pictures!
+	ava: if you see any animals or plants, you can use this to take take a photo of them!
+	ava: i think i might have seen a few seals earlier down the beach
+	ava: go check it out and see if you can photograph them!
 	- see you later!
 	set {in_dialogue} = false
 	[end_timeline]

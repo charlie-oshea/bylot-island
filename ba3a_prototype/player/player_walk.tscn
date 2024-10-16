@@ -224,28 +224,28 @@ bones/0/name = "body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256748, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 0.299328, 0)
+bones/0/position = Vector3(0, 0.356584, 0)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "leg.L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0, -1.12078e-07, -1, 1.12078e-07, -1, 1.12078e-07, -1, -1.12078e-07, 0, 0.0870414, 0.0116665, -2.84977e-08)
 bones/1/enabled = true
-bones/1/position = Vector3(0.0870415, 0.0186076, -0.036911)
-bones/1/rotation = Quaternion(-0.672585, -0.218242, 0.672585, 0.218242)
+bones/1/position = Vector3(0.0870414, 0.0154937, 0.0572861)
+bones/1/rotation = Quaternion(-0.575873, 0.410329, 0.575874, -0.410329)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "leg.R"
 bones/2/parent = 0
 bones/2/rest = Transform3D(0, 1.12078e-07, 1, -1.12078e-07, -1, 1.12078e-07, 1, -1.12078e-07, 0, -0.0870414, 0.0116665, -2.84977e-08)
 bones/2/enabled = true
-bones/2/position = Vector3(-0.0870414, 0.0144292, 0.0208312)
-bones/2/rotation = Quaternion(0.674288, 0.212921, 0.674288, 0.21292)
+bones/2/position = Vector3(-0.0870414, 0.00975828, -0.0515682)
+bones/2/rotation = Quaternion(0.559782, -0.432023, 0.559782, -0.432023)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "head"
 bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 0.331672, 0)
 bones/3/enabled = true
-bones/3/position = Vector3(0, 0.248896, 0)
+bones/3/position = Vector3(0, 0.332526, 0)
 bones/3/rotation = Quaternion(0, 1.1921e-07, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 
@@ -258,7 +258,7 @@ surface_material_override/0 = ExtResource("3_k37cc")
 surface_material_override/1 = ExtResource("3_k37cc")
 
 [node name="hat_attachment" type="BoneAttachment3D" parent="character_v1/sk_char/Skeleton3D"]
-transform = Transform3D(1, 0, 2.3842e-07, 0, 1, 0, -2.3842e-07, 0, 1, 0, 0.548224, 0)
+transform = Transform3D(1, 0, 2.3842e-07, 0, 1, 0, -2.3842e-07, 0, 1, 0, 0.68911, 0)
 bone_name = "head"
 bone_idx = 3
 
@@ -292,7 +292,6 @@ current = true
 
 [node name="sobel" type="MeshInstance3D" parent="camera_rig/SpringArm3D/camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09)
-visible = false
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_k7437")
 
