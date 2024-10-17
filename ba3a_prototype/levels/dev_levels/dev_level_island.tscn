@@ -1,9 +1,8 @@
-[gd_scene load_steps=48 format=3 uid="uid://cqm32gfoheyvm"]
+[gd_scene load_steps=47 format=3 uid="uid://cqm32gfoheyvm"]
 
 [ext_resource type="PackedScene" uid="uid://ceoup1y5bf1b1" path="res://player/player_walk.tscn" id="1_abpct"]
 [ext_resource type="Material" uid="uid://b4fssg6ds6oak" path="res://shaders/world_bend/mats/s_bend_green.tres" id="2_hdhf1"]
 [ext_resource type="Script" path="res://entities/notifier.gd" id="3_fcqst"]
-[ext_resource type="Material" uid="uid://0j4g3ec0nmrj" path="res://shaders/world_bend/mats/s_bend_foam_blue.tres" id="3_joumr"]
 [ext_resource type="Material" uid="uid://da4hrrr7gs7dc" path="res://shaders/world_bend/mats/s_bend_purple.tres" id="4_8qak7"]
 [ext_resource type="PackedScene" uid="uid://c2sj4do8llq2u" path="res://entities/characters/Villager_1.tscn" id="6_oqp6o"]
 [ext_resource type="Resource" path="res://dialogue/timelines/nini.dtl" id="7_88dua"]
@@ -229,57 +228,203 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.18626, 1.46231, -116.277)
 
 [node name="entities" type="Node3D" parent="stage"]
 
-[node name="prism1" type="MeshInstance3D" parent="stage/entities"]
-transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, -15.8275, 1.95992, -12.4767)
-extra_cull_margin = 500.0
-mesh = SubResource("PrismMesh_bjatx")
-surface_material_override/0 = ExtResource("2_hdhf1")
-
-[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/prism1"]
-aabb = AABB(-0.471371, -0.493614, -0.453968, 0.942743, 0.987229, 0.907936)
-script = ExtResource("3_fcqst")
-entity_name = "GREEN"
-
-[node name="prism2" type="MeshInstance3D" parent="stage/entities"]
-transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, -9.28644, 1.95992, -13.128)
-extra_cull_margin = 500.0
-mesh = SubResource("PrismMesh_bjatx")
-surface_material_override/0 = ExtResource("3_joumr")
-
-[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/prism2"]
-aabb = AABB(-0.529267, -0.483911, -0.492942, 1.05853, 0.967822, 0.985885)
-script = ExtResource("3_fcqst")
-entity_name = "BLUE"
-
-[node name="prism3" type="MeshInstance3D" parent="stage/entities"]
-transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, -21.5106, 1.95992, -12.8404)
-extra_cull_margin = 500.0
-mesh = SubResource("PrismMesh_bjatx")
-surface_material_override/0 = ExtResource("4_8qak7")
-
-[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/prism3"]
-aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
-script = ExtResource("3_fcqst")
-entity_name = "PURPLE"
-
-[node name="prism4" type="MeshInstance3D" parent="stage/entities"]
+[node name="seal" type="MeshInstance3D" parent="stage/entities"]
 transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, -35.0873, 0.746595, -124.884)
 extra_cull_margin = 500.0
 mesh = SubResource("PrismMesh_bjatx")
 surface_material_override/0 = ExtResource("4_8qak7")
 
-[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/prism4"]
+[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/seal"]
 aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
 script = ExtResource("3_fcqst")
 entity_name = "SEAL"
 
-[node name="Label3D" type="Label3D" parent="stage/entities/prism4"]
+[node name="Label3D" type="Label3D" parent="stage/entities/seal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8488, 0)
 billboard = 1
-text = "pretend this is a seal"
+text = "SEAL"
 font = ExtResource("7_khn75")
-font_size = 72
-outline_size = 10
+font_size = 217
+
+[node name="walrus" type="MeshInstance3D" parent="stage/entities"]
+transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, -151.957, 0.746595, -40.3266)
+extra_cull_margin = 500.0
+mesh = SubResource("PrismMesh_bjatx")
+surface_material_override/0 = ExtResource("4_8qak7")
+
+[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/walrus"]
+aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
+script = ExtResource("3_fcqst")
+entity_name = "WALRUS"
+
+[node name="Label3D" type="Label3D" parent="stage/entities/walrus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8488, 0)
+billboard = 1
+text = "STARVING WALRUS"
+font = ExtResource("7_khn75")
+font_size = 217
+
+[node name="arctic_moss" type="MeshInstance3D" parent="stage/entities"]
+transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, -11.7993, 1.92315, -49.2825)
+extra_cull_margin = 500.0
+mesh = SubResource("PrismMesh_bjatx")
+surface_material_override/0 = ExtResource("4_8qak7")
+
+[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/arctic_moss"]
+aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
+script = ExtResource("3_fcqst")
+entity_name = "ARCTIC_MOSS"
+
+[node name="Label3D" type="Label3D" parent="stage/entities/arctic_moss"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8488, 0)
+billboard = 1
+text = "ARCTIC MOSS"
+font = ExtResource("7_khn75")
+font_size = 107
+
+[node name="goose" type="MeshInstance3D" parent="stage/entities"]
+transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, 13.0311, 1.92315, -79.2326)
+extra_cull_margin = 500.0
+mesh = SubResource("PrismMesh_bjatx")
+surface_material_override/0 = ExtResource("4_8qak7")
+
+[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/goose"]
+aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
+script = ExtResource("3_fcqst")
+entity_name = "GOOSE"
+
+[node name="Label3D" type="Label3D" parent="stage/entities/goose"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8488, 0)
+billboard = 1
+text = "GOOSE"
+font = ExtResource("7_khn75")
+font_size = 107
+
+[node name="arctic_willow" type="MeshInstance3D" parent="stage/entities"]
+transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, 1.83989, 1.92315, -71.6626)
+extra_cull_margin = 500.0
+mesh = SubResource("PrismMesh_bjatx")
+surface_material_override/0 = ExtResource("4_8qak7")
+
+[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/arctic_willow"]
+aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
+script = ExtResource("3_fcqst")
+entity_name = "WILLOW"
+
+[node name="Label3D" type="Label3D" parent="stage/entities/arctic_willow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8488, 0)
+billboard = 1
+text = "ARCTIC WILLOW"
+font = ExtResource("7_khn75")
+font_size = 107
+
+[node name="snowy_owl" type="MeshInstance3D" parent="stage/entities"]
+transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, -71.5944, 10.05, -82.7598)
+extra_cull_margin = 500.0
+mesh = SubResource("PrismMesh_bjatx")
+surface_material_override/0 = ExtResource("4_8qak7")
+
+[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/snowy_owl"]
+aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
+script = ExtResource("3_fcqst")
+entity_name = "OWL"
+
+[node name="Label3D" type="Label3D" parent="stage/entities/snowy_owl"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8488, 0)
+billboard = 1
+text = "SNOWY OWL"
+font = ExtResource("7_khn75")
+font_size = 107
+
+[node name="purple_saxifrage" type="MeshInstance3D" parent="stage/entities"]
+transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, -85.6323, 3.09106, -99.5387)
+extra_cull_margin = 500.0
+mesh = SubResource("PrismMesh_bjatx")
+surface_material_override/0 = ExtResource("4_8qak7")
+
+[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/purple_saxifrage"]
+aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
+script = ExtResource("3_fcqst")
+entity_name = "SAXIFRAGE"
+
+[node name="Label3D" type="Label3D" parent="stage/entities/purple_saxifrage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8488, 0)
+billboard = 1
+text = "PURPLE SAXIFRAGE"
+font = ExtResource("7_khn75")
+font_size = 107
+
+[node name="arctic_hare" type="MeshInstance3D" parent="stage/entities"]
+transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, -114.6, 3.09106, -109.673)
+extra_cull_margin = 500.0
+mesh = SubResource("PrismMesh_bjatx")
+surface_material_override/0 = ExtResource("4_8qak7")
+
+[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/arctic_hare"]
+aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
+script = ExtResource("3_fcqst")
+entity_name = "HARE"
+
+[node name="Label3D" type="Label3D" parent="stage/entities/arctic_hare"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8488, 0)
+billboard = 1
+text = "ARCTIC HARE"
+font = ExtResource("7_khn75")
+font_size = 107
+
+[node name="tundra_rose" type="MeshInstance3D" parent="stage/entities"]
+transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, -98.1853, 3.09106, -140.566)
+extra_cull_margin = 500.0
+mesh = SubResource("PrismMesh_bjatx")
+surface_material_override/0 = ExtResource("4_8qak7")
+
+[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/tundra_rose"]
+aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
+script = ExtResource("3_fcqst")
+entity_name = "TUNDRA_ROSE"
+
+[node name="Label3D" type="Label3D" parent="stage/entities/tundra_rose"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8488, 0)
+billboard = 1
+text = "TUNDRA ROSE"
+font = ExtResource("7_khn75")
+font_size = 107
+
+[node name="caribou" type="MeshInstance3D" parent="stage/entities"]
+transform = Transform3D(2.88502, 0, -0.299004, 0, 2.90048, 0, 0.299004, 0, 2.88502, -153.805, 3.67443, -199.335)
+extra_cull_margin = 500.0
+mesh = SubResource("PrismMesh_bjatx")
+surface_material_override/0 = ExtResource("4_8qak7")
+
+[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/caribou"]
+aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
+script = ExtResource("3_fcqst")
+entity_name = "CARIBOU"
+
+[node name="Label3D" type="Label3D" parent="stage/entities/caribou"]
+transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 0, 7.45058e-09, 0, 1, -0.000484467, 0.865731, -0.00300217)
+billboard = 1
+text = "CARIBOU REINDEER HERD"
+font = ExtResource("7_khn75")
+font_size = 107
+
+[node name="reindeer_moss" type="MeshInstance3D" parent="stage/entities"]
+transform = Transform3D(0.994672, 0, -0.103088, 0, 1, 0, 0.103088, 0, 0.994672, -37.4904, 3.06698, -109.488)
+extra_cull_margin = 500.0
+mesh = SubResource("PrismMesh_bjatx")
+surface_material_override/0 = ExtResource("4_8qak7")
+
+[node name="Notifier" type="VisibleOnScreenNotifier3D" parent="stage/entities/reindeer_moss"]
+aabb = AABB(-0.477653, -0.524002, -0.488152, 0.955305, 1.048, 0.976303)
+script = ExtResource("3_fcqst")
+entity_name = "REINDEER_MOSS"
+
+[node name="Label3D" type="Label3D" parent="stage/entities/reindeer_moss"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8488, 0)
+billboard = 1
+text = "REINDEER MOSS"
+font = ExtResource("7_khn75")
+font_size = 107
 
 [node name="characters" type="Node3D" parent="stage/entities"]
 
@@ -348,6 +493,13 @@ surface_material_override/0 = ExtResource("9_k66de")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="env/meshes/dock3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jbri8")
+
+[node name="Label3D" type="Label3D" parent="env/meshes/dock3"]
+transform = Transform3D(1, 0, 3.72529e-09, 0, 1, 0, -3.72529e-09, 0, 1, 0.316528, 3.73268, -9.49167)
+billboard = 1
+text = "BROKEN BRIDGE - CANT CROSS"
+font = ExtResource("7_khn75")
+font_size = 277
 
 [node name="boat" type="MeshInstance3D" parent="env/meshes"]
 transform = Transform3D(-1.68814e-07, 0, -3.86202, 0, 3.86202, 0, 3.86202, 0, -1.68814e-07, 7.53248, 3.33278, 12.6865)
@@ -585,6 +737,20 @@ radius = 9.07741
 height = 21.5505
 material = SubResource("ShaderMaterial_7nyk5")
 
+[node name="CSGCylinder3D94" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.924, 0.982043, -124.631)
+use_collision = true
+radius = 16.2533
+height = 14.0079
+material = SubResource("ShaderMaterial_7nyk5")
+
+[node name="CSGCylinder3D95" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.311, 0.982043, -124.631)
+use_collision = true
+radius = 13.8823
+height = 33.232
+material = SubResource("ShaderMaterial_7nyk5")
+
 [node name="CSGCylinder3D27" type="CSGCylinder3D" parent="env/island_shapes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.3089, 0.982039, -89.0698)
 use_collision = true
@@ -597,6 +763,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.8654, 0.982039, -74.827)
 use_collision = true
 radius = 9.07741
 height = 17.2263
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D93" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.1618, 0.982039, -84.0991)
+use_collision = true
+radius = 9.07741
+height = 17.2263
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D96" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.225, 0.982039, -115.811)
+use_collision = true
+radius = 12.3545
+height = 11.798
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D85" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.1112, 0.982039, -71.0861)
+use_collision = true
+radius = 14.6139
+height = 13.231
 material = ExtResource("11_qahdo")
 
 [node name="CSGCylinder3D28" type="CSGCylinder3D" parent="env/island_shapes"]
@@ -732,8 +919,92 @@ radius = 12.4914
 height = 4.1074
 material = ExtResource("11_qahdo")
 
+[node name="CSGCylinder3D86" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.192, 0.646996, -94.5675)
+use_collision = true
+radius = 15.019
+height = 4.1074
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D87" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.1666, 0.646996, -111.099)
+use_collision = true
+radius = 15.019
+height = 4.1074
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D88" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.685, 0.556498, -113.976)
+use_collision = true
+radius = 15.019
+height = 4.1074
+material = SubResource("ShaderMaterial_grepp")
+
+[node name="CSGCylinder3D99" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.528, 0.556498, -199.629)
+use_collision = true
+radius = 15.019
+height = 4.1074
+material = SubResource("ShaderMaterial_grepp")
+
+[node name="CSGCylinder3D89" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.9028, 0.556498, -126.632)
+use_collision = true
+radius = 15.019
+height = 4.1074
+material = SubResource("ShaderMaterial_grepp")
+
+[node name="CSGCylinder3D90" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.693, 0.732866, -146.332)
+use_collision = true
+radius = 13.0098
+height = 4.1074
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D97" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.461, 0.117529, -189.567)
+use_collision = true
+radius = 9.69672
+height = 2.19516
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D100" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.222, 0.117529, -218.78)
+use_collision = true
+radius = 15.8632
+height = 5.94705
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D101" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.092, 0.117537, -215.705)
+use_collision = true
+radius = 8.36357
+height = 10.4649
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D98" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -152.109, 0.117529, -184.527)
+use_collision = true
+radius = 11.5297
+height = 2.19516
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D91" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.008, 0.646998, -134.661)
+use_collision = true
+radius = 15.019
+height = 4.1074
+material = ExtResource("11_qahdo")
+
+[node name="CSGCylinder3D92" type="CSGCylinder3D" parent="env/island_shapes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.3941, 0.646998, -144.055)
+use_collision = true
+radius = 15.019
+height = 4.1074
+material = ExtResource("11_qahdo")
+
 [node name="CSGCylinder3D62" type="CSGCylinder3D" parent="env/island_shapes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.9309, 0.646996, -64.0033)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.43, 0.646998, -53.7784)
 use_collision = true
 radius = 9.74263
 height = 4.0618
