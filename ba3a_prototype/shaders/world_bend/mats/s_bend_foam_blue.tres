@@ -7,7 +7,11 @@
 render_priority = 0
 shader = ExtResource("1_gdtx1")
 shader_parameter/use_texture = false
-shader_parameter/albedo_colour = Color(0, 0.321569, 0.619608, 1)
+shader_parameter/albedo_colour = Color(0.280606, 0.529758, 0.82385, 1)
 shader_parameter/triplanar = false
+shader_parameter/alpha = 1.0
 shader_parameter/albedo_texture = ExtResource("2_ppbmq")
 shader_parameter/curvature_amount = 0.003
+shader_parameter/distance_fade = false
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 10.0

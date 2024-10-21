@@ -224,28 +224,28 @@ bones/0/name = "body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256748, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 0.29742, 0)
+bones/0/position = Vector3(0, 0.273609, 0)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "leg.L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0, -1.12078e-07, -1, 1.12078e-07, -1, 1.12078e-07, -1, -1.12078e-07, 0, 0.0870414, 0.0116665, -2.84977e-08)
 bones/1/enabled = true
-bones/1/position = Vector3(0.0870414, 0.0162111, 0.035585)
-bones/1/rotation = Quaternion(-0.642601, 0.295067, 0.642601, -0.295067)
+bones/1/position = Vector3(0.0870415, 0.0181128, -0.0219419)
+bones/1/rotation = Quaternion(-0.697405, -0.116733, 0.697405, 0.116733)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "leg.R"
 bones/2/parent = 0
 bones/2/rest = Transform3D(0, 1.12078e-07, 1, -1.12078e-07, -1, 1.12078e-07, 1, -1.12078e-07, 0, -0.0870414, 0.0116665, -2.84977e-08)
 bones/2/enabled = true
-bones/2/position = Vector3(-0.0870414, 0.0108344, -0.0348889)
-bones/2/rotation = Quaternion(0.632254, -0.316631, 0.632254, -0.316631)
+bones/2/position = Vector3(-0.0870414, 0.0136869, 0.00932606)
+bones/2/rotation = Quaternion(0.698824, 0.107909, 0.698825, 0.107909)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "head"
 bones/3/parent = 0
 bones/3/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 0.331672, 0)
 bones/3/enabled = true
-bones/3/position = Vector3(0, 0.34779, 0)
+bones/3/position = Vector3(0, 0.23345, 0)
 bones/3/rotation = Quaternion(0, 1.1921e-07, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 
@@ -258,7 +258,7 @@ surface_material_override/0 = ExtResource("3_k37cc")
 surface_material_override/1 = ExtResource("3_k37cc")
 
 [node name="hat_attachment" type="BoneAttachment3D" parent="character_v1/sk_char/Skeleton3D"]
-transform = Transform3D(1, 0, 2.3842e-07, 0, 1, 0, -2.3842e-07, 0, 1, 0, 0.64521, 0)
+transform = Transform3D(1, 0, 2.3842e-07, 0, 1, 0, -2.3842e-07, 0, 1, 0, 0.50706, 0)
 bone_name = "head"
 bone_idx = 3
 

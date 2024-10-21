@@ -224,7 +224,7 @@ shader_parameter/distance_fade_max = 10.0
 [node name="stage" type="Node3D" parent="."]
 
 [node name="player_walk" parent="stage" instance=ExtResource("1_abpct")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.18626, 1.46231, -116.277)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43447, 0)
 
 [node name="entities" type="Node3D" parent="stage"]
 
