@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WildlifePageInfo" load_steps=3 format=3 uid="uid://di76yubhpb651"]
+
+[ext_resource type="Texture2D" uid="uid://r7xpnssrn74d" path="res://assets/textures/ui/hotbar/dev/owl_emoji.png" id="1_gay66"]
+[ext_resource type="Script" path="res://resources/wildlife_page/wildlife_page.gd" id="2_5q0r1"]
+
+[resource]
+script = ExtResource("2_5q0r1")
+key = "OWL"
+animal_name = "Snowy Owl"
+scientific_name = "Bubo scandiacus"
+description = "The snowy owl (Bubo scandiacus),[4] also known as the polar owl, the white owl and the Arctic owl,[5] is a large, white owl of the true owl family.[6] Snowy owls are native to the Arctic regions of both North America and the Palearctic, breeding mostly on the tundra."
+image = ExtResource("1_gay66")

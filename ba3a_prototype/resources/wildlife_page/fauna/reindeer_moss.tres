@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WildlifePageInfo" load_steps=3 format=3 uid="uid://c7tgg23jbc0wo"]
+
+[ext_resource type="Texture2D" uid="uid://bevmse51bk8st" path="res://assets/textures/ui/hotbar/dev/330px-Cladonia_rangiferina_205412.jpg" id="1_j5852"]
+[ext_resource type="Script" path="res://resources/wildlife_page/wildlife_page.gd" id="2_nbu0g"]
+
+[resource]
+script = ExtResource("2_nbu0g")
+key = "REINDEER_MOSS"
+animal_name = "Reindeer Moss"
+scientific_name = "Cladonia rangiferina"
+description = "Cladonia rangiferina, also known as reindeer cup lichen,[2] reindeer lichen (cf. Sw. renlav) or grey reindeer lichen, is a light-coloured fruticose, cup lichen species in the family Cladoniaceae. It grows in both hot and cold climates in well-drained, open environments. Found primarily in areas of alpine tundra, it is extremely cold-hardy."
+image = ExtResource("1_j5852")

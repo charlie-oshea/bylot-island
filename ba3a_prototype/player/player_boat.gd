@@ -15,8 +15,8 @@ var last_velocity := Vector3.ZERO
 @onready var mesh_parent: Node3D = $mesh_parent
 @onready var vfx_foam: GPUParticles3D = $mesh_parent/vfx_foam
 
-func _ready() -> void:
-	RenderingServer.global_shader_parameter_set("enable_world_bend", true)
+#func _ready() -> void:
+	#RenderingServer.global_shader_parameter_set("enable_world_bend", true)
 
 func _physics_process(delta: float) -> void:
 	var input_dir := Vector2.ZERO

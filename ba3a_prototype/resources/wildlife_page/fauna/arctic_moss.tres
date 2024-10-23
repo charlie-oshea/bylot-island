@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WildlifePageInfo" load_steps=3 format=3 uid="uid://mybi5ti742l8"]
+
+[ext_resource type="Texture2D" uid="uid://blsc7inf4v6sq" path="res://assets/textures/ui/hotbar/dev/arctic_moss.jpg" id="1_j0bso"]
+[ext_resource type="Script" path="res://resources/wildlife_page/wildlife_page.gd" id="2_qaynj"]
+
+[resource]
+script = ExtResource("2_qaynj")
+key = "ARCTIC_MOSS"
+animal_name = "Arctic Moss"
+scientific_name = "Cladonia"
+description = "Cladonia is a genus of moss-like lichenized fungi in the family Cladoniaceae. They are the primary food source for reindeer/caribou. Cladonia species are of economic importance to reindeer-herders, such as the Sami in Scandinavia or the Nenets in Russia. Antibiotic compounds are extracted from some species to create antibiotic cream."
+image = ExtResource("1_j0bso")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WildlifePageInfo" load_steps=3 format=3 uid="uid://01bsfm8c7gnu"]
+
+[ext_resource type="Texture2D" uid="uid://dryefta804qet" path="res://assets/textures/ui/hotbar/dev/ARCTIC-WILLOW-GLAC.jpg" id="1_dj0rh"]
+[ext_resource type="Script" path="res://resources/wildlife_page/wildlife_page.gd" id="2_fngfg"]
+
+[resource]
+script = ExtResource("2_fngfg")
+key = "ARCTIC_WILLOW"
+animal_name = "Arctic Willow"
+scientific_name = "Salix arctica"
+description = "Salix arctica, the Arctic willow, is a tiny creeping willow (family Salicaceae). It is adapted to survive in Arctic conditions, specifically tundras."
+image = ExtResource("1_dj0rh")

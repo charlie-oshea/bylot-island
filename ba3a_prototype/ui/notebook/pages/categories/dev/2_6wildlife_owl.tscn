@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjgca3a6giqc7"]
+
+[ext_resource type="Script" path="res://ui/notebook/wildlife_page.gd" id="1_uclq3"]
+[ext_resource type="Resource" uid="uid://di76yubhpb651" path="res://resources/wildlife_page/owl.tres" id="2_vmb35"]
+[ext_resource type="Theme" uid="uid://wn5lcqwa3knj" path="res://assets/default_theme.tres" id="3_vgsop"]
+[ext_resource type="Texture2D" uid="uid://bhky38ik7ck3a" path="res://assets/textures/dev_textures/blue_01.png" id="4_wk525"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdy46"]
+bg_color = Color(0.959273, 0.951064, 0.933906, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="wildlife_page" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uclq3")
+page_info = ExtResource("2_vmb35")
+
+[node name="notebook_base" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.0
+offset_top = -246.0
+offset_right = 363.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gdy46")
+
+[node name="name_label" type="Label" parent="notebook_base"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.5
+offset_top = 12.0
+offset_right = 84.5
+offset_bottom = 53.0
+grow_horizontal = 2
+theme = ExtResource("3_vgsop")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "Reindeer"
+horizontal_alignment = 1
+
+[node name="sciname_label" type="Label" parent="notebook_base"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.5
+offset_top = 55.0
+offset_right = 84.5
+offset_bottom = 96.0
+grow_horizontal = 2
+theme = ExtResource("3_vgsop")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Reindeer"
+horizontal_alignment = 1
+
+[node name="collected_label" type="Label" parent="notebook_base"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -307.0
+offset_top = -60.0
+offset_right = -11.0
+offset_bottom = -19.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_vgsop")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 33
+text = "not discovered"
+
+[node name="image" type="TextureRect" parent="notebook_base"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 18.0
+offset_top = -127.0
+offset_right = 405.0
+offset_bottom = 128.0
+grow_vertical = 2
+texture = ExtResource("4_wk525")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="info_label" type="RichTextLabel" parent="notebook_base"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -129.0
+offset_right = -33.0
+offset_bottom = 154.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_vgsop")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+text = "Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it. Reindeer info lots of it."

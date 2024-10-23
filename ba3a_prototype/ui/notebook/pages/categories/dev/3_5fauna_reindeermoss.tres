@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NotebookPage" load_steps=3 format=3 uid="uid://bk121jpdqysyt"]
+
+[ext_resource type="PackedScene" uid="uid://h3cxiq3uj3ne" path="res://ui/notebook/pages/categories/dev/3_5fauna_reindeermoss.tscn" id="1_j3tow"]
+[ext_resource type="Script" path="res://ui/notebook/pages/notebook_page.gd" id="2_gbo20"]
+
+[resource]
+script = ExtResource("2_gbo20")
+category = 2
+scene = ExtResource("1_j3tow")

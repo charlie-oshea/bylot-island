@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WildlifePageInfo" load_steps=3 format=3 uid="uid://by18gemm0pc03"]
+
+[ext_resource type="Texture2D" uid="uid://ch67ec4pkm002" path="res://assets/textures/ui/hotbar/dev/seal_emoji.png" id="1_5w8oj"]
+[ext_resource type="Script" path="res://resources/wildlife_page/wildlife_page.gd" id="2_rlov4"]
+
+[resource]
+script = ExtResource("2_rlov4")
+key = "SEAL"
+animal_name = "Harp Seal"
+scientific_name = "Pagophilus groenlandicus"
+description = "The harp seal (Pagophilus groenlandicus), also known as Saddleback Seal or Greenland Seal, is a species of earless seal, or true seal, native to the northernmost Atlantic Ocean and Arctic Ocean."
+image = ExtResource("1_5w8oj")

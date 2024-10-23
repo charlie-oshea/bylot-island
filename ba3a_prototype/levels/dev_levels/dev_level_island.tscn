@@ -483,24 +483,6 @@ surface_material_override/0 = ExtResource("9_k66de")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="env/meshes/dock2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jbri8")
 
-[node name="dock3" type="MeshInstance3D" parent="env/meshes"]
-transform = Transform3D(0.0379264, 0, -1.13729, 0, 1.13792, 0, 1.13729, 0, 0.0379264, -44.6448, 0.50732, -13.4626)
-sorting_offset = -1.0
-mesh = ExtResource("8_lxjnv")
-surface_material_override/0 = ExtResource("9_k66de")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="env/meshes/dock3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="env/meshes/dock3/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_jbri8")
-
-[node name="Label3D" type="Label3D" parent="env/meshes/dock3"]
-transform = Transform3D(1, 0, 3.72529e-09, 0, 1, 0, -3.72529e-09, 0, 1, 0.316528, 3.73268, -9.49167)
-billboard = 1
-text = "BROKEN BRIDGE - CANT CROSS"
-font = ExtResource("7_khn75")
-font_size = 277
-
 [node name="boat" type="MeshInstance3D" parent="env/meshes"]
 transform = Transform3D(-1.68814e-07, 0, -3.86202, 0, 3.86202, 0, 3.86202, 0, -1.68814e-07, 7.53248, 3.33278, 12.6865)
 sorting_offset = -1.0
@@ -632,13 +614,6 @@ radius = 10.5624
 height = 4.66369
 material = SubResource("ShaderMaterial_aamfa")
 
-[node name="CSGCylinder3D65" type="CSGCylinder3D" parent="env/island_shapes"]
-transform = Transform3D(0.892263, 0, -0.451516, 0, 1, 0, 0.451516, 0, 0.892263, -50.4471, -0.863848, -13.9182)
-use_collision = true
-radius = 5.7556
-height = 4.66369
-material = SubResource("ShaderMaterial_aamfa")
-
 [node name="CSGCylinder3D22" type="CSGCylinder3D" parent="env/island_shapes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3731, -0.887825, -70.3434)
 use_collision = true
@@ -655,13 +630,6 @@ material = SubResource("ShaderMaterial_aamfa")
 
 [node name="CSGCylinder3D16" type="CSGCylinder3D" parent="env/island_shapes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00313, -0.863846, -29.5125)
-use_collision = true
-radius = 10.5624
-height = 4.77911
-material = ExtResource("11_qahdo")
-
-[node name="CSGCylinder3D66" type="CSGCylinder3D" parent="env/island_shapes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.3905, -0.863846, -23.9474)
 use_collision = true
 radius = 10.5624
 height = 4.77911
@@ -717,10 +685,10 @@ height = 14.9288
 material = ExtResource("11_qahdo")
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="env/island_shapes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.9494, 0.982031, -51.1731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.8258, -0.948601, -49.9111)
 use_collision = true
-radius = 9.07741
-height = 9.20464
+radius = 11.412
+height = 7.3
 material = ExtResource("11_qahdo")
 
 [node name="CSGCylinder3D9" type="CSGCylinder3D" parent="env/island_shapes"]
@@ -1010,13 +978,6 @@ radius = 9.74263
 height = 4.0618
 material = ExtResource("11_qahdo")
 
-[node name="CSGCylinder3D67" type="CSGCylinder3D" parent="env/island_shapes"]
-transform = Transform3D(0.918094, 0, -0.396363, 0, 1, 0, 0.396363, 0, 0.918094, -68.0481, 0.646996, -36.118)
-use_collision = true
-radius = 11.1106
-height = 4.0618
-material = ExtResource("11_qahdo")
-
 [node name="CSGCylinder3D19" type="CSGCylinder3D" parent="env/island_shapes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.67375, 0.647, -92.4916)
 use_collision = true
@@ -1258,12 +1219,6 @@ material = ExtResource("11_qahdo")
 transform = Transform3D(-0.607903, -0.203631, 0.767456, 7.90127e-09, 0.966555, 0.256458, -0.794012, 0.155902, -0.587571, -112.97, -2.87169, -52.8742)
 use_collision = true
 size = Vector3(15.2485, 8.51703, 10.9727)
-material = ExtResource("11_qahdo")
-
-[node name="CSGCylinder3D68" type="CSGBox3D" parent="env/island_shapes"]
-transform = Transform3D(-0.705872, 0.181659, -0.68465, -3.14871e-08, 0.966555, 0.256458, 0.70834, 0.181026, -0.682264, -58.3046, -2.60982, -26.3025)
-use_collision = true
-size = Vector3(8.43555, 8.39621, 9.6874)
 material = ExtResource("11_qahdo")
 
 [node name="CSGCylinder3D42" type="CSGBox3D" parent="env/island_shapes"]

@@ -1,12 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://mqfe26tp0yu4"]
+[gd_scene load_steps=27 format=3 uid="uid://mqfe26tp0yu4"]
 
 [ext_resource type="Script" path="res://ui/notebook/notebook.gd" id="1_ntu44"]
 [ext_resource type="Resource" uid="uid://b0l2it4cdwf4q" path="res://ui/notebook/pages/categories/dev/1_1contents_page.tres" id="3_bdc2h"]
 [ext_resource type="Resource" uid="uid://b7sc02f8td2pi" path="res://ui/notebook/pages/categories/dev/3_1fauna_contents.tres" id="4_08482"]
 [ext_resource type="Resource" uid="uid://ko2faa4mh48p" path="res://ui/notebook/pages/categories/dev/2_1wildlife_contents.tres" id="4_uylvi"]
-[ext_resource type="Resource" uid="uid://bi43l0fo87uk1" path="res://ui/notebook/pages/categories/dev/2_2wildlife_polar_bear.tres" id="5_1yp0q"]
+[ext_resource type="Resource" uid="uid://bi43l0fo87uk1" path="res://ui/notebook/pages/categories/dev/2_2wildlife_caribou.tres" id="5_1yp0q"]
 [ext_resource type="Theme" uid="uid://wn5lcqwa3knj" path="res://assets/default_theme.tres" id="5_vkmo3"]
+[ext_resource type="Resource" uid="uid://dukixafalnjuq" path="res://ui/notebook/pages/categories/dev/2_3wildlife_walrus.tres" id="6_dqcel"]
 [ext_resource type="Resource" uid="uid://beskodrjfey80" path="res://ui/notebook/pages/categories/dev/4_1photo_album.tres" id="6_va311"]
+[ext_resource type="Resource" uid="uid://c124igvpi6b8c" path="res://ui/notebook/pages/categories/dev/2_4wildlife_goose.tres" id="7_jvxfg"]
+[ext_resource type="Resource" uid="uid://c0xc06tpptjfp" path="res://ui/notebook/pages/categories/dev/2_5wildlife_seal.tres" id="8_ctujt"]
+[ext_resource type="Resource" uid="uid://cv8mstt4sr5wt" path="res://ui/notebook/pages/categories/dev/2_6wildlife_owl.tres" id="9_6ydar"]
+[ext_resource type="Resource" uid="uid://dt7togpvju55f" path="res://ui/notebook/pages/categories/dev/2_7wildlife_hare.tres" id="10_j1lyd"]
+[ext_resource type="Resource" uid="uid://bc0xppgfgkdfl" path="res://ui/notebook/pages/categories/dev/3_2fauna_arcticmoss.tres" id="12_tj6eh"]
+[ext_resource type="Resource" uid="uid://7fby6s01xhbg" path="res://ui/notebook/pages/categories/dev/3_3fauna_arcticwillow.tres" id="13_pnvo0"]
+[ext_resource type="Resource" uid="uid://dxyvpkesa6876" path="res://ui/notebook/pages/categories/dev/3_4fauna_saxifrage.tres" id="14_h7iyy"]
+[ext_resource type="Resource" uid="uid://bk121jpdqysyt" path="res://ui/notebook/pages/categories/dev/3_5fauna_reindeermoss.tres" id="15_6x75n"]
+[ext_resource type="Resource" uid="uid://c4lic7vl51kb5" path="res://ui/notebook/pages/categories/dev/3_6fauna_tundrarose.tres" id="16_rsot0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3vgl"]
 bg_color = Color(0.959273, 0.951064, 0.933906, 1)
@@ -174,7 +184,7 @@ disabled = true
 text = "album"
 
 [node name="PagesPreloader" type="ResourcePreloader" parent="."]
-resources = [PackedStringArray("1_1contents_page", "2_1wildlife_contents", "2_2wildlife_polar_bear", "3_1fauna_contents", "4_1photo_album"), [ExtResource("3_bdc2h"), ExtResource("4_uylvi"), ExtResource("5_1yp0q"), ExtResource("4_08482"), ExtResource("6_va311")]]
+resources = [PackedStringArray("1_1contents_page", "2_1wildlife_contents", "2_2wildlife_caribou", "2_3wildlife_walrus", "2_4wildlife_goose", "2_5wildlife_seal", "2_6wildlife_owl", "2_7wildlife_hare", "3_1fauna_contents", "3_2fauna_arcticmoss", "3_3fauna_arcticwillow", "3_4fauna_saxifrage", "3_5fauna_reindeermoss", "3_6fauna_tundrarose", "4_1photo_album"), [ExtResource("3_bdc2h"), ExtResource("4_uylvi"), ExtResource("5_1yp0q"), ExtResource("6_dqcel"), ExtResource("7_jvxfg"), ExtResource("8_ctujt"), ExtResource("9_6ydar"), ExtResource("10_j1lyd"), ExtResource("4_08482"), ExtResource("12_tj6eh"), ExtResource("13_pnvo0"), ExtResource("14_h7iyy"), ExtResource("15_6x75n"), ExtResource("16_rsot0"), ExtResource("6_va311")]]
 
 [node name="page_label" type="Label" parent="."]
 layout_mode = 1

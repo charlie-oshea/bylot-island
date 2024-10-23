@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WildlifePageInfo" load_steps=3 format=3 uid="uid://cu1cqrenlkuav"]
+
+[ext_resource type="Texture2D" uid="uid://b76r7ku7k7pgc" path="res://assets/textures/ui/hotbar/dev/goose_emoji.png" id="1_gmjk6"]
+[ext_resource type="Script" path="res://resources/wildlife_page/wildlife_page.gd" id="2_v2oaf"]
+
+[resource]
+script = ExtResource("2_v2oaf")
+key = "GOOSE"
+animal_name = "Canada Goose"
+scientific_name = "Branta canadensis"
+description = "The Canada goose (Branta canadensis) is a large wild goose with a black head and neck, white cheeks, white under its chin, and a brown body. It is native to the arctic and temperate regions of North America, and it is occasionally found during migration across the Atlantic in northern Europe."
+image = ExtResource("1_gmjk6")

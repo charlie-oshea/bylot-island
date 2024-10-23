@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WildlifePageInfo" load_steps=3 format=3 uid="uid://dl6apaorafvir"]
+
+[ext_resource type="Texture2D" uid="uid://bbrkn2fkijnpd" path="res://assets/textures/ui/hotbar/dev/walrus_emoji.png" id="1_x4brl"]
+[ext_resource type="Script" path="res://resources/wildlife_page/wildlife_page.gd" id="2_5e03c"]
+
+[resource]
+script = ExtResource("2_5e03c")
+key = "WALRUS"
+animal_name = "Walrus"
+scientific_name = "Odobenus rosmarus"
+description = "The walrus (Odobenus rosmarus) is a large pinniped marine mammal with discontinuous distribution about the North Pole in the Arctic Ocean and subarctic seas of the Northern Hemisphere. It is the only extant species in the family Odobenidae and genus Odobenus"
+image = ExtResource("1_x4brl")

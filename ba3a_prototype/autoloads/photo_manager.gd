@@ -1,6 +1,7 @@
 extends Node
 
 var album : Array[Photo]
+var photographed_entities: Array[String]
 
 var onscreen_entities: Array[Notifier]
 
@@ -8,7 +9,7 @@ var onscreen_entities: Array[Notifier]
 
 func find_closest_entity() -> String:
 	var player_pos = Autoload.player_ref.global_position
-	var shortest_distance := 999999
+	var shortest_distance := 999999.0
 	var shortest_name: String
 	for entity in onscreen_entities:
 		var dist = entity.global_position.distance_to(player_pos)

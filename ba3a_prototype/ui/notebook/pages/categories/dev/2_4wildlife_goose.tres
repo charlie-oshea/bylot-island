@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NotebookPage" load_steps=3 format=3 uid="uid://c124igvpi6b8c"]
+
+[ext_resource type="PackedScene" uid="uid://buv08yxwp7yv0" path="res://ui/notebook/pages/categories/dev/2_4wildlife_goose.tscn" id="1_khbqv"]
+[ext_resource type="Script" path="res://ui/notebook/pages/notebook_page.gd" id="2_6k2tj"]
+
+[resource]
+script = ExtResource("2_6k2tj")
+category = 1
+scene = ExtResource("1_khbqv")

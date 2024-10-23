@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WildlifePageInfo" load_steps=3 format=3 uid="uid://da3t8n8ehbst7"]
+
+[ext_resource type="Script" path="res://resources/wildlife_page/wildlife_page.gd" id="1_ipg6t"]
+[ext_resource type="Texture2D" uid="uid://dex60tg3jbkbn" path="res://assets/textures/ui/hotbar/dev/reindeer_emoji#.png" id="1_jrmsm"]
+
+[resource]
+script = ExtResource("1_ipg6t")
+key = "CARIBOU"
+animal_name = "Caribou / Reindeer"
+scientific_name = "Rangifer tarandus"
+description = "The reindeer or caribou[a] (Rangifer tarandus)[5] is a species of deer with circumpolar distribution, native to Arctic, subarctic, tundra, boreal, and mountainous regions of Northern Europe, Siberia, and North America.[2] It is the only representative of the genus Rangifer. More recent studies suggest the splitting of reindeer and caribou into six distinct species over their range."
+image = ExtResource("1_jrmsm")

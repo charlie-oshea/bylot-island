@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WildlifePageInfo" load_steps=3 format=3 uid="uid://dv0ltd5p60tk6"]
+
+[ext_resource type="Texture2D" uid="uid://bd6i70040rb1p" path="res://assets/textures/ui/hotbar/dev/330px-Purpsaxifrage2.jpg" id="1_ml6b4"]
+[ext_resource type="Script" path="res://resources/wildlife_page/wildlife_page.gd" id="2_m3qgo"]
+
+[resource]
+script = ExtResource("2_m3qgo")
+key = "ARCTIC_SAXIFRAGE"
+animal_name = "Purple Saxifrage"
+scientific_name = "Saxifraga oppositifolia"
+description = "Saxifraga oppositifolia, the purple saxifrage or purple mountain saxifrage,[1] is a species of plant that is very common in the high Arctic and also some high mountainous areas further south, including northern Britain, the Alps and the Rocky Mountains."
+image = ExtResource("1_ml6b4")
