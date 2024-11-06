@@ -1,9 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfswrvvhpva64"]
+[gd_scene load_steps=11 format=3 uid="uid://bfswrvvhpva64"]
 
 [ext_resource type="PackedScene" uid="uid://b1pwqxn31wb5d" path="res://player/player_boat.tscn" id="1_6hsoe"]
-[ext_resource type="ArrayMesh" uid="uid://g846nhvi8hmb" path="res://assets/models/style_test/sm_iceberg.res" id="2_w24f0"]
 [ext_resource type="Script" path="res://levels/ocean_level/island_location/island_loader.gd" id="3_g22tl"]
-[ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="3_gucfd"]
 [ext_resource type="Material" uid="uid://c4u21skc0g255" path="res://shaders/world_bend/mats/s_bend_water.tres" id="4_e537w"]
 [ext_resource type="PackedScene" uid="uid://dfg83fysblujx" path="res://levels/ocean_level/island_location/island_location.tscn" id="5_leqdn"]
 
@@ -16,21 +14,21 @@ subdivide_depth = 200
 offsets = PackedFloat32Array(0.342432, 0.483871, 0.759305)
 colors = PackedColorArray(0.607843, 0.647059, 0.843137, 1, 0.368627, 0.745098, 0.929412, 1, 0, 0.505882, 0.8, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_sqsai"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ss3hd"]
 gradient = SubResource("Gradient_nlqkr")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7b4d8"]
-panorama = SubResource("GradientTexture2D_sqsai")
+panorama = SubResource("GradientTexture2D_ss3hd")
 
-[sub_resource type="Sky" id="Sky_o0et8"]
+[sub_resource type="Sky" id="Sky_o0j4l"]
 sky_material = SubResource("PanoramaSkyMaterial_7b4d8")
 
 [sub_resource type="Environment" id="Environment_m8oha"]
 background_mode = 2
 background_color = Color(0.0431373, 0.65098, 0.854902, 1)
-sky = SubResource("Sky_o0et8")
+sky = SubResource("Sky_o0j4l")
 tonemap_mode = 2
 glow_enabled = true
 fog_light_color = Color(0.56, 0.56, 0.56, 1)
@@ -46,30 +44,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0710663, 0)
 [node name="islands" type="Node3D" parent="stage"]
 
 [node name="island_location" parent="stage/islands" instance=ExtResource("5_leqdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.6247)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.962143, 9.53674e-07, -35.9693)
 _name = "Bylot Island"
 scene_path = "res://levels/dev_levels/dev_level_island.tscn"
 level_id = 1
 
-[node name="island_location2" parent="stage/islands" instance=ExtResource("5_leqdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2012, 0, -17.6247)
-_name = "Melville Island"
-scene_path = "res://levels/dev_levels/dev_level_island.tscn"
-level_id = 2
-
 [node name="island_loader" type="Node" parent="stage" node_paths=PackedStringArray("levels")]
 script = ExtResource("3_g22tl")
-levels = [NodePath("../islands/island_location"), NodePath("../islands/island_location2")]
+levels = [NodePath("../islands/island_location")]
 
 [node name="env" type="Node3D" parent="."]
 
 [node name="meshes" type="Node3D" parent="env"]
-
-[node name="iceberg2" type="MeshInstance3D" parent="env/meshes"]
-transform = Transform3D(-2.57738e-08, 0, 0.589635, 0, 0.589635, 0, -0.589635, 0, -2.57738e-08, -26.2928, 0, -3.07257)
-mesh = ExtResource("2_w24f0")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("3_gucfd")
 
 [node name="ocean" type="MeshInstance3D" parent="env/meshes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0)

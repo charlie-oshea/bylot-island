@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://wn5lcqwa3knj"]
 
-[ext_resource type="FontFile" uid="uid://baq3t2m6u5nyd" path="res://assets/fonts/Vividly-Regular.ttf" id="1_r0vdb"]
+[ext_resource type="FontFile" uid="uid://baq3t2m6u5nyd" path="res://assets/fonts/Vividly-Regular.ttf" id="1_cn21f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4iq7r"]
 bg_color = Color(0.808998, 0.808998, 0.808998, 1)
@@ -41,7 +41,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [resource]
-default_font = ExtResource("1_r0vdb")
+default_font = ExtResource("1_cn21f")
 default_font_size = 30
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)

@@ -42,4 +42,4 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_continue_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://levels/ocean_level/ocean_level.tscn")
+	SceneTransition.change_scene("res://levels/ocean_level/ocean_level.tscn")

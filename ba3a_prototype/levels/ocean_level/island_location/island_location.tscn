@@ -1,21 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfg83fysblujx"]
+[gd_scene load_steps=11 format=3 uid="uid://dfg83fysblujx"]
 
 [ext_resource type="Script" path="res://levels/ocean_level/island_location/island_location.gd" id="1_m8h88"]
-[ext_resource type="ArrayMesh" uid="uid://g846nhvi8hmb" path="res://assets/models/style_test/sm_iceberg.res" id="1_wqfxj"]
 [ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="2_pdqql"]
+[ext_resource type="ArrayMesh" uid="uid://bbv6sxle65qtw" path="res://assets/models/level/sm_house_red.res" id="3_cvdga"]
 [ext_resource type="FontFile" uid="uid://baq3t2m6u5nyd" path="res://assets/fonts/Vividly-Regular.ttf" id="4_sav2j"]
+[ext_resource type="Material" uid="uid://ct3hyhfud3hbp" path="res://shaders/world_bend/mats/s_bend_landscape.tres" id="5_xbdg5"]
+[ext_resource type="ArrayMesh" uid="uid://befj5lfvffsg2" path="res://assets/models/level/sm_house_blue.res" id="6_f1vn1"]
+[ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend_landscape.gdshader" id="7_c1g2a"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5yxw0"]
 radius = 11.0212
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_154lc"]
+render_priority = 0
+shader = ExtResource("7_c1g2a")
+shader_parameter/use_texture = true
+shader_parameter/up_facing_color = Color(0.764706, 0.87451, 0.486275, 1)
+shader_parameter/side_facing_color = Color(0.607843, 0.647059, 0.843137, 1)
+shader_parameter/triplanar = null
+shader_parameter/alpha = 1.0
+shader_parameter/curvature_amount = 0.005
+shader_parameter/distance_fade = false
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_862nv"]
+render_priority = 0
+shader = ExtResource("7_c1g2a")
+shader_parameter/use_texture = true
+shader_parameter/up_facing_color = Color(0.486275, 0.494118, 0.752941, 1)
+shader_parameter/side_facing_color = Color(0.607843, 0.647059, 0.843137, 1)
+shader_parameter/triplanar = null
+shader_parameter/alpha = 1.0
+shader_parameter/curvature_amount = 0.005
+shader_parameter/distance_fade = false
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 10.0
+
 [node name="island_location" type="Node3D"]
 script = ExtResource("1_m8h88")
-
-[node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.589635, 0, 0, 0, 0.589635, 0, 0, 0, 0.589635, 0, 0, 0)
-mesh = ExtResource("1_wqfxj")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_pdqql")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0
@@ -30,6 +53,56 @@ billboard = 1
 font = ExtResource("4_sav2j")
 font_size = 256
 outline_size = 50
+
+[node name="dock7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.277265, 0, -0.454074, 0, 0.532032, 0, 0.454074, 0, -0.277265, -0.931075, 0.957833, 0.401235)
+sorting_offset = -1.0
+mesh = ExtResource("3_cvdga")
+surface_material_override/0 = ExtResource("2_pdqql")
+
+[node name="CSGCylinder3D26" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.589635, 0, 0, 0, 0.589635, 0, 0, 0, 0.589635, 0, 0, 0)
+use_collision = true
+radius = 4.76409
+height = 2.12064
+material = ExtResource("5_xbdg5")
+
+[node name="CSGCylinder3D27" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.589635, 0, 0, 0, 0.589635, 0, 0, 0, 0.589635, 1.58171, 0, -2.96014)
+use_collision = true
+radius = 2.51357
+height = 6.83731
+material = ExtResource("5_xbdg5")
+
+[node name="dock2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.601395, 0, 0.127841, 0, 0.614831, 0, -0.127841, 0, -0.601395, 1.03513, 0.971418, -0.204056)
+sorting_offset = -1.0
+mesh = ExtResource("6_f1vn1")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_pdqql")
+
+[node name="CSGCylinder3D33" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.601395, 0, 0.127841, 0, 0.614831, 0, -0.127841, 0, -0.601395, -1.51623, -0.134892, 1.66024)
+use_collision = true
+radius = 4.35928
+height = 0.76957
+material = SubResource("ShaderMaterial_154lc")
+
+[node name="CSGCylinder3D37" type="CSGSphere3D" parent="."]
+transform = Transform3D(-0.161453, 0, 0.0343207, 0, 0.111984, 0, -0.0343207, 0, -0.161453, 0.155205, 0, 2.78592)
+use_collision = true
+radius = 4.02469
+radial_segments = 6
+rings = 4
+material = SubResource("ShaderMaterial_862nv")
+
+[node name="CSGCylinder3D38" type="CSGSphere3D" parent="."]
+transform = Transform3D(-0.161453, 0, 0.0343207, 0, 0.111984, 0, -0.0343207, 0, -0.161453, -3.37856, 0, 0.752198)
+use_collision = true
+radius = 4.02469
+radial_segments = 6
+rings = 4
+material = SubResource("ShaderMaterial_862nv")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_body_exited"]

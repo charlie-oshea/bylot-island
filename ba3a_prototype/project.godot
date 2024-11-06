@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="BA3a_Prototype"
-run/main_scene="res://levels/dev_levels/dev_level_island.tscn"
+run/main_scene="res://ui/character_customizer/character_customizer.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ PhotoManager="*res://autoloads/photo_manager.tscn"
 Enums="*res://autoloads/Enums.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 Autoload="*res://autoloads/autoload.tscn"
+SceneTransition="*res://autoloads/scene_transition.tscn"
 
 [dialogic]
 
