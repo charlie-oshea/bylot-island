@@ -55,8 +55,6 @@ func _physics_process(delta: float) -> void:
 		
 		
 		move_and_slide()
-		
-		clamp_position()
 
 func clamp_position():
 	var dist_to_player = global_position.distance_to(player.global_position)
@@ -72,6 +70,8 @@ func enable():
 	enabled = true
 	
 	camera.current = true
+	
+	$ui.show()
 
 func disable():
 	enabled = false
@@ -79,6 +79,8 @@ func disable():
 	rotation = Vector3(0.0, 180.0, 0.0)
 	
 	camera.fov = 65.0
+	
+	$ui.hide()
 
 func handle_camera_zoom(delta: float) -> void:
 	var cam_zoom := (Input.get_action_strength("camera_zoom_out") - Input.get_action_strength("camera_zoom_in")) * delta

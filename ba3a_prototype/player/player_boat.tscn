@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1pwqxn31wb5d"]
+[gd_scene load_steps=14 format=3 uid="uid://b1pwqxn31wb5d"]
 
 [ext_resource type="Script" path="res://player/player_boat.gd" id="1_u8s4v"]
 [ext_resource type="ArrayMesh" uid="uid://bgiiherchbguk" path="res://assets/models/style_test/sm_ship.res" id="2_283o8"]
 [ext_resource type="Material" uid="uid://cefwnxfa4ey5e" path="res://shaders/pp/global_outline.material" id="4_0if4k"]
 [ext_resource type="Material" uid="uid://cb3odqr6318wi" path="res://shaders/world_bend/mats/s_bend_dynasty_pal.tres" id="4_5qtlk"]
 [ext_resource type="Material" uid="uid://0j4g3ec0nmrj" path="res://shaders/world_bend/mats/s_bend_foam_blue.tres" id="5_81e13"]
+[ext_resource type="Texture2D" uid="uid://bybdl610mysyd" path="res://assets/textures/input_prompts/Xbox Series/Default/xbox_stick_l.png" id="6_0vq35"]
+[ext_resource type="Theme" uid="uid://wn5lcqwa3knj" path="res://assets/default_theme.tres" id="7_ak7qr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8h1im"]
 radius = 1.60021
@@ -73,3 +75,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09)
 visible = false
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_k7437")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 53.0
+offset_top = -107.0
+offset_right = 177.0
+offset_bottom = -43.0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_0vq35")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_ak7qr")
+text = "move"

@@ -1,7 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5fst84c1re5u"]
+[gd_scene load_steps=16 format=3 uid="uid://c5fst84c1re5u"]
 
 [ext_resource type="Script" path="res://player/drone.gd" id="1_745ec"]
 [ext_resource type="Material" uid="uid://b4fssg6ds6oak" path="res://shaders/world_bend/mats/s_bend_green.tres" id="2_xjg6d"]
+[ext_resource type="Texture2D" uid="uid://dxh5vxbv2vk0g" path="res://assets/textures/input_prompts/Xbox Series/Default/xbox_lb_outline.png" id="3_r5aap"]
+[ext_resource type="Texture2D" uid="uid://b6x1a1usoammd" path="res://assets/textures/input_prompts/Xbox Series/Default/xbox_rb_outline.png" id="4_agovd"]
+[ext_resource type="Theme" uid="uid://wn5lcqwa3knj" path="res://assets/default_theme.tres" id="5_lg4jb"]
+[ext_resource type="Texture2D" uid="uid://b1nv61ynprg6i" path="res://assets/textures/input_prompts/Xbox Series/Default/xbox_rt_outline.png" id="6_48lda"]
+[ext_resource type="Texture2D" uid="uid://cr8u3m1ahsnag" path="res://assets/textures/input_prompts/Xbox Series/Default/xbox_stick_r.png" id="7_x5r15"]
+[ext_resource type="Texture2D" uid="uid://b50gihu0vi4xu" path="res://assets/textures/input_prompts/Flairs/Default/flair_arrows_all.png" id="8_xqjw6"]
+[ext_resource type="Texture2D" uid="uid://di7v1y5rrp28o" path="res://assets/textures/input_prompts/Xbox Series/Default/xbox_button_x_outline.png" id="9_achsr"]
+[ext_resource type="Texture2D" uid="uid://c7madebwk0bvo" path="res://assets/textures/input_prompts/Xbox Series/Default/xbox_button_y_outline.png" id="10_pua7u"]
+[ext_resource type="Texture2D" uid="uid://bybdl610mysyd" path="res://assets/textures/input_prompts/Xbox Series/Default/xbox_stick_l.png" id="11_iqonn"]
+[ext_resource type="Texture2D" uid="uid://d1i47mekjefme" path="res://assets/textures/input_prompts/Flairs/Default/flair_arrows_horizontal.png" id="12_3qavq"]
+[ext_resource type="Texture2D" uid="uid://c7ygcvgb3lxmw" path="res://assets/textures/input_prompts/Flairs/Default/flair_arrows_vertical.png" id="13_l2ohm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xx7ol"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -41,3 +52,116 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 0.269598, 0, 0.707107, 0, -0
 layers = 8
 mesh = SubResource("BoxMesh_p4gn3")
 surface_material_override/0 = ExtResource("2_xjg6d")
+
+[node name="ui" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -204.0
+offset_right = 361.0
+offset_bottom = 200.0
+grow_vertical = 0
+scale = Vector2(0.481041, 0.481041)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ui/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_r5aap")
+
+[node name="TextureRect3" type="TextureRect" parent="ui/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_agovd")
+
+[node name="Label" type="Label" parent="ui/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_lg4jb")
+text = "zoom in - out"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ui/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+texture = ExtResource("6_48lda")
+
+[node name="Label" type="Label" parent="ui/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme = ExtResource("5_lg4jb")
+text = "take photo"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ui/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+texture = ExtResource("7_x5r15")
+
+[node name="TextureRect" type="TextureRect" parent="ui/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+texture = ExtResource("8_xqjw6")
+
+[node name="Label" type="Label" parent="ui/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme = ExtResource("5_lg4jb")
+text = "look"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ui/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+texture = ExtResource("9_achsr")
+
+[node name="TextureRect" type="TextureRect" parent="ui/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+texture = ExtResource("10_pua7u")
+
+[node name="Label" type="Label" parent="ui/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme = ExtResource("5_lg4jb")
+text = "up - down"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ui/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("11_iqonn")
+
+[node name="TextureRect" type="TextureRect" parent="ui/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("12_3qavq")
+
+[node name="Label" type="Label" parent="ui/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("5_lg4jb")
+text = "left - right"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ui/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ui/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("11_iqonn")
+
+[node name="TextureRect" type="TextureRect" parent="ui/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("13_l2ohm")
+
+[node name="Label" type="Label" parent="ui/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("5_lg4jb")
+text = "forward - backward"

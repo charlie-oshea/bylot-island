@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="BA3a_Prototype"
-run/main_scene="res://ui/character_customizer/character_customizer.tscn"
+config/name="bylot island"
+run/main_scene="res://ui/menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 

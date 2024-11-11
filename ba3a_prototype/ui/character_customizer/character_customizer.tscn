@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cgsil522bxy7a"]
+[gd_scene load_steps=27 format=3 uid="uid://cgsil522bxy7a"]
 
 [ext_resource type="Script" path="res://ui/character_customizer/character_customizer.gd" id="1_0q71n"]
 [ext_resource type="ArrayMesh" uid="uid://b4msmcyhe8aby" path="res://assets/models/characters/player/sm_character.res" id="2_moyht"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" path="res://shaders/world_bend/s_world_bend.gdshader" id="4_gp1p4"]
 [ext_resource type="Theme" uid="uid://wn5lcqwa3knj" path="res://assets/default_theme.tres" id="5_apgtx"]
 [ext_resource type="ArrayMesh" uid="uid://qgjxum7c0tt" path="res://assets/models/characters/player/hats/sm_hood.res" id="5_oilsi"]
-[ext_resource type="PackedScene" uid="uid://cqay4te1ixgnt" path="res://ui/character_customizer/name_button.tscn" id="6_2evji"]
 [ext_resource type="PackedScene" uid="uid://dudfqfl4d070r" path="res://ui/character_customizer/hat_button.tscn" id="6_4jhmm"]
 [ext_resource type="Script" path="res://ui/character_customizer/customize_vbox.gd" id="6_8il8x"]
 [ext_resource type="PackedScene" uid="uid://dh461d58jkvfh" path="res://ui/character_customizer/colour_button.tscn" id="7_bj27c"]
@@ -158,14 +157,8 @@ layout_mode = 2
 theme_override_constants/separation = 12
 script = ExtResource("6_8il8x")
 
-[node name="name_button" parent="Panel/MarginContainer2/customize_vbox" instance=ExtResource("6_2evji")]
-layout_mode = 2
-focus_neighbor_bottom = NodePath("../hat_button")
-text = "randomize name"
-
 [node name="hat_button" parent="Panel/MarginContainer2/customize_vbox" instance=ExtResource("6_4jhmm")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../name_button")
 focus_neighbor_bottom = NodePath("../colour_button")
 
 [node name="colour_button" parent="Panel/MarginContainer2/customize_vbox" instance=ExtResource("7_bj27c")]
@@ -220,6 +213,7 @@ alignment = 1
 
 [node name="left" type="TextureButton" parent="rotate_prompts/hbox"]
 layout_mode = 2
+focus_mode = 0
 shortcut = SubResource("Shortcut_q7jfb")
 texture_normal = ExtResource("12_fa6v5")
 texture_pressed = ExtResource("13_otsm7")
@@ -237,6 +231,7 @@ flip_v = true
 
 [node name="right" type="TextureButton" parent="rotate_prompts/hbox"]
 layout_mode = 2
+focus_mode = 0
 shortcut = SubResource("Shortcut_g65em")
 texture_normal = ExtResource("15_g14jy")
 texture_pressed = ExtResource("16_yyr2k")

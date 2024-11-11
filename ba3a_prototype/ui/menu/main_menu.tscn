@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqwnaniolbl2c"]
+[gd_scene load_steps=7 format=3 uid="uid://bqwnaniolbl2c"]
 
 [ext_resource type="Script" path="res://ui/menu/main_menu.gd" id="1_1v3q6"]
+[ext_resource type="Texture2D" uid="uid://civcr61yoflfu" path="res://assets/textures/ui/menu.png" id="2_6mqcx"]
 [ext_resource type="FontFile" uid="uid://baq3t2m6u5nyd" path="res://assets/fonts/Vividly-Regular.ttf" id="6_hjup6"]
 [ext_resource type="Theme" uid="uid://wn5lcqwa3knj" path="res://assets/default_theme.tres" id="9_3asb4"]
 
@@ -29,6 +30,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_ycjje")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -53.0
+offset_right = 281.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6mqcx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -64,14 +78,15 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -514.5
-offset_top = 113.0
+offset_top = 103.0
 offset_right = 514.5
-offset_bottom = 208.0
+offset_bottom = 198.0
 grow_horizontal = 2
 theme = ExtResource("9_3asb4")
 theme_override_fonts/font = ExtResource("6_hjup6")
 theme_override_font_sizes/font_size = 131
-text = "untitled climate game"
+text = "bylot island"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
