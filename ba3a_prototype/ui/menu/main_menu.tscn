@@ -88,5 +88,21 @@ theme_override_font_sizes/font_size = 131
 text = "bylot island"
 horizontal_alignment = 1
 
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_top = 638.0
+offset_right = 369.0
+offset_bottom = 674.0
+grow_horizontal = 2
+theme = ExtResource("9_3asb4")
+theme_override_fonts/font = ExtResource("6_hjup6")
+theme_override_font_sizes/font_size = 46
+text = "(please use a controller)"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
